@@ -1,12 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-
-const rentalRouter = require('./app/routes/rentalRoutes');
+const MakeError = require('./utils/makeError');
+const errorMiddleware = require('./middleware/errorHandlerMiddleware');
+const rentalRouter = require('./routes/rentalRoutes');
 
 const app = express();
 
-// 1) Morgan  middleware => logger request muncul di terminal pas ada req ke server
+// Morgan  middleware => logger request
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
@@ -16,5 +17,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1/rental', rentalRouter);
+
+app.all('*', (req, res, next) => {
+  next(new MakeError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+app.use(errorMiddleware);
 
 module.exports = app;
