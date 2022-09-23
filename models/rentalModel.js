@@ -4,7 +4,6 @@ const rentalSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Motor Harus Ada Nama'],
-    unique: true,
     trim: true
   },
   //   ratingsAverage: {

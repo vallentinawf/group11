@@ -35,6 +35,7 @@ exports.update =(req,res) => {
     });
   });
 };
+
 exports.deleteRental = async (req, res, next) => {
   try{
       console.log(req.params.id)
@@ -49,6 +50,7 @@ exports.deleteRental = async (req, res, next) => {
       next(e);
   }
 }
+
 exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { $regex: new RegExp(title), $options: "i"}} : {};
