@@ -4,8 +4,10 @@ const morgan = require('morgan');
 const MakeError = require('./utils/makeError');
 const errorMiddleware = require('./middleware/errorHandlerMiddleware');
 const rentalRouter = require('./routes/rentalRoutes');
-
+const bodyParser = require('body-parser')
 const app = express();
+
+app.use(bodyParser.json())
 
 // Morgan  middleware => logger request
 if (process.env.NODE_ENV === 'development') {
