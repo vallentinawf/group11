@@ -14,6 +14,28 @@ exports.createRental = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.update =(req,res) => {
+  if(!req.body){
+    return res.status(400).send({
+      message: "Data to update can not be empty."
+    })
+  }
+  const id = req.params.id;
+  Rental.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
+  .then(data => {
+    if (!data){
+      res.status(404).send({
+        message: 'Cannot update Rental with id=${id}.'
+      });
+    } else res.send({message: "Rental was updated successfully."});
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:"Error updating Rental with id=" +id
+    });
+  });
+};
+
 exports.deleteRental = async (req, res, next) => {
   try{
       console.log(req.params.id)
@@ -28,6 +50,7 @@ exports.deleteRental = async (req, res, next) => {
       next(e);
   }
 }
+
 exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { $regex: new RegExp(title), $options: "i"}} : {};
