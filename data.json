@@ -1,8 +1,7 @@
 [
   {
-    "id": 0,
-    "name": "Motor Supra",
-    "price": "15000",
+    "name": "Motor Test",
+    "price": "15001",
     "type": "matic"
   }
 ]
