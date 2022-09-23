@@ -13,3 +13,15 @@ exports.createRental = catchAsync(async (req, res, next) => {
     }
   });
 });
+
+exports.deleteRental = async (req, res, next) => {
+  try{
+      const requestedModule = await Module.findByIdAndDelete(req.params.id);
+      if(!requestedModule){
+          return next(new ErrorResponse(`Cannot find modules with id of ${req.params.id}`, 404));
+      }
+      res.status(200).json({success: true, data: {}});
+  }catch (e) {
+      next(e);
+  }
+}
