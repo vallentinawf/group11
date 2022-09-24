@@ -66,3 +66,22 @@ exports.findAll = (req, res) => {
     });
   });
 };
+
+exports.findById = async (req, res, next) => {
+  id = req.params.id;
+
+  Rental.findById(id)
+    .then(data => {
+      if (!data){
+        res.status(404).send({
+          message: `Cannot find Rental with id= ${id}`
+        });
+      } else res.status(200).send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message
+      });
+    });  
+};
+
