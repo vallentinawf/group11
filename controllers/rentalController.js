@@ -25,7 +25,7 @@ exports.update =(req,res) => {
   .then(data => {
     if (!data){
       res.status(404).send({
-        message: 'Cannot update Rental with id=${id}.'
+        message: `Cannot update Rental with id=${id}.`
       });
     } else res.send({message: "Rental was updated successfully."});
   })
