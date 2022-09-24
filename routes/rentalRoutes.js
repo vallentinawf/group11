@@ -9,6 +9,9 @@ router.route("/:id").put(rentalController.update);
 
 //Deletes rental by ID
 router.route('/:id').delete(rentalController.deleteRental);
+
 router.get('/', rentalController.findAll);
+
+router.get('/:id', rentalController.findById);
 
 module.exports = router;
