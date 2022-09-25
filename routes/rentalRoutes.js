@@ -3,19 +3,17 @@ const rentalController = require('../controllers/rentalController');
 
 const router = express.Router();
 
-// Creates a New Rental
-router.route('/').post(rentalController.createRental);
+// Get all rental, Creates a New Rental
+router
+  .route('/')
+  .get(rentalController.findAll)
+  .post(rentalController.createRental);
 
-// Update spesific rental
-router.route("/:id").put(rentalController.update);
-
-// Deletes rental by ID
-router.route('/:id').delete(rentalController.deleteRental);
-
-// Get all rental
-router.get('/', rentalController.findAll);
-
-// Get spesific rental by Id
-router.get('/:id', rentalController.findById);
+// Get spesific rental by Id, Deletes rental by ID, and Update spesific rental
+router
+  .route('/:id')
+  .get(rentalController.findById)
+  .delete(rentalController.deleteRental)
+  .put(rentalController.update);
 
 module.exports = router;
