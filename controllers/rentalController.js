@@ -9,46 +9,34 @@ exports.createRental = catchAsync(async (req, res, next) => {
   res.status(201).json({
     status: 'success',
     data: {
-      tour: newMotor
+      rental: newMotor
     }
   });
 });
 
-exports.update = (req, res) => {
+exports.update = (req, res, next) => {
   if (!req.body) {
-    return res.status(400).send({
-      message: 'Data to update can not be empty.'
-    });
+    return next(new MakeError('Data to update can not be empty.', 404));
   }
-  const id = req.params.id;
-  Rental.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  Rental.findByIdAndUpdate(req.params.id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
-        res.status(404).send({
-          message: `Cannot update Rental with id=${id}.`
-        });
-      } else res.send({ message: 'Rental was updated successfully.' });
+        return next(
+          new MakeError(`Cannot update Rental with id=${req.params.id}.`, 404)
+        );
+      }
+      res.send({ message: 'Rental was updated successfully.' });
     })
     .catch(err => {
-      res.status(500).send({
-        message: 'Error updating Rental with id=' + id
-      });
+      next(err);
     });
 };
 
 exports.deleteRental = async (req, res, next) => {
   try {
-    console.log(req.params.id);
-    // req.params.id = req.params.id.trim()
-    // console.log(req.params.id)
     const requestedDelete = await Rental.findByIdAndDelete(req.params.id);
     if (!requestedDelete) {
-      return next(
-        new ErrorResponse(
-          `Cannot find modules with id of ${req.params.id}`,
-          404
-        )
-      );
+      return next(new MakeError(`There is no rental id ${req.params.id}`, 404));
     }
     res.status(200).json({ success: true, data: {} });
   } catch (e) {
@@ -56,37 +44,64 @@ exports.deleteRental = async (req, res, next) => {
   }
 };
 
-exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title
-    ? { title: { $regex: new RegExp(title), $options: 'i' } }
-    : {};
+exports.findAll = catchAsync(async (req, res, next) => {
+  const queryParam = { ...req.query };
 
-  Rental.find(condition)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: err.message || 'Some error occured while retrieving rentals.'
-      });
-    });
-};
+  const features = ['page', 'sort', 'limit'];
+
+  //ignoring feature
+  features.forEach(feature => delete queryParam[feature]);
+
+  //return query object => chain the features
+  //Filtering
+  let queryObj = Rental.find(queryParam);
+
+  //Sorting
+  if (req.query.sort) {
+    queryObj = queryObj.sort(req.query.sort);
+  }
+  // Default Sorting by newest created rental
+  else {
+    queryObj = queryObj.sort('-createdAt');
+  }
+
+  //Pagination -> page and result limit
+  const page = parseInt(req.query.page, 10) || 1;
+  const limit = parseInt(req.query.limit, 10) || 10;
+  const skip = limit * (page - 1);
+
+  queryObj = queryObj.skip(skip).limit(limit);
+
+  //Pageing logic
+  if (req.query.page) {
+    const rentalCount = await Rental.countDocuments();
+    if (skip >= rentalCount)
+      return next(new MakeError(`There is no page ${page}`, 404));
+  }
+
+  //get the result of query obj
+  const rental = await queryObj;
+
+  res.status(200).json({
+    status: 'success',
+    results: rental.length,
+    data: {
+      rental
+    }
+  });
+});
 
 exports.findById = async (req, res, next) => {
-  id = req.params.id;
-
-  Rental.findById(id)
+  Rental.findById(req.params.id)
     .then(data => {
       if (!data) {
-        res.status(404).send({
-          message: `Cannot find Rental with id= ${id}`
-        });
-      } else res.status(200).send(data);
+        return next(
+          new MakeError(`Cannot find Rental with id= ${req.params.id}`, 404)
+        );
+      }
+      res.status(200).send(data);
     })
     .catch(err => {
-      res.status(500).send({
-        message: err.message
-      });
+      next(err);
     });
 };

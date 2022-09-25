@@ -6,15 +6,11 @@ const rentalSchema = new mongoose.Schema({
     required: [true, 'Motor Harus Ada Nama'],
     trim: true
   },
-  //   ratingsAverage: {
+  //   ratingNumber: {
   //     type: Number,
-  //     default: 4.5,
+  //     default: 0,
   //     min: [1, 'Rating harus diatas 1.0'],
   //     max: [5, 'Rating harus dibawah 5.0']
-  //   },
-  //   ratingsQuantity: {
-  //     type: Number,
-  //     default: 0
   //   },
   price: {
     type: Number,
@@ -30,14 +26,10 @@ const rentalSchema = new mongoose.Schema({
   //       message: 'Harga diskon ({VALUE}) harus dibawah harga sewa'
   //     }
   //   },
-  //   summary: {
+  //   description: {
   //     type: String,
   //     trim: true,
   //     required: [true, 'Harus ada diskripsi singkat']
-  //   },
-  //   description: {
-  //     type: String,
-  //     trim: true
   //   },
   //   imageCover: {
   //     type: String,

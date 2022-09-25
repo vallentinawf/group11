@@ -7,6 +7,7 @@ module.exports = (err, req, res, next) => {
   console.log(err.stack);
 
   let error = { ...err };
+  error.message = err.message;
 
   //Mongoose Error Handling => set and return as operational Error
   // ID not found
@@ -14,10 +15,12 @@ module.exports = (err, req, res, next) => {
     const message = `Invalid ID. ${error.path}: ${error.value}.`;
     error = new MakeError(message, 400);
   }
+  //Duplicated data
   if (error.code === 11000) {
     const message = 'Duplicated data -> Input different value';
     error = new MakeError(message, 400);
   }
+  //Input not valid
   if (error.name === 'ValidationError') {
     const errors = Object.values(err.errors).map(el => el.message);
     const message = `Input not Valid -> check data type. ${errors.join('. ')}`;
@@ -34,8 +37,8 @@ module.exports = (err, req, res, next) => {
     // Unknown Error
   } else {
     res.status(500).json({
-      status: 'error',
-      message: 'Unknown error!'
+      status: error.status || 'Error',
+      message: error.message || 'Unknown error!'
     });
   }
 };
