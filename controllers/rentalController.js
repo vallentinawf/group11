@@ -39,8 +39,8 @@ exports.deleteRental = async (req, res, next) => {
       return next(new MakeError(`There is no rental id ${req.params.id}`, 404));
     }
     res.status(200).json({ success: true, data: {} });
-  } catch (e) {
-    next(e);
+  } catch (err) {
+    next(err);
   }
 };
 
@@ -71,13 +71,6 @@ exports.findAll = catchAsync(async (req, res, next) => {
   const skip = limit * (page - 1);
 
   queryObj = queryObj.skip(skip).limit(limit);
-
-  //Pageing logic
-  if (req.query.page) {
-    const rentalCount = await Rental.countDocuments();
-    if (skip >= rentalCount)
-      return next(new MakeError(`There is no page ${page}`, 404));
-  }
 
   //get the result of query obj
   const rental = await queryObj;

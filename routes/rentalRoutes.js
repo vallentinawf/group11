@@ -3,6 +3,7 @@ const rentalController = require('../controllers/rentalController');
 
 const router = express.Router();
 
+//Mounting route
 // Get all rental, Creates a New Rental
 router
   .route('/')

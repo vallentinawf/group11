@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const MakeError = require('./utils/makeError');
 const errorMiddleware = require('./middleware/errorHandlerMiddleware');
 const rentalRouter = require('./routes/rentalRoutes');
+const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
@@ -20,9 +21,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1/rental', rentalRouter);
+app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {
-  next(new MakeError(`Can't find ${req.originalUrl} on this server!`, 404));
+  next(new MakeError(`Cant find URL : ${req.originalUrl}`, 404));
 });
 
 app.use(errorMiddleware);
