@@ -142,7 +142,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"email\" : \"admin@yahoo.id\",\r\n    \"password\": \"akbar1\",\r\n    \"role\": \"admin\"\r\n}",
+							"raw": "{\r\n    \"username\" : \"akbar12\",\r\n    \"email\" : \"akbar12@yahoo.id\",\r\n    \"password\": \"akbar1\",\r\n    \"role\": \"user\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
