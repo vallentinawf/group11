@@ -8,20 +8,9 @@ exports.register = async (req, res, next) => {
     const { username, email, password, role } = req.body;
     const newUser = await User.create({
       username,
-      email,
+      email: email.toLowerCase(),
       password,
       role
-    });
-
-    const token = newUser.createJWT();
-
-    //Cookies jwt
-    res.cookie('jwt_access', token, {
-      expires: new Date(
-        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-      ),
-      // secure: true,
-      httpOnly: true
     });
 
     //Remove from output data
@@ -29,7 +18,6 @@ exports.register = async (req, res, next) => {
 
     res.status(201).json({
       status: 'success',
-      token,
       data: {
         user: newUser
       }
@@ -43,7 +31,7 @@ exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      return next(new MakeError('Email and Password is not valid', 400));
+      return next(new MakeError('Email and Password is required', 400));
     }
     //Explicitly select the password
     const user = await User.findOne({ email }).select('+password');
@@ -55,7 +43,7 @@ exports.login = async (req, res, next) => {
     const token = user.createJWT();
 
     //Cookies jwt
-    res.cookie('jwt_access', token, {
+    res.cookie('auth_token', token, {
       expires: new Date(
         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
       ),
@@ -64,9 +52,18 @@ exports.login = async (req, res, next) => {
     });
 
     res.status(201).json({
-      status: 'success',
-      token
+      status: 'success'
+      // token
     });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.logout = async (req, res, next) => {
+  try {
+    res.clearCookie('auth_token');
+    res.status(200).json({ status: 'success' });
   } catch (err) {
     next(err);
   }

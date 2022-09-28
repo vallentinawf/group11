@@ -5,19 +5,22 @@ const User = require('../models/userModel');
 
 //auth access -> for login middleware
 exports.auth = async (req, res, next) => {
-  let token;
+  // let token;
   let payload;
   let currentUser;
 
-  const authHeader = req.headers.authorization;
+  //TOKEN HEADER
+  // const authHeader = req.headers.authorization;
 
   //Cek header for jwt token
-  if (authHeader && authHeader.startsWith('Bearer')) {
-    token = req.headers.authorization.split(' ')[1];
-  } else if (req.cookies.jwt_access) {
-    token = req.cookies.jwt;
-  }
+  // if (authHeader && authHeader.startsWith('Bearer')) {
+  //   token = req.headers.authorization.split(' ')[1];
+  // } else if (req.cookies.jwt_access) {
+  //   token = req.cookies.jwt;
+  // }
 
+  //Token Cookies
+  const token = req.cookies.auth_token;
   if (!token) {
     return next(
       new MakeError('Authentication Invalid -> wrong email or password', 401)
@@ -42,7 +45,6 @@ exports.auth = async (req, res, next) => {
   }
 
   // Proceed to next middleware/route
-  // req.user = { userId: payload.userId }
   req.user = currentUser;
   next();
 };

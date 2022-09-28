@@ -121,14 +121,6 @@
 						"header": []
 					},
 					"response": []
-				},
-				{
-					"name": "Get with auth",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
 				}
 			]
 		},
@@ -142,7 +134,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"akbar12\",\r\n    \"email\" : \"akbar12@yahoo.id\",\r\n    \"password\": \"akbar1\",\r\n    \"role\": \"user\"\r\n}",
+							"raw": "{\r\n    \"username\" : \"admin1\",\r\n    \"email\" : \"admin1@yahoo.id\",\r\n    \"password\": \"akbar1\",\r\n    \"role\": \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -169,8 +161,51 @@
 					"response": []
 				},
 				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"akbar1@yahoo.id\",\r\n    \"password\": \"akbar1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/auth/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "getAll",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzMxZTRlOWYzZGJkMThlNjFmYzA5NyIsImlhdCI6MTY2NDI5NDY3MCwiZXhwIjoxNjY0MzgxMDcwfQ.ZRWUjfwQNHUFBQObwQ_Leux-WtkVvjLq_J8SQ25fYnk",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -192,10 +227,26 @@
 					"response": []
 				},
 				{
-					"name": "login",
+					"name": "logout",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/api/v1/auth/logout",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
 					},
 					"response": []
 				}
