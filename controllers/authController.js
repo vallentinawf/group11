@@ -78,8 +78,9 @@ exports.login = async (req, res, next) => {
 
 // });
 
-exports.sendTokenResponse = asyncHandler(async(req, res, next) => {
+exports.sendTokenResponse = async(req, res, next) => {
 
+  try{
   const token = user.getSignedJwtToken();
 
   const options = {
@@ -100,10 +101,15 @@ exports.sendTokenResponse = asyncHandler(async(req, res, next) => {
       success: true,
       token
     });
-});
+  } catch (err){
+    next(err);
+  }
+};
 
 //User yang sedang Login
-exports.forgotPassword = asyncHandler(async(req, res, next) => {
+exports.forgotPassword = async(req, res, next) => {
+
+  try{
   const user = await User.findOne({email: req.body.email});
 
   if(!user){
@@ -119,7 +125,10 @@ exports.forgotPassword = asyncHandler(async(req, res, next) => {
     success: true,
     data: user
   });
-});
+} catch (err){
+  next(err);
+}
+};
 
 exports.logout = async (req, res, next) => {
   try {
