@@ -60,6 +60,67 @@ exports.login = async (req, res, next) => {
   }
 };
 
+// exports.updateDetails = asyncHandler(async(req, res, next) => {
+//   const fieldsToUpdate = {
+//     name: req.body.name,
+//     email: req.body.email
+//   }
+
+//   const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
+//     new:true,
+//     runValidators: true,
+//   });
+
+//   res.status(200).json({
+//     success: true,
+//     data:user
+//   })
+
+// });
+
+exports.sendTokenResponse = asyncHandler(async(req, res, next) => {
+
+  const token = user.getSignedJwtToken();
+
+  const options = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true
+  };
+
+  if(process.env.NODE_ENV === 'production'){
+    options.secure = true;
+  }
+
+  res
+    .status(statusCode)
+    .cookie('token', token, options)
+    .json({
+      success: true,
+      token
+    });
+});
+
+//User yang sedang Login
+exports.forgotPassword = asyncHandler(async(req, res, next) => {
+  const user = await User.findOne({email: req.body.email});
+
+  if(!user){
+    return next(new MakeError('There is no user with this email', 404))
+  }
+
+  //Get reset Token
+  const resetToken = user.getResetPasswordToken();
+
+  await user.save({ validateBeforeSave: false});
+
+  res.status(200).json({
+    success: true,
+    data: user
+  });
+});
+
 exports.logout = async (req, res, next) => {
   try {
     res.clearCookie('auth_token');
