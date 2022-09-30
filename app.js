@@ -8,6 +8,7 @@ const errorMiddleware = require('./middlewares/errorHandlerMiddleware');
 const rentalRouter = require('./routes/rentalRoutes');
 const userRouter = require('./routes/userRoutes');
 const authRouter = require('./routes/authRoute');
+const bookingRouter = require('./routes/bookingRoutes');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/rental', rentalRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/booking', bookingRouter);
 
 //Error for all undifined routes
 app.all('*', (req, res, next) => {
