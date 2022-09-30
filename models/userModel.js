@@ -37,6 +37,10 @@ const UserSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+   borrowedMotorId: {
+   type: [mongoose.Types.ObjectId],
+   required: false
   }
 });
 
