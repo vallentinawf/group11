@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const User = require('./../models/userModel');
 const MakeError = require('./../utils/makeError');
-const sendEmail = require('./../utils/sendEmail')
+const sendEmail = require('./../utils/sendEmail.js')
 
 //TODO
 
@@ -42,6 +42,8 @@ exports.login = async (req, res, next) => {
       return next(new MakeError('Incorrect Credentials'), 401);
     }
 
+    sendTokenResponse(user, 200, res);
+
     const token = user.createJWT();
 
     //Cookies jwt
@@ -62,8 +64,31 @@ exports.login = async (req, res, next) => {
   }
 };
 
+exports.resetPassword = async(req, res, next) => {
 
-exports.sendTokenResponse = async(req, res, next) => {
+  const resetPasswordToken = crypto
+    .createHash('sha256')
+    .update(req.params.resettoken)
+    .digest('hex');
+
+  const user = await User.findOne({
+    resetPasswordToken,
+    resetPasswordTokenExpire: { $gt: Date.now()}
+  });
+
+  if(!user){
+    return next(new MakeError('Invalid Token', 400));
+  }
+
+  user.password = req.body.password;
+  user.resetPasswordToken = undefined;
+  user.resetPasswordTokenExpire = undefined;
+  await user.save();
+
+  sendTokenResponse(user, 200, res);
+};
+
+const sendTokenResponse = async(user, statusCode, res) => {
 
   try{
   const token = user.getSignedJwtToken();
@@ -111,7 +136,8 @@ exports.forgotPassword = async(req, res, next) => {
 
   const message = `Anda menerima email ini karena anda telah meminta untuk reset password, silakan
   buat PUT request ke : \n\n${resetUrl}`;
-
+  
+  //2 RES STATUS HERE, NEED FIX
   try {
     await sendEmail({
       email: user.email,
@@ -126,7 +152,8 @@ exports.forgotPassword = async(req, res, next) => {
 
     await user.save({ validateBeforeSave: false});
 
-    return next(new MakeError('Email could not be sent', 500));
+    //return next(new MakeError('Email could not be sent', 500));
+    return next(error);
   }
 
   res.status(200).json({
