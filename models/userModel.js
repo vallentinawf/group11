@@ -30,6 +30,10 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Must input password'],
     minlength: 6,
     select: false
+  },
+  borrowedMotorId: {
+    type: [mongoose.Types.ObjectId],
+    required: false
   }
 });
 
