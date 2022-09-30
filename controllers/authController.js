@@ -1,5 +1,7 @@
+const crypto = require('crypto');
 const User = require('./../models/userModel');
 const MakeError = require('./../utils/makeError');
+const sendEmail = require('./../utils/sendEmail')
 
 //TODO
 
@@ -103,6 +105,29 @@ exports.forgotPassword = async(req, res, next) => {
   const resetToken = user.getResetPasswordToken();
 
   await user.save({ validateBeforeSave: false});
+
+  //Create reset url
+  const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/resetpassword/${resetToken}`;
+
+  const message = `Anda menerima email ini karena anda telah meminta untuk reset password, silakan
+  buat PUT request ke : \n\n${resetUrl}`;
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: 'Password Reset Token',
+      message
+    });
+    res.status(200).json({success: true, data: 'email sent'});
+  } catch (error) {
+    console.log(error)
+    user.resetPasswordToken = undefined;
+    user.resetPasswordTokenExpire = undefined;
+
+    await user.save({ validateBeforeSave: false});
+
+    return next(new MakeError('Email could not be sent', 500));
+  }
 
   res.status(200).json({
     success: true,
