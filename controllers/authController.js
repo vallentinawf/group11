@@ -138,6 +138,7 @@ exports.forgotPassword = async(req, res, next) => {
   buat PUT request ke : \n\n${resetUrl}`;
   
   //2 RES STATUS HERE, NEED FIX
+  //RESOLVED
   try {
     await sendEmail({
       email: user.email,
@@ -155,11 +156,6 @@ exports.forgotPassword = async(req, res, next) => {
     //return next(new MakeError('Email could not be sent', 500));
     return next(error);
   }
-
-  res.status(200).json({
-    success: true,
-    data: user
-  });
 } catch (err){
   next(err);
 }
