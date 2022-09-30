@@ -42,7 +42,7 @@ exports.login = async (req, res, next) => {
       return next(new MakeError('Incorrect Credentials'), 401);
     }
 
-    sendTokenResponse(user, 200, res);
+    sendTokenResponse(user, 200, res, next);
 
     const token = user.createJWT();
 
@@ -85,13 +85,13 @@ exports.resetPassword = async(req, res, next) => {
   user.resetPasswordTokenExpire = undefined;
   await user.save();
 
-  sendTokenResponse(user, 200, res);
+  sendTokenResponse(user, 200, res, next);
 };
 
-const sendTokenResponse = async(user, statusCode, res) => {
+const sendTokenResponse = async(user, statusCode, res, next) => {
 
   try{
-  const token = user.getSignedJwtToken();
+  const token = user.createJWT();
 
   const options = {
     expires: new Date(
@@ -103,14 +103,14 @@ const sendTokenResponse = async(user, statusCode, res) => {
   if(process.env.NODE_ENV === 'production'){
     options.secure = true;
   }
-
-  res
-    .status(statusCode)
-    .cookie('token', token, options)
-    .json({
-      success: true,
-      token
-    });
+  //HTTP RES KE DOUBLE, CAUSING ERROR
+  // res
+  //   .status(statusCode)
+  //   .cookie('token', token, options)
+  //   .json({
+  //     success: true,
+  //     token
+  //   });
   } catch (err){
     next(err);
   }
