@@ -10,6 +10,9 @@ router.post('/register', authController.register);
 // Login
 router.post('/login', authController.login);
 
+//DELETE
+router.delete('/:id',authMiddleware.auth, userController.deleteUser);
+
 // LOGIN + ADMIN ROLE REQUIRED ACCESS
 router.use(authMiddleware.auth);
 router.use(authMiddleware.restricAccess('admin'));
