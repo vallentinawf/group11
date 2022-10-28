@@ -48,6 +48,10 @@ const rentalSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now()
+  },
+  borrowerId: {
+    type: [mongoose.Types.ObjectId],
+    required: false
   }
 });
 

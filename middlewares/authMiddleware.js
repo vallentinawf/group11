@@ -42,7 +42,7 @@ exports.auth = async (req, res, next) => {
 //Authorization middleware
 exports.restricAccess = (...roles) => {
   return (req, res, next) => {
-    //Check if user.role is in roles that is spesified
+    //Check if user.role is in roles that is specified
     console.log(req.user.role);
     if (!roles.includes(req.user.role)) {
       return next(new MakeError('Unauthorized access!', 403));
