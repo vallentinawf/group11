@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-   borrowedMotorId: {
+  borrowedMotorId: {
    type: [mongoose.Types.ObjectId],
    required: false
   }

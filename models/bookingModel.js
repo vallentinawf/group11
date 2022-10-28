@@ -19,6 +19,11 @@ const bookingSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: false
+  },
+  ReturnedAt: {
+    type: Date,
+    default: '-',
+    required: false
   }
 });
 
