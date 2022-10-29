@@ -21,12 +21,9 @@ router.route('/').get(userController.getAllUsers);
 // TODO
 // 1. User controler -> get by id
 // 2. Update current user data
-// 3. Delete current user
-// 4. Update user password???
+// 3. Update user password???
 // router
 //   .route('/:id')
-//   .get(userController.getUserID)
 //   .put(userController.updateUser)
-//   .delete(userController.deleteUser);
-
+//
 module.exports = router;
