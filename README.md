@@ -12,4 +12,5 @@ express
 mongoose
 morgan
 nodemon
+nodemailer
 ```
