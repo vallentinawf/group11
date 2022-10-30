@@ -7,11 +7,12 @@ const router = express.Router();
 
 //Create user
 router.post('/register', authController.register);
-// Login
-router.post('/login', authController.login);
 
 //DELETE
-router.delete('/:id',authMiddleware.auth, userController.deleteUser);
+router.delete('/:id', authMiddleware.auth, userController.deleteUser);
+
+// Current User Profile
+router.route('/profile').get(authMiddleware.auth, userController.profileInfo);
 
 // LOGIN + ADMIN ROLE REQUIRED ACCESS
 router.use(authMiddleware.auth);

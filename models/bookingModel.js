@@ -22,7 +22,7 @@ const bookingSchema = new mongoose.Schema({
   },
   ReturnedAt: {
     type: Date,
-    default: '-',
+    default: '',
     required: false
   }
 });

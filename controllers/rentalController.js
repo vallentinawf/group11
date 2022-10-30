@@ -59,9 +59,9 @@ exports.deleteRental = async (req, res, next) => {
 
 exports.findAll = async (req, res, next) => {
   try {
-    console.log(req.query)
+    console.log(req.query);
     const queryParam = { ...req.query };
-    console.log(queryParam)
+    console.log(queryParam);
 
     const features = ['page', 'sort', 'limit'];
 
@@ -70,7 +70,7 @@ exports.findAll = async (req, res, next) => {
 
     //return query object => chain the features
     //Filtering
-    console.log(queryParam)
+    console.log(queryParam);
     let queryObj = Rental.find(queryParam);
 
     //Sorting
