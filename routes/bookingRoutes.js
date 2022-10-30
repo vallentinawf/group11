@@ -4,9 +4,19 @@ const authMiddleware = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-//router.use(authMiddleware.auth);
-//router.get('/', authMiddleware.auth, bookingController.getBooking);
+router.get('/', authMiddleware.auth, bookingController.getBookingAll);
+router.get('/:id');
 
-router.route('/').post(authMiddleware.auth, bookingController.createBooking);
+router
+  .route('/book')
+  .post(
+    authMiddleware.auth,
+    authMiddleware.restricAccess('admin'),
+    bookingController.createBooking
+  );
+
+router
+  .route('/return')
+  .patch(authMiddleware.auth, bookingController.returnBooking);
 
 module.exports = router;

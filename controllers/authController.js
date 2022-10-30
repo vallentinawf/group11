@@ -1,9 +1,35 @@
 const crypto = require('crypto');
 const User = require('./../models/userModel');
 const MakeError = require('./../utils/makeError');
-const sendEmail = require('./../utils/sendEmail.js')
+const sendEmail = require('./../utils/sendEmail');
 
 //TODO
+const sendTokenResponse = async (user, statusCode, res, next) => {
+  try {
+    const token = user.createJWT();
+
+    const options = {
+      expires: new Date(
+        Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+      ),
+      httpOnly: true
+    };
+
+    if (process.env.NODE_ENV === 'production') {
+      options.secure = true;
+    }
+    //HTTP RES KE DOUBLE, CAUSING ERROR
+    // res
+    //   .status(statusCode)
+    //   .cookie('token', token, options)
+    //   .json({
+    //     success: true,
+    //     token
+    //   });
+  } catch (err) {
+    next(err);
+  }
+};
 
 exports.register = async (req, res, next) => {
   try {
@@ -64,8 +90,7 @@ exports.login = async (req, res, next) => {
   }
 };
 
-exports.resetPassword = async(req, res, next) => {
-
+exports.resetPassword = async (req, res, next) => {
   const resetPasswordToken = crypto
     .createHash('sha256')
     .update(req.params.resettoken)
@@ -73,10 +98,10 @@ exports.resetPassword = async(req, res, next) => {
 
   const user = await User.findOne({
     resetPasswordToken,
-    resetPasswordTokenExpire: { $gt: Date.now()}
+    resetPasswordTokenExpire: { $gt: Date.now() }
   });
 
-  if(!user){
+  if (!user) {
     return next(new MakeError('Invalid Token', 400));
   }
 
@@ -88,77 +113,50 @@ exports.resetPassword = async(req, res, next) => {
   sendTokenResponse(user, 200, res, next);
 };
 
-const sendTokenResponse = async(user, statusCode, res, next) => {
+//User yang sedang Login
+exports.forgotPassword = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
 
-  try{
-  const token = user.createJWT();
+    if (!user) {
+      return next(new MakeError('There is no user with this email', 404));
+    }
 
-  const options = {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true
-  };
+    //Get reset Token
+    const resetToken = user.getResetPasswordToken();
 
-  if(process.env.NODE_ENV === 'production'){
-    options.secure = true;
-  }
-  //HTTP RES KE DOUBLE, CAUSING ERROR
-  // res
-  //   .status(statusCode)
-  //   .cookie('token', token, options)
-  //   .json({
-  //     success: true,
-  //     token
-  //   });
-  } catch (err){
+    await user.save({ validateBeforeSave: false });
+
+    //Create reset url
+    const resetUrl = `${req.protocol}://${req.get(
+      'host'
+    )}/api/v1/resetpassword/${resetToken}`;
+
+    const message = `Anda menerima email ini karena anda telah meminta untuk reset password, silakan
+  buat PUT request ke : \n\n${resetUrl}`;
+
+    //2 RES STATUS HERE, NEED FIX
+    //RESOLVED
+    try {
+      await sendEmail({
+        email: user.email,
+        subject: 'Password Reset Token',
+        message
+      });
+      res.status(200).json({ success: true, data: 'email sent' });
+    } catch (error) {
+      console.log(error);
+      user.resetPasswordToken = undefined;
+      user.resetPasswordTokenExpire = undefined;
+
+      await user.save({ validateBeforeSave: false });
+
+      //return next(new MakeError('Email could not be sent', 500));
+      return next(error);
+    }
+  } catch (err) {
     next(err);
   }
-};
-
-//User yang sedang Login
-exports.forgotPassword = async(req, res, next) => {
-
-  try{
-  const user = await User.findOne({email: req.body.email});
-
-  if(!user){
-    return next(new MakeError('There is no user with this email', 404))
-  }
-
-  //Get reset Token
-  const resetToken = user.getResetPasswordToken();
-
-  await user.save({ validateBeforeSave: false});
-
-  //Create reset url
-  const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/resetpassword/${resetToken}`;
-
-  const message = `Anda menerima email ini karena anda telah meminta untuk reset password, silakan
-  buat PUT request ke : \n\n${resetUrl}`;
-  
-  //2 RES STATUS HERE, NEED FIX
-  //RESOLVED
-  try {
-    await sendEmail({
-      email: user.email,
-      subject: 'Password Reset Token',
-      message
-    });
-    res.status(200).json({success: true, data: 'email sent'});
-  } catch (error) {
-    console.log(error)
-    user.resetPasswordToken = undefined;
-    user.resetPasswordTokenExpire = undefined;
-
-    await user.save({ validateBeforeSave: false});
-
-    //return next(new MakeError('Email could not be sent', 500));
-    return next(error);
-  }
-} catch (err){
-  next(err);
-}
 };
 
 exports.logout = async (req, res, next) => {
