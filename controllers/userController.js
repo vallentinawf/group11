@@ -55,37 +55,17 @@ exports.profileInfo = async (req, res, next) => {
     // const rental = await Rental.find({ _id: [...user.borrowedMotorId] });
     const rental = await Rental.find({ _id: user.borrowedMotorId });
 
+    const booking = await Booking.find({ userId: req.user.id }).populate({
+      path: 'rentalId',
+      model: Rental
+    });
+
     res.status(200).json({
       status: 'success',
       data: {
         user,
-        rental
-      }
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
-exports.getBookingUser = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ _id: req.user.id });
-
-    const rental = await Rental.find({ _id: user.rentalId });
-
-    const booking = await Booking.findById(req.params.id);
-
-    if (!booking) {
-      return next(
-        new MakeError(`Cannot find booking with id= ${req.params.id}`, 404)
-      );
-    }
-
-    res.status(200).json({
-      status: 'success',
-      data: {
-        rental,
-        user
+        // rental,
+        booking
       }
     });
   } catch (err) {

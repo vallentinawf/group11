@@ -89,34 +89,6 @@ exports.getBooking = async (req, res, next) => {
   }
 };
 
-// As user --> as one with user profile --> userController
-// exports.getBookingUser = async (req, res, next) => {
-//   try {
-//     const user = await User.findOne({ _id: req.user.id });
-
-//     const rental = await Rental.find({ _id: user.rentalId });
-
-//     const booking = await Booking.findById(req.params.id);
-
-//     if (!booking) {
-//       return next(
-//         new MakeError(`Cannot find booking with id= ${req.params.id}`, 404)
-//       );
-//     }
-
-//     res.status(200).json({
-//       status: 'success',
-//       data: {
-//         rental,
-//         user
-//       }
-//     });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-//TODO -> Cara nempelin informasi bookingId di body
 exports.returnBooking = async (req, res, next) => {
   try {
     //Update Booking
@@ -133,29 +105,41 @@ exports.returnBooking = async (req, res, next) => {
     if (!booking) return next(new MakeError('Cant found Booking.', 404));
 
     //Update User
-    const user = await User.findOne({ _id: req.body.userId });
+    //update for admin?
+    //const user = await User.findOne({ _id: req.body.userId });
+
+    const user = await User.findOne({ _id: booking.userId });
 
     user.borrowedMotorId.splice(
-      user.borrowedMotorId.indexOf(user.body.rentalId),
+      user.borrowedMotorId.indexOf(booking.rentalId),
       1
     );
 
     await User.updateOne(
-      { _id: req.body.userId },
+      { _id: booking.userId },
       { borrowedMotorId: user.borrowedMotorId }
     );
 
     //Update Rental
-    const rental = await Rental.findOne({ _id: req.body.rentalId });
+    const rental = await Rental.findOne({ _id: booking.rentalId });
 
-    rental.borrowerId.splice(rental.borrowerId.indexOf(req.body.userId), 1);
+    rental.borrowerId.splice(rental.borrowerId.indexOf(booking.userId), 1);
 
     await Rental.updateOne(
-      { _id: req.params.rentalId },
-      { quantity: rental.quantity + 1, borrowerId: rental.borrowerId }
+      { _id: booking.rentalId },
+      {
+        quantity: rental.quantity + 1,
+        borrowerId: rental.borrowerId,
+        status: 'available'
+      }
     );
 
-    res.status(201).json('oke');
+    res.status(200).json({
+      status: 'success',
+      data: {
+        rental
+      }
+    });
   } catch (err) {
     next(err);
   }
