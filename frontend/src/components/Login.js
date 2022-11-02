@@ -7,7 +7,9 @@ export default function Login() {
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray'>
         <div className='bg-gray flex flex-col justify-center'>
             <form className='max-w-[500px] bg-gray w-full mx-auto px-10 p-10'>
-                <img className='object-scale-down w-6/12' src={Logo} alt='Logo'></img>
+                <div className='grid justify-items-center'>
+                    <img className='object-scale-down w-6/12' src={Logo} alt='Logo'></img>
+                </div>
                 <p className='text-center font-bold p-2 text-black/75'>Login into your account</p>
                 <div className='flex flex-col py-2 px-5'>
                     <label className='text-black/50'>Email address</label>
