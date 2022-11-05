@@ -15,6 +15,9 @@ module.exports = {
       black:'#000000',
     },
     extend: {},
+    fontFamily: {
+      primary: ["Poppins", "sans-serif"],
+    }, 
   },
   plugins: [],
 }
