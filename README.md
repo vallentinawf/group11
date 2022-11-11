@@ -37,36 +37,67 @@
 
   - Frontend
 
-    ```
     - change directory to Frontend directory
       - open terminal
       - **cd ./frontend**
     - **npm install**
-    ```
 
   - Backend
-    ```
     - change directory to Backend directory
       - open terminal
       - **cd ./backend**
     - **npm install**
-    ```
 
 - Run the program:
 
   - Frontend
 
-    ```
     - change directory to Frontend directory
       - open terminal
       - **cd ./frontend**
     - **npm start**
-    ```
 
   - Backend
-    ```
     - change directory to Backend directory
       - open terminal
       - **cd ./backend**
     - npm start
-    ```
+
+### Design UI
+
+https://www.figma.com/file/nePn8DYvwP9pmw85Q0Gzv9/ReMo?node-id=0%3A1
+
+### Contribution guide
+
+- Branch naming
+
+```
+<type>/<short_description>
+
+- example :
+  - add new feature
+    feature/the-feature
+  - fixing a feature
+    fix/the-feature
+
+[Learn More](https://nvie.com/posts/a-successful-git-branching-model/)
+```
+
+- Commit message
+
+```
+<type>(<scope>): <subject>
+
+"<scope>" is optional
+
+- example :
+  - add new feature
+    feat: add rental get method
+    or
+    feat(get-method): add rental get method
+  - fixing a feature
+    fix(get-method): missing variable
+  - refactoring code
+    refactor(get-method): rental get method
+[Learn More](https://dev.to/i5han3/git-commit-message-convention-that-you-can-follow-1709)
+```
