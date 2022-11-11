@@ -7,7 +7,9 @@
 
 ### Prerequisites
 
+```
 - [Download](https://nodejs.org/en/download/) and install **Node.js** version `16.15` or higher.
+```
 
 ### Dependencies
 
@@ -33,41 +35,46 @@
 
 ### Setting Up Project
 
-- Install required dependencies:
-
-  - Frontend
-
+- **Install required dependencies:**
+  ```
+  - **Frontend**
     - change directory to Frontend directory
       - open terminal
-      - **cd ./frontend**
-    - **npm install**
-
-  - Backend
+      - `cd ./frontend`
+    - `npm install`
+  ```
+  ```
+  - **Backend**
     - change directory to Backend directory
       - open terminal
-      - **cd ./backend**
-    - **npm install**
-
-- Run the program:
-
-  - Frontend
-
+      - `cd ./backend`
+    - `npm install`
+  ```
+- **Run the program:**
+  ```
+  - **Frontend**
     - change directory to Frontend directory
       - open terminal
-      - **cd ./frontend**
-    - **npm start**
-
-  - Backend
-    - change directory to Backend directory
-      - open terminal
-      - **cd ./backend**
+      - cd ./frontend
     - npm start
+  ```
+  ```
+  - **Backend**
+    - change directory to Backend directory
+      - open terminal
+      - `cd ./backend`
+    - `npm start`
+  ```
 
 ### Design UI
 
+```
 https://www.figma.com/file/nePn8DYvwP9pmw85Q0Gzv9/ReMo?node-id=0%3A1
+```
 
 ### Contribution guide
+
+`
 
 - Branch naming
 
@@ -79,11 +86,11 @@ https://www.figma.com/file/nePn8DYvwP9pmw85Q0Gzv9/ReMo?node-id=0%3A1
     feature/the-feature
   - fixing a feature
     fix/the-feature
-
+<br/>
 [Learn More](https://nvie.com/posts/a-successful-git-branching-model/)
 ```
 
-- Commit message
+- Commit messages
 
 ```
 <type>(<scope>): <subject>
@@ -99,5 +106,6 @@ https://www.figma.com/file/nePn8DYvwP9pmw85Q0Gzv9/ReMo?node-id=0%3A1
     fix(get-method): missing variable
   - refactoring code
     refactor(get-method): rental get method
+<br/>
 [Learn More](https://dev.to/i5han3/git-commit-message-convention-that-you-can-follow-1709)
 ```
