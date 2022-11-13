@@ -3,24 +3,36 @@ import Logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { FormRow, Alert } from '../components';
 import loginImg from '../assets/loginImg.jpg';
+import { useAppContext } from '../context/appContext';
 
 const initialState = {
-  name: '',
+  username: '',
   email: '',
   password: '',
-  showAlert: true,
 };
 
 const Register = () => {
   const [values, setValues] = useState(initialState);
 
+  //Using global usestate (appContext)
+  const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
+
   const handleChange = (e) => {
-    console.log(e.target);
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { username, email, password } = values;
+    if (!email || !password || !username) {
+      displayAlert();
+      return;
+    }
+
+    const currentUser = { username, email, password };
+    registerUser(currentUser);
+
+    console.log(values);
   };
 
   return (
@@ -40,7 +52,7 @@ const Register = () => {
           <p className="text-center font-bold p-2 text-black/75">
             Register into your account
           </p>
-          {values.showAlert && <Alert />}
+          {showAlert && <Alert />}
           {/* div for Email Address Input */}
           <FormRow
             type="email"
@@ -55,7 +67,7 @@ const Register = () => {
             type="text"
             name="username"
             labelText="Username"
-            value={values.name}
+            value={values.username}
             placeholder="akbar sigit"
             handleChange={handleChange}
           />
@@ -73,9 +85,10 @@ const Register = () => {
               Forgot password?
             </button>
           </div>
-          {/* div for Button Login */}
+          {/* div for Register Login */}
           <div className="px-5">
             <button
+              disabled={isLoading}
               type="submit"
               className="w-full my-5 py-2 bg-orange text-white font-bold rounded-lg shadow-md shadow-orange/60 hover:shadow-orange/40 "
             >
