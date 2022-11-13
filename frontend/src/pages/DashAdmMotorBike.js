@@ -1,39 +1,58 @@
-import { FaMotorcycle, FaUserAlt, FaUserCircle } from 'react-icons/fa';
+import { FaMotorcycle, FaUserAlt, FaUserCircle, FaBars } from 'react-icons/fa';
 import { FiSettings } from 'react-icons/fi';
 import { React, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-export default function DashboardAdmin(props) {
-  props.funcNav(false);
+export default function DashAdmMotorBike(props) {
+  const menuItems = [
+    {
+      path: 'motorbike',
+      name: 'Motor Bike',
+      icon: <FaMotorcycle size={25} color="#35373A" />,
+    },
+    {
+      path: 'customer',
+      name: 'Customer',
+      icon: <FaUserAlt />,
+    },
+  ];
+
   return (
-    <div className="h-[100vh] flex w-full px-[2%] py-[2%] relative">
-      <div className="bg-[#E5E5E5] h-[100%] w-[230px] rounded-lg drop-shadow-xl">
-        <div className="bg-[#F1F2F6] h-[80px] flex justify-center items-center rounded-lg drop-shadow-md gap-3">
-          <FaUserCircle size={30} />
-          <div className="">
-            <p>Wellcome back!</p>
-            <p>User</p>
+    <div className="h-[100vh] flex px-[2%] py-[2%] ">
+      <div className="bg-[#E5E5E5] h-[100%] w-[230px] rounded-lg drop-shadow-xl ">
+        <div className="bg-[#F1F2F6] flex h-[80px] rounded-lg drop-shadow-md items-center justify-center">
+          <div className="hidden md:flex  gap-3">
+            <FaUserCircle size={30} />
+            <div className="">
+              <p>Wellcome back!</p>
+              <p>User</p>
+            </div>
+            <FiSettings size={25} />
           </div>
-          <FiSettings size={25} />
+          <div className="md:hidden">
+            <FaBars size={30} />
+          </div>
         </div>
-        <div className="flex flex-col items-center gap-4 py-[15px]">
-          <button className="w-[200px] bg-[#F1F2F6] drop-shadow-sm rounded-xl h-[40px] hover:drop-shadow-md hover:bg-white active:bg-white">
-            <div className="flex gap-4 items-center pl-[10px]">
-              <FaMotorcycle size={25} color="#35373A" />
-              <p className="text-[#35373A]">Motor Bike</p>
-            </div>
-          </button>
-          <button className="w-[200px] bg-[#F1F2F6] drop-shadow-sm rounded-xl h-[40px] hover:drop-shadow-md hover:bg-white active:bg-white">
-            <div className="flex gap-4 items-center pl-[10px]">
-              <FaUserAlt size={23} color="#35373A" />
-              <p className="text-[#35373A]">Customer</p>
-            </div>
-          </button>
+
+        <div className="">
+          {menuItems.map((item, index) => (
+            <NavLink to={`/dashboard-admin/${item.path}`} key={index}>
+              <div className="flex flex-col items-center gap-4 py-[15px]">
+                <button className="w-[200px] bg-[#F1F2F6] drop-shadow-sm rounded-xl h-[40px] hover:drop-shadow-md hover:bg-white active:bg-white">
+                  <div className="flex gap-4 items-center pl-[10px]">
+                    {item.icon}
+                    <p className="text-[#35373A]">{item.name}</p>
+                  </div>
+                </button>
+              </div>
+            </NavLink>
+          ))}
         </div>
       </div>
 
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
-          <h2 className="text-[30px]">Data Table</h2>
+          <h2 className="text-[30px]">Data Table Motor Bike</h2>
           <div className="flex gap-5">
             <input
               className="drop-shadow-xl rounded-xl w-full py-2 px-3 h-[40px] w-[300px] text-gray-700 leading-tight focus:outline-none focus:shadow-outline "

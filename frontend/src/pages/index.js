@@ -4,6 +4,16 @@ import Login from './Login';
 import Profile from './Profile';
 import Register from './Register';
 import AboutUs from './AboutUs';
-import DashboardAdmin from './DashboardAdmin';
+import DashAdmCustomer from './DashAdmCustomer';
+import DashAdmMotorBike from './DashAdmMotorBike';
 
-export { Error, ListMotor, Login, Profile, Register, AboutUs, DashboardAdmin };
+export {
+  Error,
+  ListMotor,
+  Login,
+  Profile,
+  Register,
+  AboutUs,
+  DashAdmCustomer,
+  DashAdmMotorBike,
+};
