@@ -9,22 +9,36 @@ import {
   DashboardAdmin,
 } from './pages';
 import { Footer, Navbar } from './components';
+import { useState } from 'react';
 
 function App() {
+  const [showNav, setShowNav] = useState(true);
+
   return (
     <BrowserRouter>
-      {/* <Navbar /> */}
+      {showNav && (
+        <nav>
+          <Navbar />
+        </nav>
+      )}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/dashboard-admin" element={<DashboardAdmin />} />
+        <Route
+          path="/dashboard-admin"
+          element={<DashboardAdmin funcNav={setShowNav} />}
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/list" element={<ListMotor />} />
         <Route path="*" element={<Error />} />
       </Routes>
-      {/* <Footer /> */}
+      {showNav && (
+        <footer>
+          <Footer />
+        </footer>
+      )}
     </BrowserRouter>
   );
 }

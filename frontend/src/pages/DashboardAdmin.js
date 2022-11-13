@@ -2,7 +2,8 @@ import { FaMotorcycle, FaUserAlt, FaUserCircle } from 'react-icons/fa';
 import { FiSettings } from 'react-icons/fi';
 import { React, useState } from 'react';
 
-export default function DashboardAdmin() {
+export default function DashboardAdmin(props) {
+  props.funcNav(false);
   return (
     <div className="h-[100vh] flex w-full px-[2%] py-[2%] relative">
       <div className="bg-[#E5E5E5] h-[100%] w-[230px] rounded-lg drop-shadow-xl">
@@ -53,11 +54,11 @@ export default function DashboardAdmin() {
           </div>
           <div className="bg-[#F74B4B] drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 text-white">
             <h3> Rented Bikes</h3>
-            <p>5</p>
+            <p className="text-[24px] text-bold">5</p>
           </div>
           <div className="bg-[#14213D] drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 text-white">
             <h3> Average Rate</h3>
-            <p>Rp. 65,000</p>
+            <p className="text-[24px] text-bold">Rp. 65,000</p>
           </div>
         </div>
 
