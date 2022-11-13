@@ -1,6 +1,6 @@
 import logo from '../assets/logo.svg';
 
-export default function AboutUs() {
+export default function AboutUs(props) {
   return (
     <div className="h-[100vh] flex flex-col w-full px-[5%] py-[2%] items-center md:flex-row md:flex-row-reverse md:justify-between md:gap-4 ">
       <div className="flex mb-[50px] mt-8">
