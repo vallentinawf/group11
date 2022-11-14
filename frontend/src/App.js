@@ -9,7 +9,7 @@ import {
   DashAdmMotorBike,
   DashAdmCustomer,
 } from './pages';
-import { Footer, Navbar } from './components';
+import { Footer, Modal, Navbar } from './components';
 import { useState } from 'react';
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/modal" element={<Modal />} />
         <Route
           path="/dashboard-admin/motorbike"
           element={<DashAdmMotorBike />}

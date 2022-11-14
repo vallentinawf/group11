@@ -2,6 +2,7 @@ import { FaMotorcycle, FaUserAlt, FaUserCircle, FaBars } from 'react-icons/fa';
 import { FiSettings } from 'react-icons/fi';
 import { React, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Modal } from '../components';
 
 export default function DashAdmCustomer() {
   const menuItems = [
@@ -49,7 +50,6 @@ export default function DashAdmCustomer() {
           ))}
         </div>
       </div>
-
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[30px]">Data Table Customer</h2>
@@ -60,9 +60,10 @@ export default function DashAdmCustomer() {
               type="text"
               placeholder="search items"
             ></input>
-            <button className="bg-orange rounded-lg w-[100px] drop-shadow-md text-white hover:drop-shadow-xl">
+            {/* <button className="bg-orange rounded-lg w-[100px] drop-shadow-md text-white hover:drop-shadow-xl">
               Add items
-            </button>
+            </button> */}
+            <Modal />
           </div>
         </div>
 
