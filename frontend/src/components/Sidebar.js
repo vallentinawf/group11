@@ -13,7 +13,7 @@ export default function Sidebar(props) {
     {
       path: 'customer',
       name: 'Customer',
-      icon: <FaUserAlt />,
+      icon: <FaUserAlt size={20} color="#35373A" />,
     },
   ];
   return (
