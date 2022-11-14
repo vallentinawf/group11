@@ -10,8 +10,8 @@ router
   .route('/')
   .get(rentalController.findAll)
   .post(
-    authMiddleware.auth, //Untuk login -> user ataupun admin
-    authMiddleware.restricAccess('admin'), // Akses hanya untuk admin
+    // authMiddleware.auth, //Untuk login -> user ataupun admin
+    // authMiddleware.restricAccess('admin'), // Akses hanya untuk admin
     rentalController.createRental
   );
 

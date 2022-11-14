@@ -2,9 +2,9 @@ import { data } from 'autoprefixer';
 import { FaEdit } from 'react-icons/fa';
 
 export default function MotorData(motors) {
-  console.log(motors.motors.data.rental[1].name);
+  console.log(motors.motors.data.rental);
   const motorId = motors.motors.data.rental;
-  console.log(motorId[1]._id);
+
   return (
     <div className="blog-list">
       <div className="grid grid-cols-4 gap-3 px-[15px] justify-between px-[10px] bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center">

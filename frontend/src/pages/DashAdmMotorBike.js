@@ -42,7 +42,7 @@ export default function DashAdmMotorBike(props) {
           </div>
         </div>
 
-        <div className="mt-[30px] rounded-md shadow-drop-md bg-[#F8F8F8] h-[68%]">
+        <div className="mt-[30px] rounded-md shadow-drop-md bg-[#F8F8F8]">
           <div className="">
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}
