@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function Modal() {
   const [showModal, setShowModal] = useState(false);
@@ -7,7 +6,6 @@ export default function Modal() {
   const [type, setType] = useState('manual');
   const [status, setStatus] = useState('available');
   const [price, setPrice] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +40,7 @@ export default function Modal() {
                 <div className="relative p-6 flex-auto">
                   <form
                     className="bg-gray shadow-md rounded px-8 pt-6 pb-8 w-full "
-                    onSubmit={handleSubmit}
+                    // onSubmit={handleSubmit}
                   >
                     <label className="block text-black text-sm font-bold mb-1">
                       Name
@@ -94,7 +92,11 @@ export default function Modal() {
                       >
                         Close
                       </button>
-                      <button className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">
+                      <button
+                        className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                        onClick={handleSubmit}
+                      >
                         Submit
                       </button>
                       <button

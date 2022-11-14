@@ -23,7 +23,7 @@ export default function Sidebar(props) {
     },
   ];
   return (
-    <div className="">
+    <div className="h-[90vh]">
       <div className="bg-[#E5E5E5] h-[100%] w-[230px] rounded-lg drop-shadow-xl bg-red flex flex-col justify-between">
         <div>
           <div className="bg-[#F1F2F6] flex h-[80px] rounded-lg drop-shadow-md items-center justify-center">

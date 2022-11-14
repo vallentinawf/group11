@@ -10,9 +10,8 @@ export default function DashAdmMotorBike(props) {
   } = useFetch('http://127.0.0.1:3000/api/v1/rental/');
 
   return (
-    <div className="h-[100vh] flex px-[2%] py-[2%] ">
+    <div className="h-[100vh] flex px-[2%] py-[2%]">
       <Sidebar />
-
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[30px]">Data Table Motor Bike</h2>
@@ -42,7 +41,14 @@ export default function DashAdmMotorBike(props) {
           </div>
         </div>
 
-        <div className="mt-[30px] rounded-md shadow-drop-md bg-[#F8F8F8]">
+        <div className="grid grid-cols-4 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center mt-[30px]">
+          <p>Name</p>
+          <p>Bike id</p>
+          <p>Status</p>
+          <p>Rate</p>
+          <p></p>
+        </div>
+        <div className=" rounded-md shadow-drop-md bg-[#F8F8F8] h-[54vh] overflow-auto">
           <div className="">
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}
