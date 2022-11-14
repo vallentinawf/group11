@@ -31,6 +31,9 @@ const sendTokenResponse = async (user, statusCode, res, next) => {
   }
 };
 
+// @desc    Register User
+// @route   POST /api/v1/auth/register
+// @access  Public
 exports.register = async (req, res, next) => {
   try {
     const { username, email, password, role } = req.body;
@@ -55,6 +58,9 @@ exports.register = async (req, res, next) => {
   }
 };
 
+// @desc    Login User
+// @route   POST /api/v1/auth/login
+// @access  Public
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -90,8 +96,12 @@ exports.login = async (req, res, next) => {
   }
 };
 
+// @desc    Reset Password
+// @route   PUT /api/v1/auth/resetpassword
+// @access  Public
 exports.resetPassword = async (req, res, next) => {
-  const resetPasswordToken = crypto
+  try{
+    const resetPasswordToken = crypto
     .createHash('sha256')
     .update(req.params.resettoken)
     .digest('hex');
@@ -111,9 +121,16 @@ exports.resetPassword = async (req, res, next) => {
   await user.save();
 
   sendTokenResponse(user, 200, res, next);
+  res.status(200).json({ success: true, data: 'password changed' });
+
+  } catch (err) {
+    next(err);
+  }
 };
 
-//User yang sedang Login
+// @desc    Forgot Password
+// @route   POST /api/v1/auth/forgotpassword
+// @access  Public
 exports.forgotPassword = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -130,7 +147,7 @@ exports.forgotPassword = async (req, res, next) => {
     //Create reset url
     const resetUrl = `${req.protocol}://${req.get(
       'host'
-    )}/api/v1/resetpassword/${resetToken}`;
+    )}/api/v1/auth/resetpassword/${resetToken}`;
 
     const message = `Anda menerima email ini karena anda telah meminta untuk reset password, silakan
   buat PUT request ke : \n\n${resetUrl}`;
@@ -159,6 +176,9 @@ exports.forgotPassword = async (req, res, next) => {
   }
 };
 
+// @desc    Logout
+// @route   POST /api/v1/auth/logout
+// @access  Public
 exports.logout = async (req, res, next) => {
   try {
     res.clearCookie('auth_token');

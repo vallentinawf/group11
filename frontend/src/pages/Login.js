@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import loginImg from '../assets/loginImg.jpg';
 import Logo from '../assets/logo.png';
 
@@ -44,7 +45,9 @@ export default function Login() {
 
                 {/* div for Button Signup */}
                 <div className='px-5'>
-                    <button className='border w-full my-5 py-2 font-bold text-orange rounded-lg'>Signup now</button>
+                    <Link to='/register'>
+                        <button className='border w-full my-5 py-2 font-bold text-orange rounded-lg'>Signup now</button>
+                    </Link>
                 </div>
 
             </form>
