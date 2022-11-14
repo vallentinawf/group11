@@ -6,7 +6,7 @@ export default function Modal() {
     <>
       <button
         className="bg-orange text-black active:bg-orange/98 h-[30px]]
-      font-bold px-2 py-1 rounded-md shadow hover:shadow-lg outline-none focus:outline-none"
+      font-medium px-2 py-1 rounded-md shadow hover:shadow-lg outline-none focus:outline-none"
         type="button"
         onClick={() => setShowModal(true)}
       >
