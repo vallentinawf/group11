@@ -1,25 +1,31 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FormRow, Alert } from '../components';
 import loginImg from '../assets/loginImg.jpg';
 import Logo from '../assets/logo.png';
+import { useAppContext } from '../context/appContext';
 
 const initialState = {
-    email: '',
-    password: '',
-    showAlert: true,
+    email: "",
+    password: "",
   };
   
 const Login = () => {
-    const [values, setValues] = React.useState(initialState);
+    const [values, setValues] = useState(initialState);
 
+    const {isLoading, showAlert, displayAlert} = useAppContext();
     const handleChange = (e) => {
-        console.log(e.target);
+        setValues({...values, [e.target.name]: e.target.value});
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        const {name, email, password} = values;
+        if(!name || !email || !password){
+          displayAlert();
+          return;
+        }
+        console.log(values);
 };
 
     return(
@@ -39,6 +45,7 @@ const Login = () => {
                         </img>
                     </div>
                     <p className='text-center font-bold p-2 text-black/75'>Login into your account</p>
+                    {showAlert && <Alert />}
                     {/* div for Email Address Input */}
                     <FormRow
                         type="email"
