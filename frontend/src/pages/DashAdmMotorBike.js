@@ -1,8 +1,14 @@
 import {} from 'react-icons/fa';
 import { React, useState } from 'react';
-import { Modal, Sidebar } from '../components';
+import { Modal, MotorData, Sidebar, useFetch } from '../components';
 
 export default function DashAdmMotorBike(props) {
+  const {
+    error,
+    isPending,
+    data: motors,
+  } = useFetch('http://127.0.0.1:3000/api/v1/rental/');
+
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] ">
       <Sidebar />
@@ -37,12 +43,10 @@ export default function DashAdmMotorBike(props) {
         </div>
 
         <div className="mt-[30px] rounded-md shadow-drop-md bg-[#F8F8F8] h-[68%]">
-          <div className="flex justify-between px-[10px] bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center">
-            <p>Name</p>
-            <p>Bike id</p>
-            <p>Status</p>
-            <p>Rate</p>
-            <p></p>
+          <div className="">
+            {error && <div>{error}</div>}
+            {isPending && <div>Loading...</div>}
+            {motors && <MotorData motors={motors} />}
           </div>
         </div>
       </div>
