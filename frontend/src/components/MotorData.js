@@ -1,19 +1,12 @@
-import { data } from 'autoprefixer';
 import { FaEdit } from 'react-icons/fa';
+import { ModalUpDate } from '.';
+import React, { useEffect, useState } from 'react';
 
 export default function MotorData(motors) {
-  console.log(motors.motors.data.rental);
   const motorId = motors.motors.data.rental;
 
   return (
-    <div className="blog-list">
-      <div className="grid grid-cols-4 gap-3 px-[15px] justify-between px-[10px] bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center">
-        <p>Name</p>
-        <p>Bike id</p>
-        <p>Status</p>
-        <p>Rate</p>
-        <p></p>
-      </div>
+    <div className="">
       {motorId.map((motor) => (
         <div
           className="grid grid-cols-4 gap-3 px-[15px] justify-between px-[10px] bg-[#f8f3f3] rounded-md shadow-drop-md h-[30px] items-center "
@@ -25,7 +18,7 @@ export default function MotorData(motors) {
           <div className="flex justify-between">
             <p>{motor.price}</p>
             <button>
-              <FaEdit />
+              <ModalUpDate id={motor._id} motors={motors} />
             </button>
           </div>
         </div>

@@ -20,8 +20,8 @@ router.route('/:id').get(rentalController.findById);
 
 // Deletes rental by ID, and Update spesific rental
 // LOGIN + ADMIN ROLE REQUIRED ACCESS
-router.use(authMiddleware.auth);
-router.use(authMiddleware.restricAccess('admin'));
+// router.use(authMiddleware.auth);
+// router.use(authMiddleware.restricAccess('admin'));
 
 router
   .route('/:id')

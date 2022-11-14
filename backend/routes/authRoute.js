@@ -11,9 +11,8 @@ router.post('/login', authController.login);
 //Forgot Password
 router.post('/forgotpassword', authController.forgotPassword);
 //Reset Password
-router.put('/resetpassword/:resettoken',authController.resetPassword)
+router.put('/resetpassword/:resettoken', authController.resetPassword);
 //logout
 router.post('/logout', authController.logout);
-
 
 module.exports = router;
