@@ -21,18 +21,14 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const url = 'http://127.0.0.1:5000/api/v1/auth/login';
-
-    const axiosCreaate = axios.create({
-      withCredentials: true,
-    });
+    const url = 'http://localhost:5000/api/v1/auth/login';
 
     try {
-      const response = await axiosCreaate.post(url, {
-        email: values.email,
-        password: values.password,
-      });
-      console.log(response);
+      axios.post(
+        url,
+        { email: values.email, password: values.password },
+        { withCredentials: true }
+      );
       navigate('/dashboard-admin/customer');
     } catch (e) {
       console.log(e);
