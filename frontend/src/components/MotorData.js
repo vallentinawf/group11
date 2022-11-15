@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 
 export default function MotorData(motors) {
   const motorId = motors.motors.data.rental;
-
   return (
     <div className="">
       {motorId.map((motor) => (
