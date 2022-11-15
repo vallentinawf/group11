@@ -18,7 +18,9 @@ const Register = () => {
   const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
 
   const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+  const {isLoading, showAlert, displayAlert} = useAppContext();
+  const handleChange = (e) => {
+    setValues({...values, [e.target.name]: e.target.value});
   };
 
   const onSubmit = (e) => {
@@ -31,7 +33,6 @@ const Register = () => {
 
     const currentUser = { username, email, password };
     registerUser(currentUser);
-
     console.log(values);
   };
 
@@ -102,9 +103,12 @@ const Register = () => {
             </span>
           </div>
           {/* div for Button Login */}
-          <div className="px-5">
-            <Link to="/">
-              <button className="border w-full my-5 py-2 font-bold text-orange rounded-lg">
+          <div className='px-5'>
+            <Link to='/'>
+              <button
+                type="button"
+                className='border w-full my-5 py-2 font-bold text-orange rounded-lg'
+              >
                 Login
               </button>
             </Link>
