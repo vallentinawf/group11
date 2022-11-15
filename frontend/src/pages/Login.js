@@ -23,12 +23,12 @@ const Login = () => {
     e.preventDefault();
     const url = 'http://127.0.0.1:5000/api/v1/auth/login';
 
-    const axiosInstance = axios.create({
+    const axiosCreaate = axios.create({
       withCredentials: true,
     });
 
     try {
-      const response = await axiosInstance.post(url, {
+      const response = await axiosCreaate.post(url, {
         email: values.email,
         password: values.password,
       });
