@@ -4,16 +4,17 @@ import { FormRow, Alert } from '../components';
 import loginImg from '../assets/loginImg.jpg';
 import Logo from '../assets/logo.png';
 import axios from 'axios';
+import { useAppContext } from '../context/appContext';
 
 const initialState = {
   email: '',
   password: '',
-  showAlert: true,
 };
 
 const Login = () => {
   const [values, setValues] = useState(initialState);
   const navigate = useNavigate();
+  const { displayAlert, showAlert } = useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -21,10 +22,17 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    const { email, password } = values;
+    if (!email || !password) {
+      displayAlert();
+      return;
+    }
+
     const url = 'http://localhost:5000/api/v1/auth/login';
 
     try {
-      axios.post(
+      await axios.post(
         url,
         { email: values.email, password: values.password },
         { withCredentials: true }
@@ -54,6 +62,7 @@ const Login = () => {
           <p className="text-center font-bold p-2 text-black/75">
             Login into your account
           </p>
+          {showAlert && <Alert />}
           {/* div for Email Address Input */}
           <FormRow
             type="email"

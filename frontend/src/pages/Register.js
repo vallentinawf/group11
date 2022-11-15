@@ -18,9 +18,7 @@ const Register = () => {
   const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
 
   const handleChange = (e) => {
-    const handleChange = (e) => {
-      setValues({ ...values, [e.target.name]: e.target.value });
-    };
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
