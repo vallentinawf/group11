@@ -12,20 +12,18 @@ export default function Card(motors) {
         return (
           <arcticle
             key={_id}
-            className="flex flex-col items-center bg-white px-[30px] justify-between content-between gap-y-[50px] pb-[40px] max-w-[330px] h-[300px] w-[300px] rounded-[47px]"
+            className="flex flex-col items-center bg-white px-[30px] justify-between content-between pb-[20px] max-w-[330px] h-[300px] w-[300px] rounded-[10px] p-[10px] gap-3"
           >
-            <div>
-              <p className="font-poppins font-bold bg-[#D62340] rounded-[63px] px-[41px] text-white text-[20px] text-center mb-[50px]"></p>
-              <img src={vario} alt="" />
-              <p className="text-white text-center font-poppins font-semibold text-[14px]">
-                Desc
+            <div className="">
+              <img src={vario} alt="vario" className="w-[180px]" />
+              <p className="text-black  text-[14px] font-bold ml-[-20px]">
+                Rp. {motor.price}/day
               </p>
+              <p className="font-semibold ml-[-20px]">{motor.name}</p>
             </div>
-            <div>
-              <a className="bg-white no-underline text-black font-poppins px-[25px] py-[10px] rounded-[31px] font-semibold text-[13px]">
-                READ MORE
-              </a>
-            </div>
+            <button className="bg-orange rounded-md drop-shadow-xl w-[100px] h-[30px] text-white">
+              Book now
+            </button>
           </arcticle>
         );
       })}
