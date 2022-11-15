@@ -30,7 +30,7 @@ function App() {
         />
         <Route path="/dashboard-admin/customer" element={<DashAdmCustomer />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/list" element={<ListMotor />} />
+        <Route path="/list-motor" element={<ListMotor />} />
         <Route path="*" element={<Error />} />
       </Routes>
       {showNav && <Footer />}

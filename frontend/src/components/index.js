@@ -7,6 +7,7 @@ import Sidebar from './Sidebar';
 import useFetch from './useFetch';
 import MotorData from './MotorData';
 import ModalUpDate from './ModalUpDate';
+import Card from './Card';
 
 export {
   FormRow,
@@ -18,4 +19,5 @@ export {
   useFetch,
   MotorData,
   ModalUpDate,
+  Card,
 };
