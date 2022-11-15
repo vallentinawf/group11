@@ -85,7 +85,7 @@ const Register = () => {
               Forgot password?
             </button>
           </div>
-          {/* div for Register Login */}
+          {/* div for Button Register */}
           <div className="px-5">
             <button
               disabled={isLoading}
@@ -101,13 +101,12 @@ const Register = () => {
               OR
             </span>
           </div>
-          {/* div for Button login */}
+          {/* div for Button Login */}
           <div className="px-5">
-            <Link
-              to={'/'}
-              className="border w-full my-5 py-2 font-bold text-orange rounded-lg"
-            >
-              Login now
+            <Link to="/">
+              <button className="border w-full my-5 py-2 font-bold text-orange rounded-lg">
+                Login
+              </button>
             </Link>
           </div>
         </form>
