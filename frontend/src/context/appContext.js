@@ -1,38 +1,55 @@
-import React, {useReducer, useContext} from 'react';
-import reducer from './reducers';
-import { CLEAR_ALERT, DISPLAY_ALERT } from './actions';
+import React, { useReducer, useContext } from 'react';
+
+import reducer from './reducer';
+
+import {
+  DISPLAY_ALERT,
+  CLEAR_ALERT,
+  REGISTER_USER_START,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_ERROR,
+} from './actions';
 
 const initialState = {
-    isLoading:false,
-    showAlert:false,
-    alertText:"",
-    alertType:"",
+  isLoading: false,
+  showAlert: false,
+  alertBg: '',
+  alertType: '',
+  alertText: '',
+  user: null,
+  token: null,
 };
 
 const AppContext = React.createContext();
 
-const AppProvider = ({children}) => {
-    const [state, dispatch] = useReducer(reducer, 
-        initialState);
-    const displayAlert = () => {
-        dispatch({type:DISPLAY_ALERT});
-        clearAlert();
-    };
+const AppProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-    const clearAlert = () => {
-        setTimeout(() => {
-            dispatch({type:CLEAR_ALERT});
-        }, 3000);
+  const displayAlert = () => {
+    dispatch({ type: DISPLAY_ALERT });
+    clearAlert();
+  };
 
-    }
+  const clearAlert = () => {
+    setTimeout(() => {
+      dispatch({ type: CLEAR_ALERT });
+    }, 3000);
+  };
 
-    return <AppContext.Provider 
-        value={{...state,displayAlert}}>{children};
+  const registerUser = async (currentUser) => {
+    console.log(currentUser);
+  };
+
+  return (
+    <AppContext.Provider value={{ ...state, displayAlert, registerUser }}>
+      {children}
     </AppContext.Provider>
+  );
 };
 
+//Set up hooks
 const useAppContext = () => {
-    return useContext(AppContext);
-}
+  return useContext(AppContext);
+};
 
-export {AppProvider, initialState, useAppContext};
+export { AppProvider, initialState, useAppContext };

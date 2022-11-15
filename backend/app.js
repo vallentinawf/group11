@@ -11,13 +11,16 @@ const authRouter = require('./routes/authRoute');
 const bookingRouter = require('./routes/bookingRoutes');
 
 const app = express();
+const corsOptions = {
+  origin: 'http://localhost:3000/'
+};
 
 // Morgan  middleware => logger request
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.use(cors());
+app.use(cors(corsOptions));
 //cookies Parser
 app.use(cookieParser());
 

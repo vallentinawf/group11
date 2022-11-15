@@ -6,14 +6,18 @@ import loginImg from '../assets/loginImg.jpg';
 import { useAppContext } from '../context/appContext';
 
 const initialState = {
-  username: "",
-  email: "",
-  password: "",
+  username: '',
+  email: '',
+  password: '',
 };
 
 const Register = () => {
   const [values, setValues] = useState(initialState);
 
+  //Using global usestate (appContext)
+  const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
+
+  const handleChange = (e) => {
   const {isLoading, showAlert, displayAlert} = useAppContext();
   const handleChange = (e) => {
     setValues({...values, [e.target.name]: e.target.value});
@@ -21,11 +25,14 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const {name, email, password} = values;
-    if(!name || !email || !password){
+    const { username, email, password } = values;
+    if (!email || !password || !username) {
       displayAlert();
       return;
     }
+
+    const currentUser = { username, email, password };
+    registerUser(currentUser);
     console.log(values);
   };
 
@@ -82,6 +89,7 @@ const Register = () => {
           {/* div for Button Register */}
           <div className="px-5">
             <button
+              disabled={isLoading}
               type="submit"
               className="w-full my-5 py-2 bg-orange text-white font-bold rounded-lg shadow-md shadow-orange/60 hover:shadow-orange/40 "
             >
