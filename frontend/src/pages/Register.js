@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import Logo from '../assets/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormRow, Alert } from '../components';
 import loginImg from '../assets/loginImg.jpg';
 import { useAppContext } from '../context/appContext';
+import axios from 'axios';
 
 const initialState = {
   username: '',
@@ -14,18 +15,33 @@ const initialState = {
 const Register = () => {
   const [values, setValues] = useState(initialState);
 
+  const navigate = useNavigate();
   //Using global usestate (appContext)
   const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-  const onSubmit = (e) => {
+
+  const onSubmit = async (e) => {
     e.preventDefault();
     const { username, email, password } = values;
     if (!email || !password || !username) {
       displayAlert();
       return;
+    }
+
+    const url = 'http://localhost:5000/api/v1/user/register';
+
+    try {
+      await axios.post(
+        url,
+        { email: email, password: password, username: username },
+        { withCredentials: true }
+      );
+      navigate('/dashboard-admin/customer');
+    } catch (e) {
+      console.log(e);
     }
 
     const currentUser = { username, email, password };
