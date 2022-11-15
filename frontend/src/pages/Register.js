@@ -36,17 +36,17 @@ const Register = () => {
     try {
       await axios.post(
         url,
-        { email: email, password: password, username: username },
+        {
+          email: values.email,
+          password: values.password,
+          username: values.username,
+        },
         { withCredentials: true }
       );
-      navigate('/dashboard-admin/customer');
+      navigate('/login');
     } catch (e) {
-      console.log(e);
+      displayAlert();
     }
-
-    const currentUser = { username, email, password };
-    registerUser(currentUser);
-    console.log(values);
   };
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray">
