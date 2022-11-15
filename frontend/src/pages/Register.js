@@ -18,11 +18,10 @@ const Register = () => {
   const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
 
   const handleChange = (e) => {
-  const {isLoading, showAlert, displayAlert} = useAppContext();
-  const handleChange = (e) => {
-    setValues({...values, [e.target.name]: e.target.value});
+    const handleChange = (e) => {
+      setValues({ ...values, [e.target.name]: e.target.value });
+    };
   };
-
   const onSubmit = (e) => {
     e.preventDefault();
     const { username, email, password } = values;
@@ -35,7 +34,6 @@ const Register = () => {
     registerUser(currentUser);
     console.log(values);
   };
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray">
       <div className="bg-gray flex flex-col justify-center">
@@ -103,11 +101,11 @@ const Register = () => {
             </span>
           </div>
           {/* div for Button Login */}
-          <div className='px-5'>
-            <Link to='/'>
+          <div className="px-5">
+            <Link to="/">
               <button
                 type="button"
-                className='border w-full my-5 py-2 font-bold text-orange rounded-lg'
+                className="border w-full my-5 py-2 font-bold text-orange rounded-lg"
               >
                 Login
               </button>
