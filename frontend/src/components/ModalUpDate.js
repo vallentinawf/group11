@@ -46,8 +46,8 @@ export default function Modal(id) {
               .filter((motor) => motor._id === keyid)
               .map((fmotor) => (
                 <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-[#423e3e]/50">
-                  <div className="relative w-auto my-6 mx-auto w-[600px]">
-                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                  <div className="relative my-6 mx-auto w-[600px]">
+                    <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                       <div className="flex items-start justify-center p-5 rounded-t ">
                         <h3 className="text-3xl font=semibold">
                           Edit Motor Data

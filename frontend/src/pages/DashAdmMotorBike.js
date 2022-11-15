@@ -15,9 +15,9 @@ export default function DashAdmMotorBike(props) {
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[30px]">Data Table Motor Bike</h2>
-          <div className="flex gap-5">
+          <div className="flex gap-5 items-center">
             <input
-              className="drop-shadow-xl rounded-xl w-full py-2 px-3 h-[40px] w-[300px] text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+              className="drop-shadow-xl rounded-xl py-2 px-3 h-[40px] w-[400px] text-gray-700 leading-tight  focus:outline-none focus:shadow-outline"
               id="searchItems"
               type="text"
               placeholder="search items"
@@ -26,20 +26,20 @@ export default function DashAdmMotorBike(props) {
           </div>
         </div>
 
-        <div className="flex justify-center gap-20 mt-[30px]">
-          <div className="bg-[#74FC5D] drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1">
+        {/* <div className="flex justify-center gap-20 mt-[30px] text-black">
+          <div className="bg-orange drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 ">
             <h3> Available Bikes</h3>
             <p className="text-[24px] text-bold">5</p>
           </div>
-          <div className="bg-[#F74B4B] drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 text-white">
+          <div className="bg-orange drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 ">
             <h3> Rented Bikes</h3>
             <p className="text-[24px] text-bold">5</p>
           </div>
-          <div className="bg-[#14213D] drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 text-white">
+          <div className="bg-orange drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 ">
             <h3> Average Rate</h3>
-            <p className="text-[24px] text-bold">Rp. 65,000</p>
+            <p className="text-[23px] text-bold">Rp. 65,000</p>
           </div>
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-4 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center mt-[30px]">
           <p>Name</p>
@@ -48,7 +48,7 @@ export default function DashAdmMotorBike(props) {
           <p>Rate</p>
           <p></p>
         </div>
-        <div className=" rounded-md shadow-drop-md bg-[#F8F8F8] h-[54vh] overflow-auto">
+        <div className=" rounded-md shadow-drop-md bg-[#F8F8F8] h-[75vh] overflow-auto">
           <div className="">
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}

@@ -61,7 +61,7 @@ export default function Sidebar(props) {
               <button className="w-[200px] bg-orange/95 drop-shadow-sm rounded-xl h-[40px] hover:drop-shadow-md hover:bg-orange active:bg-orange">
                 <div className="flex gap-4 items-center justify-center ml-[-15px] font-medium text-[#35373A]">
                   <FaPowerOff />
-                  <p className="text-[#35373A]">Sing out</p>
+                  <p className="text-[#35373A]">Sign out</p>
                 </div>
               </button>
             </div>
