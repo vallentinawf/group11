@@ -3,24 +3,30 @@ import Logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { FormRow, Alert } from '../components';
 import loginImg from '../assets/loginImg.jpg';
+import { useAppContext } from '../context/appContext';
 
 const initialState = {
-  name: '',
-  email: '',
-  password: '',
-  showAlert: true,
+  username: "",
+  email: "",
+  password: "",
 };
 
 const Register = () => {
   const [values, setValues] = useState(initialState);
 
+  const {isLoading, showAlert, displayAlert} = useAppContext();
   const handleChange = (e) => {
-    console.log(e.target);
+    setValues({...values, [e.target.name]: e.target.value});
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const {name, email, password} = values;
+    if(!name || !email || !password){
+      displayAlert();
+      return;
+    }
+    console.log(values);
   };
 
   return (
@@ -40,7 +46,7 @@ const Register = () => {
           <p className="text-center font-bold p-2 text-black/75">
             Register into your account
           </p>
-          {values.showAlert && <Alert />}
+          {showAlert && <Alert />}
           {/* div for Email Address Input */}
           <FormRow
             type="email"
@@ -55,7 +61,7 @@ const Register = () => {
             type="text"
             name="username"
             labelText="Username"
-            value={values.name}
+            value={values.username}
             placeholder="akbar sigit"
             handleChange={handleChange}
           />
@@ -91,7 +97,8 @@ const Register = () => {
           {/* div for Button Login */}
           <div className='px-5'>
             <Link to='/'>
-              <button 
+              <button
+                type="button"
                 className='border w-full my-5 py-2 font-bold text-orange rounded-lg'
               >
                 Login
