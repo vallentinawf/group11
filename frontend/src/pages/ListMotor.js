@@ -10,7 +10,9 @@ export default function ListMotor() {
   return (
     <div className="bg-[#E5E5E5] py-[40px] flex flex-col items-center justify-center ">
       <div className="">
-        <h2 className="text-orange text-[33px] mb-[40px]">Pricing Table</h2>
+        <h2 className="text-orange text-[33px] mb-[40px] font-bold">
+          Pricing Table
+        </h2>
       </div>
       {error && <div>{error}</div>}
       {isPending && <div>Loading...</div>}
