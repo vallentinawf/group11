@@ -3,7 +3,7 @@ import Logo from '../assets/logoTransparent.png';
 
 export default function Navbar() {
     return(
-        <div className='w-screen h-[80px] bg-white fixed drop-shadow-lg'>
+        <div className='w-full h-[80px] bg-white drop-shadow-lg'>
            <div className='px-2 flex justify-between items-center w-full h-full'>
 
                 {/* div for Remo Logo */}
