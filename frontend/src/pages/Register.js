@@ -1,20 +1,23 @@
 import { useState, useEffect } from 'react';
+import Logo from '../assets/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { FormRow, Alert } from '../components';
 import loginImg from '../assets/loginImg.jpg';
-import Logo from '../assets/logo.png';
-import axios from 'axios';
 import { useAppContext } from '../context/appContext';
+import axios from 'axios';
 
 const initialState = {
+  username: '',
   email: '',
   password: '',
 };
 
-const Login = () => {
+const Register = () => {
   const [values, setValues] = useState(initialState);
+
   const navigate = useNavigate();
-  const { displayAlert, showAlert } = useAppContext();
+  //Using global usestate (appContext)
+  const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -22,36 +25,36 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    const { email, password } = values;
-    if (!email || !password) {
+    const { username, email, password } = values;
+    if (!email || !password || !username) {
       displayAlert();
       return;
     }
 
-    const url = 'http://localhost:5000/api/v1/auth/login';
+    const url = 'http://localhost:5000/api/v1/user/register';
 
     try {
       await axios.post(
         url,
-        { email: values.email, password: values.password },
+        {
+          email: values.email,
+          password: values.password,
+          username: values.username,
+        },
         { withCredentials: true }
       );
-      navigate('/dashboard-admin/customer');
+      navigate('/login');
     } catch (e) {
-      console.log(e);
+      displayAlert();
     }
   };
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray">
       <div className="bg-gray flex flex-col justify-center">
-        {/* start - Login Form */}
         <form
           className="max-w-[500px] bg-gray w-full mx-auto px-10 p-10"
           onSubmit={onSubmit}
         >
-          {/* div for Logo */}
           <div className="grid justify-items-center">
             <img
               className="object-scale-down w-6/12"
@@ -60,7 +63,7 @@ const Login = () => {
             ></img>
           </div>
           <p className="text-center font-bold p-2 text-black/75">
-            Login into your account
+            Register into your account
           </p>
           {showAlert && <Alert />}
           {/* div for Email Address Input */}
@@ -72,6 +75,15 @@ const Login = () => {
             placeholder="akbarsigit@gmail.com"
             handleChange={handleChange}
           />
+          {/* div for Username Input */}
+          <FormRow
+            type="text"
+            name="username"
+            labelText="Username"
+            value={values.username}
+            placeholder="akbar sigit"
+            handleChange={handleChange}
+          />
           {/* div for Password Input */}
           <FormRow
             type="password"
@@ -81,16 +93,19 @@ const Login = () => {
             placeholder="••••••••"
             handleChange={handleChange}
           />
-          {/* div for Forgot Password */}
           <div className="text-center">
             <button className="text-blue hover:text-darkblue underline">
               Forgot password?
             </button>
           </div>
-          {/* div for Button Login */}
+          {/* div for Button Register */}
           <div className="px-5">
-            <button className="w-full my-5 py-2 bg-orange text-white font-bold rounded-lg shadow-md shadow-orange/60 hover:shadow-orange/40 ">
-              Login now
+            <button
+              disabled={isLoading}
+              type="submit"
+              className="w-full my-5 py-2 bg-orange text-white font-bold rounded-lg shadow-md shadow-orange/60 hover:shadow-orange/40 "
+            >
+              Register now
             </button>
           </div>
           <div className="grid justify-items-center">
@@ -99,16 +114,18 @@ const Login = () => {
               OR
             </span>
           </div>
-          {/* div for Button Signup */}
+          {/* div for Button Login */}
           <div className="px-5">
-            <Link to="/register">
-              <button className="border w-full my-5 py-2 font-bold text-orange rounded-lg">
-                Signup now
+            <Link to="/">
+              <button
+                type="button"
+                className="border w-full my-5 py-2 font-bold text-orange rounded-lg"
+              >
+                Login
               </button>
             </Link>
           </div>
         </form>
-        {/* end - Login Form */}
       </div>
       {/* div for login image beside the form */}
       <div className="hidden sm:block">
@@ -122,4 +139,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

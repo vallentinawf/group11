@@ -57,44 +57,58 @@ exports.deleteRental = async (req, res, next) => {
   }
 };
 
+// exports.findAll = async (req, res, next) => {
+//   try {
+//     console.log(req.query);
+//     const queryParam = { ...req.query };
+//     console.log(queryParam);
+
+//     const features = ['page', 'sort', 'limit'];
+
+//     //ignoring feature
+//     features.forEach(feature => delete queryParam[feature]);
+
+//     //return query object => chain the features
+//     //Filtering
+//     console.log(queryParam);
+//     let queryObj = Rental.find(queryParam);
+
+//     //Sorting
+//     if (req.query.sort) {
+//       queryObj = queryObj.sort(req.query.sort);
+//     }
+//     // Default Sorting by newest created rental
+//     else {
+//       queryObj = queryObj.sort('-createdAt');
+//     }
+
+//     //Pagination -> page and result limit
+//     const page = parseInt(req.query.page, 10) || 1;
+//     const limit = parseInt(req.query.limit, 10) || 10;
+//     const skip = limit * (page - 1);
+
+//     queryObj = queryObj.skip(skip).limit(limit);
+
+//     //get the result of query obj
+//     const rental = await queryObj;
+
+//     res.status(200).json({
+//       status: 'success',
+//       results: rental.length,
+//       data: {
+//         rental
+//       }
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
 exports.findAll = async (req, res, next) => {
   try {
-    console.log(req.query);
-    const queryParam = { ...req.query };
-    console.log(queryParam);
-
-    const features = ['page', 'sort', 'limit'];
-
-    //ignoring feature
-    features.forEach(feature => delete queryParam[feature]);
-
-    //return query object => chain the features
-    //Filtering
-    console.log(queryParam);
-    let queryObj = Rental.find(queryParam);
-
-    //Sorting
-    if (req.query.sort) {
-      queryObj = queryObj.sort(req.query.sort);
-    }
-    // Default Sorting by newest created rental
-    else {
-      queryObj = queryObj.sort('-createdAt');
-    }
-
-    //Pagination -> page and result limit
-    const page = parseInt(req.query.page, 10) || 1;
-    const limit = parseInt(req.query.limit, 10) || 10;
-    const skip = limit * (page - 1);
-
-    queryObj = queryObj.skip(skip).limit(limit);
-
-    //get the result of query obj
-    const rental = await queryObj;
-
+    const rental = await Rental.find({});
     res.status(200).json({
       status: 'success',
-      results: rental.length,
       data: {
         rental
       }

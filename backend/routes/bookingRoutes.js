@@ -4,7 +4,8 @@ const authMiddleware = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-router.get('/', authMiddleware.auth, bookingController.getBookingAll);
+// router.get('/', authMiddleware.auth, bookingController.getBookingAll);
+router.get('/', bookingController.getBookingAll);
 router.get('/:id');
 
 router
