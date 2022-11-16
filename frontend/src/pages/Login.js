@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FormRow, Alert } from '../components';
+import { FormRow, Alert} from '../components';
 import loginImg from '../assets/loginImg.jpg';
 import Logo from '../assets/logo.png';
 import axios from 'axios';
 import { useAppContext } from '../context/appContext';
+//import Loader from '../components/Loader';
 
 const initialState = {
   email: '',
@@ -14,13 +15,15 @@ const initialState = {
 const Login = () => {
   const [values, setValues] = useState(initialState);
   const navigate = useNavigate();
-  const { displayAlert, showAlert } = useAppContext();
+  const { displayAlert, showAlert, startLoading, endLoadingSuccess, loading} = useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e) => {
+    //startLoading();
+
     e.preventDefault();
 
     const { email, password } = values;
@@ -28,7 +31,7 @@ const Login = () => {
       displayAlert();
       return;
     }
-
+    
     const url = 'http://localhost:5000/api/v1/auth/login';
 
     try {
@@ -37,6 +40,7 @@ const Login = () => {
         { email: values.email, password: values.password },
         { withCredentials: true }
       );
+      //endLoadingSuccess();
       navigate('/dashboard-admin/customer');
     } catch (e) {
       console.log(e);
@@ -63,6 +67,7 @@ const Login = () => {
             Login into your account
           </p>
           {showAlert && <Alert />}
+          {/* {loading && <Loader />} */}
           {/* div for Email Address Input */}
           <FormRow
             type="email"

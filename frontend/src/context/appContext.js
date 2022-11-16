@@ -8,6 +8,8 @@ import {
   REGISTER_USER_START,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
+  LOGIN_USER_START,
+  LOGIN_USER_SUCCESS,
 } from './actions';
 
 const initialState = {
@@ -18,6 +20,7 @@ const initialState = {
   alertText: '',
   user: null,
   token: null,
+  loading:false
 };
 
 const AppContext = React.createContext();
@@ -36,12 +39,20 @@ const AppProvider = ({ children }) => {
     }, 3000);
   };
 
+  const startLoading = () => {
+    dispatch({type : LOGIN_USER_START});
+  };
+
+  const endLoadingSuccess = () => {
+    dispatch({type : LOGIN_USER_SUCCESS})
+  };
+
   const registerUser = async (currentUser) => {
     console.log(currentUser);
   };
 
   return (
-    <AppContext.Provider value={{ ...state, displayAlert, registerUser }}>
+    <AppContext.Provider value={{ ...state, displayAlert, registerUser, startLoading, endLoadingSuccess }}>
       {children}
     </AppContext.Provider>
   );
