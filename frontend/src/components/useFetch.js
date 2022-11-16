@@ -33,7 +33,7 @@ const useFetch = (url) => {
 
     // abort the fetch
     return () => abortCont.abort();
-  }, [url, data]);
+  }, [url]);
 
   const refetch = () => {
     const abortCont = new AbortController();
