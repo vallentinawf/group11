@@ -16,7 +16,7 @@ export default function Modal(id) {
   const handleUpdate = () => {
     const motor = { name, type, status, price };
     console.log(_id);
-    fetch('http://127.0.0.1:3000/api/v1/rental/' + _id, {
+    fetch('http://localhost:5000/api/v1/rental/' + _id, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(motor),
@@ -24,7 +24,7 @@ export default function Modal(id) {
   };
 
   const handleDelete = () => {
-    fetch('http://127.0.0.1:3000/api/v1/rental/' + _id, {
+    fetch('http://localhost:5000/api/v1/rental/' + _id, {
       method: 'DELETE',
     });
   };
