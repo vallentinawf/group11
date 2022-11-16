@@ -8,6 +8,8 @@ import useFetch from './useFetch';
 import MotorData from './MotorData';
 import ModalUpDate from './ModalUpDate';
 import Card from './Card';
+import BookingData from './BookingData';
+import ModalUDBook from './ModalUDBook';
 
 export {
   FormRow,
@@ -20,4 +22,6 @@ export {
   MotorData,
   ModalUpDate,
   Card,
+  BookingData,
+  ModalUDBook,
 };
