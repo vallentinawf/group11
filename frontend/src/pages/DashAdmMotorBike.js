@@ -1,6 +1,6 @@
 import {} from 'react-icons/fa';
 import { React, useState } from 'react';
-import { Modal, MotorData, Sidebar, useFetch } from '../components';
+import { ModalCreateMotor, MotorData, Sidebar, useFetch } from '../components';
 
 export default function DashAdmMotorBike(props) {
   const {
@@ -22,7 +22,7 @@ export default function DashAdmMotorBike(props) {
               type="text"
               placeholder="search items"
             ></input>
-            <Modal />
+            <ModalCreateMotor />
           </div>
         </div>
 
@@ -41,12 +41,14 @@ export default function DashAdmMotorBike(props) {
           </div>
         </div> */}
 
-        <div className="grid grid-cols-4 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center mt-[30px]">
+        <div className="grid grid-cols-3 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center mt-[30px]">
           <p>Name</p>
           <p>Bike id</p>
-          <p>Status</p>
-          <p>Rate</p>
-          <p></p>
+          <div className="flex justify-between ">
+            <p>Quantity</p>
+            <p>Rate</p>
+            <p className="h-[35px] w-[80px]"></p>
+          </div>
         </div>
         <div className=" rounded-md shadow-drop-md bg-[#F8F8F8] h-[75vh] overflow-auto">
           <div className="">
