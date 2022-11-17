@@ -1,12 +1,11 @@
-import React from "react";
-import Hero from "../components/Landing/Hero.js";
-import Offer from "../components/Landing/Offer.js";
+import React from 'react';
+import { Hero, Offer } from '../components';
 
-export default function Landing(){
-    return(
-        <div>
-            <Hero></Hero>
-            <Offer></Offer>
-        </div>
-    )
+export default function Landing() {
+  return (
+    <div>
+      <Hero />
+      <Offer />
+    </div>
+  );
 }
