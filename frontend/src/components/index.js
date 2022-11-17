@@ -10,6 +10,7 @@ import ModalUDMotor from './ModalUDMotor';
 import Card from './Card';
 import BookingData from './BookingData';
 import ModalUDBook from './ModalUDBook';
+import ModalCreateBook from './ModalCreateBook';
 
 export {
   FormRow,
@@ -24,4 +25,5 @@ export {
   Card,
   BookingData,
   ModalUDBook,
+  ModalCreateBook,
 };

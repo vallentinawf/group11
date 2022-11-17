@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Logo from '../assets/logoTransparent.png';
 import vario from '../assets/vario.png';
+import { ModalCreateBook } from './';
 
 export default function Card(motors) {
   const motorId = motors.motors.data.rental;
@@ -21,8 +22,12 @@ export default function Card(motors) {
               </p>
               <p className="font-semibold ml-[-20px]">{motor.name}</p>
             </div>
-            <button className="bg-orange rounded-md drop-shadow-xl w-[100px] h-[30px] text-white">
-              Book now
+            <button>
+              <ModalCreateBook
+                name={motor.name}
+                type={motor.type}
+                price={motor.price}
+              />
             </button>
           </arcticle>
         );

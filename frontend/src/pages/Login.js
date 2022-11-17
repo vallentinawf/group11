@@ -37,7 +37,7 @@ const Login = () => {
         { email: values.email, password: values.password },
         { withCredentials: true }
       );
-      navigate('/dashboard-admin/customer');
+      navigate('/dashboard-admin/motorbike');
     } catch (e) {
       console.log(e);
     }
