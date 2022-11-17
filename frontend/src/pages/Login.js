@@ -33,7 +33,7 @@ const Login = () => {
       return;
     }
 
-    const url = 'http://akbar.bekisar.net/api/v1/auth/login';
+    const url = 'http://localhost:5000/api/v1/auth/login';
 
     try {
       await axios.post(
@@ -41,7 +41,7 @@ const Login = () => {
         { email: values.email, password: values.password },
         { withCredentials: true }
       );
-      navigate('/dashboard-admin/customer');
+      navigate('/dashboard-admin/motorbike');
     } catch (e) {
       console.log(e);
     }
