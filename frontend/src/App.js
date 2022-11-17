@@ -8,18 +8,20 @@ import {
   AboutUs,
   DashAdmMotorBike,
   DashAdmCustomer,
+  Landing,
 } from './pages';
 import { Footer, Navbar } from './components';
 import { useState } from 'react';
 
 function App() {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
 
   return (
     <BrowserRouter>
       {showNav && <Navbar />}
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/landing" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about-us" element={<AboutUs />} />
