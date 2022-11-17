@@ -13,7 +13,7 @@ export default function DashUser(props) {
     error,
     isPending,
     data: books,
-  } = useFetch('http://localhost:5000/api/v1/booking');
+  } = useFetch('http://akbar.bekisar.net/api/v1/booking');
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%]">
@@ -42,7 +42,7 @@ export default function DashUser(props) {
             </div>
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}
-            {/* {books && <BookingData books={books} />} */}
+            {books && <BookingData books={books} />}
           </div>
         </div>
       </div>

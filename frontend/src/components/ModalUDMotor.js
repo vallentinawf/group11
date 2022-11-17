@@ -16,7 +16,7 @@ export default function ModalUDMotor(id) {
 
   const handleUpdate = () => {
     const motor = { name, type, status, quantity, price };
-    fetch('http://localhost:5000/api/v1/rental/' + _id, {
+    fetch('http://akbar.bekisar.net/api/v1/rental/' + _id, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(motor),
@@ -24,7 +24,7 @@ export default function ModalUDMotor(id) {
   };
 
   const handleDelete = () => {
-    fetch('http://localhost:5000/api/v1/rental/' + _id, {
+    fetch('http://akbar.bekisar.net/api/v1/rental/' + _id, {
       method: 'DELETE',
     });
   };
