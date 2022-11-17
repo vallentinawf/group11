@@ -4,8 +4,9 @@ import Login from './Login';
 import Profile from './Profile';
 import Register from './Register';
 import AboutUs from './AboutUs';
-import DashAdmCustomer from './DashAdmCustomer';
+import DashAdmBooking from './DashAdmBooking';
 import DashAdmMotorBike from './DashAdmMotorBike';
+import DashUser from './DashUser';
 
 export {
   Error,
@@ -14,6 +15,7 @@ export {
   Profile,
   Register,
   AboutUs,
-  DashAdmCustomer,
+  DashAdmBooking,
   DashAdmMotorBike,
+  DashUser,
 };

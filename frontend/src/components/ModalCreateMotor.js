@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 export default function ModalCreateMotor() {
   const [showModal, setShowModal] = useState(false);
-  const [name, setName] = useState('');
-  const [type, setType] = useState('manual');
-  const [status, setStatus] = useState('available');
-  const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [name, setName] = useState();
+  const [type, setType] = useState();
+  const [status, setStatus] = useState();
+  const [price, setPrice] = useState();
+  const [quantity, setQuantity] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ export default function ModalCreateMotor() {
     <>
       <button
         className="bg-orange/95 text-black active:bg-orange/98 h-[35px] w-[80px]
-      font-medium px-2 py-1 rounded-xl shadow hover:shadow-lg outline-none focus:outline-none text-[12px]"
+      font-medium px-2 py-1 rounded-xl shadow-lg drop-shadow-lg hover:shadow-lg outline-none focus:outline-none text-[12px]"
         type="button"
         onClick={() => setShowModal(true)}
       >

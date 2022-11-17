@@ -7,7 +7,8 @@ import {
   Register,
   AboutUs,
   DashAdmMotorBike,
-  DashAdmCustomer,
+  DashAdmBooking,
+  DashUser,
 } from './pages';
 import { Footer, Navbar } from './components';
 import { useState } from 'react';
@@ -27,7 +28,8 @@ function App() {
           path="/dashboard-admin/motorbike"
           element={<DashAdmMotorBike />}
         />
-        <Route path="/dashboard-admin/customer" element={<DashAdmCustomer />} />
+        <Route path="/dashboard-admin/booking" element={<DashAdmBooking />} />
+        <Route path="/dashboard-user/booking" element={<DashUser />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/list-motor" element={<ListMotor />} />
         <Route path="*" element={<Error />} />

@@ -40,7 +40,6 @@ const Login = () => {
         { email: values.email, password: values.password },
         { withCredentials: true }
       );
-      //endLoadingSuccess();
       navigate('/dashboard-admin/customer');
     } catch (e) {
       console.log(e);
