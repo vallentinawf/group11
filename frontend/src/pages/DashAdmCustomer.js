@@ -40,15 +40,16 @@ export default function DashAdmCustomer(props) {
             <p className="text-[23px] text-bold">Rp. 65,000</p>
           </div>
         </div> */}
-        <div className="grid grid-cols-4 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center mt-[30px]">
-          <p>motor id</p>
-          <p>user id</p>
-          <p>Booking at</p>
-          <p>Returned</p>
-          <p></p>
-        </div>
-        <div className=" rounded-md shadow-drop-md bg-[#F8F8F8] h-[75vh] overflow-auto">
-          <div className="">
+
+        <div className=" rounded-md shadow-drop-md bg-[#F8F8F8] h-[80vh] mt-[30px] overflow-auto">
+          <div className="min-w-[1000px] ">
+            <div className="grid grid-cols-4 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center ">
+              <p>motor id</p>
+              <p>user id</p>
+              <p>Booking at</p>
+              <p>Returned</p>
+              <p></p>
+            </div>
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}
             {books && <BookingData books={books} />}
