@@ -7,6 +7,7 @@ export default function ListMotor() {
     isPending,
     data: motors,
   } = useFetch('http://localhost:5000/api/v1/rental/');
+
   return (
     <div className="bg-[#E5E5E5] py-[40px] flex flex-col items-center justify-center ">
       <div className="">
