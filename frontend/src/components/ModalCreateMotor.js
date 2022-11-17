@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 export default function ModalCreateMotor() {
@@ -8,16 +9,20 @@ export default function ModalCreateMotor() {
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const motor = { name, type, status, price, quantity };
     console.log(motor);
+    const url = 'http://localhost:5000/api/v1/rental';
 
     fetch('http://localhost:5000/api/v1/rental', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(motor),
     });
+
+    // const res = await axios.post(url, { motor }, { withCredentials: true });
+    // console.log
   };
 
   return (

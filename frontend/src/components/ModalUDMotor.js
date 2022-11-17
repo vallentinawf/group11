@@ -1,5 +1,6 @@
 import { FaEdit } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function ModalUDMotor(id) {
   const [showModal, setShowModal] = useState(false);
@@ -14,19 +15,31 @@ export default function ModalUDMotor(id) {
   const motorData = id.motors.motors.data.rental;
   const [motors, setMotors] = useState(motorData);
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     const motor = { name, type, status, quantity, price };
-    fetch('http://localhost:5000/api/v1/rental/' + _id, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(motor),
-    });
+    // fetch('http://localhost:5000/api/v1/rental/' + _id, {
+    //   method: 'PATCH',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(motor),
+    // });
+    try {
+      const url = 'http://localhost:5000/api/v1/rental/' + _id;
+      const response = await axios.patch(url, motor, { withCredentials: true });
+    } catch (err) {
+      alert(err.response.data.error.toString());
+    }
   };
 
-  const handleDelete = () => {
-    fetch('http://localhost:5000/api/v1/rental/' + _id, {
-      method: 'DELETE',
-    });
+  const handleDelete = async () => {
+    // fetch('http://localhost:5000/api/v1/rental/' + _id, {
+    //   method: 'DELETE',
+    // });
+    try {
+      const url = 'http://localhost:5000/api/v1/rental/' + _id;
+      const response = await axios.delete(url, { withCredentials: true });
+    } catch (err) {
+      alert(err.response.data.error.toString());
+    }
   };
 
   return (
