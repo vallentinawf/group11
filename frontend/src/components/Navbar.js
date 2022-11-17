@@ -14,16 +14,22 @@ export default function Navbar() {
         </div>
 
         {/* div for buttons */}
-        <div className="flex pr-5">
+        <div className="flex gap-5 pr-5">
           <Link
             to="/"
-            className="border-none bg-transparent font-primary pr-4 text-black"
+            className="border-none bg-transparent font-primary  text-black"
           >
-            Help
+            Home
+          </Link>
+          <Link
+            to="/about-us"
+            className="border-none bg-transparent font-primary text-black"
+          >
+            About Us
           </Link>
           <Link
             to="/login"
-            className="border-none bg-transparent font-primary pl-4 text-black"
+            className="border-none bg-transparent font-primary  text-black"
           >
             Log In
           </Link>
