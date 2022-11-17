@@ -17,14 +17,14 @@ export default function Sidebar(props) {
       icon: <FaMotorcycle size={25} color="#35373A" />,
     },
     {
-      path: 'customer',
-      name: 'Customer',
+      path: 'booking',
+      name: 'Booking',
       icon: <FaUserAlt size={20} color="#35373A" />,
     },
   ];
   return (
     <div className="h-[90vh]">
-      <div className="bg-[#E5E5E5] h-[100%] w-[100px] md:w-[230px] rounded-lg drop-shadow-xl bg-red flex flex-col justify-between items-center">
+      <div className="bg-[#E5E5E5] h-[100%] w-[80px] md:w-[230px] rounded-lg drop-shadow-xl bg-red flex flex-col justify-between items-center">
         <div>
           <div className="bg-[#F1F2F6] flex h-[50px] md:h-[80px] w-[60px] md:w-[220px] mt-[10px] rounded-lg drop-shadow-md items-center justify-center">
             <div className="hidden md:flex items-center gap-3">

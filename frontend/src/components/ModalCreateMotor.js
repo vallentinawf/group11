@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 export default function ModalCreateMotor() {
   const [showModal, setShowModal] = useState(false);
-  const [name, setName] = useState('');
-  const [type, setType] = useState('manual');
-  const [status, setStatus] = useState('available');
-  const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [name, setName] = useState();
+  const [type, setType] = useState();
+  const [status, setStatus] = useState();
+  const [price, setPrice] = useState();
+  const [quantity, setQuantity] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();

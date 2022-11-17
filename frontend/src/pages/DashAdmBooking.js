@@ -2,7 +2,7 @@ import {} from 'react-icons/fa';
 import { React, useState } from 'react';
 import { Modal, Sidebar, useFetch, BookingData } from '../components';
 
-export default function DashAdmCustomer(props) {
+export default function DashAdmBooking(props) {
   const {
     error,
     isPending,

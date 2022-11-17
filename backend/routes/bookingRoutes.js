@@ -8,16 +8,17 @@ const router = express.Router();
 router.get('/', bookingController.getBookingAll);
 router.get('/:id');
 
-router
-  .route('/book')
-  .post(
-    authMiddleware.auth,
-    authMiddleware.restricAccess('admin'),
-    bookingController.createBooking
-  );
+router.route('/:id').patch(bookingController.returnBooking);
 
-router
-  .route('/return')
-  .patch(authMiddleware.auth, bookingController.returnBooking);
+router.route('/book').post(
+  // authMiddleware.auth,
+  // authMiddleware.restricAccess('admin'),
+  bookingController.createBooking
+);
+
+router.route('/return').patch(
+  // authMiddleware.auth,
+  bookingController.returnBooking
+);
 
 module.exports = router;

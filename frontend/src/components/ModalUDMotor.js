@@ -63,16 +63,17 @@ export default function ModalUDMotor(id) {
                       </div>
                       <div className="relative p-6 flex-auto">
                         <form className="bg-gray shadow-md rounded px-8 pt-6 pb-8 w-full text-left text-black">
-                          <label className="block  text-sm font-bold mb-1 ">
+                          <label className="block  text-sm font-bold mb-1 mt-2">
                             Motor id
                           </label>
-                          <select
-                            className="shadow border rounded-xl w-full py-2 px-1 appearance-none "
+                          <input
+                            className="shadow  border rounded-xl w-full py-2 px-1 disabled:bg-[#F8F8F8]"
+                            disabled
+                            type="text"
+                            required
                             value={_id}
                             onChange={(e) => setId(e.target.value)}
-                          >
-                            <option value={fmotor._id}>{fmotor._id}</option>
-                          </select>
+                          />
                           <label className="block  text-sm font-bold mb-1 mt-2">
                             Name
                           </label>
