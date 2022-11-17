@@ -7,18 +7,16 @@ import {
   Register,
   AboutUs,
   DashAdmMotorBike,
-
   DashAdmCustomer,
   Landing,
   DashAdmBooking,
   DashUser,
-
 } from './pages';
 import { Footer, Navbar } from './components';
 import { useState } from 'react';
 
 function App() {
-  const [showNav, setShowNav] = useState(true);
+  const [showNav, setShowNav] = useState(false);
 
   return (
     <BrowserRouter>

@@ -10,8 +10,8 @@ router
   .route('/')
   .get(rentalController.findAll)
   .post(
-    // authMiddleware.auth, //Untuk login -> user ataupun admin
-    // authMiddleware.restricAccess('admin'), // Akses hanya untuk admin
+    authMiddleware.auth, //Untuk login -> user ataupun admin
+    authMiddleware.restricAccess('admin'), // Akses hanya untuk admin
     rentalController.createRental
   );
 
@@ -21,8 +21,8 @@ router.route('/:id').get(rentalController.findById);
 // Deletes rental by ID, and Update spesific rental
 // LOGIN + ADMIN ROLE REQUIRED ACCESS
 
-// router.use(authMiddleware.auth);
-// router.use(authMiddleware.restricAccess('admin'));
+router.use(authMiddleware.auth);
+router.use(authMiddleware.restricAccess('admin'));
 router
   .route('/:id')
   .delete(rentalController.deleteRental)

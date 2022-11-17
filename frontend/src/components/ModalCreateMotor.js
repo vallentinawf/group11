@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 export default function ModalCreateMotor() {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState();
-  const [type, setType] = useState('');
-  const [status, setStatus] = useState('');
+  const [type, setType] = useState('matic');
+  const [status, setStatus] = useState('available');
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState();
 
