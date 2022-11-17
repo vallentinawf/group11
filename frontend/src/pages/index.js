@@ -4,9 +4,13 @@ import Login from './Login';
 import Profile from './Profile';
 import Register from './Register';
 import AboutUs from './AboutUs';
-import DashAdmCustomer from './DashAdmCustomer';
+import DashAdmBooking from './DashAdmBooking';
 import DashAdmMotorBike from './DashAdmMotorBike';
+
 import Landing from './Landing';
+
+import DashUser from './DashUser';
+
 
 export {
   Error,
@@ -15,7 +19,11 @@ export {
   Profile,
   Register,
   AboutUs,
-  DashAdmCustomer,
+  DashAdmBooking,
   DashAdmMotorBike,
+
   Landing,
+
+  DashUser,
+
 };
