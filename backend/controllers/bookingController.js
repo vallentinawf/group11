@@ -27,7 +27,8 @@ exports.createBooking = async (req, res, next) => {
     const user = await User.findOne({ _id: req.user.id });
     await User.updateOne(
       { _id: mongoose.Types.ObjectId(req.user.id) },
-      { borrowedMotorId: [...user.borrowedMotorId, rental._id] }
+      { borrowedMotorId: [...user.borrowedMotorId, rental._id] },
+      { motorHistory: [...user.borrowedMotorId, rental._id] }
     );
 
     await Rental.updateOne(

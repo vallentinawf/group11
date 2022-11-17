@@ -2,11 +2,11 @@ import Alert from './Alert';
 import FormRow from './FormRow';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Modal from './Modal';
+import ModalCreateMotor from './ModalCreateMotor';
 import Sidebar from './Sidebar';
 import useFetch from './useFetch';
 import MotorData from './MotorData';
-import ModalUpDate from './ModalUpDate';
+import ModalUDMotor from './ModalUDMotor';
 import Card from './Card';
 import BookingData from './BookingData';
 import ModalUDBook from './ModalUDBook';
@@ -16,11 +16,11 @@ export {
   Alert,
   Footer,
   Navbar,
-  Modal,
+  ModalCreateMotor,
   Sidebar,
   useFetch,
   MotorData,
-  ModalUpDate,
+  ModalUDMotor,
   Card,
   BookingData,
   ModalUDBook,

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FaInstagram, FaFacebookF, FaYoutube, FaTwitter } from 'react-icons/fa';
 
+
 export default function Footer() {
   return (
     <div className="w-full mx-auto py-4 px-6 text-white bg-black">

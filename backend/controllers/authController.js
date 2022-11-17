@@ -18,14 +18,6 @@ const sendTokenResponse = async (user, statusCode, res, next) => {
     if (process.env.NODE_ENV === 'production') {
       options.secure = true;
     }
-    //HTTP RES KE DOUBLE, CAUSING ERROR
-    // res
-    //   .status(statusCode)
-    //   .cookie('token', token, options)
-    //   .json({
-    //     success: true,
-    //     token
-    //   });
   } catch (err) {
     next(err);
   }
@@ -74,7 +66,7 @@ exports.login = async (req, res, next) => {
       return next(new MakeError('Incorrect Credentials'), 401);
     }
 
-    sendTokenResponse(user, 200, res, next);
+    // sendTokenResponse(user, 200, res, next);
 
     const token = user.createJWT();
 
@@ -100,29 +92,28 @@ exports.login = async (req, res, next) => {
 // @route   PUT /api/v1/auth/resetpassword
 // @access  Public
 exports.resetPassword = async (req, res, next) => {
-  try{
+  try {
     const resetPasswordToken = crypto
-    .createHash('sha256')
-    .update(req.params.resettoken)
-    .digest('hex');
+      .createHash('sha256')
+      .update(req.params.resettoken)
+      .digest('hex');
 
-  const user = await User.findOne({
-    resetPasswordToken,
-    resetPasswordTokenExpire: { $gt: Date.now() }
-  });
+    const user = await User.findOne({
+      resetPasswordToken,
+      resetPasswordTokenExpire: { $gt: Date.now() }
+    });
 
-  if (!user) {
-    return next(new MakeError('Invalid Token', 400));
-  }
+    if (!user) {
+      return next(new MakeError('Invalid Token', 400));
+    }
 
-  user.password = req.body.password;
-  user.resetPasswordToken = undefined;
-  user.resetPasswordTokenExpire = undefined;
-  await user.save();
+    user.password = req.body.password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordTokenExpire = undefined;
+    await user.save();
 
-  sendTokenResponse(user, 200, res, next);
-  res.status(200).json({ success: true, data: 'password changed' });
-
+    sendTokenResponse(user, 200, res, next);
+    res.status(200).json({ success: true, data: 'password changed' });
   } catch (err) {
     next(err);
   }

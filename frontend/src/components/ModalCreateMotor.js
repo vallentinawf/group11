@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 
-export default function Modal() {
+export default function ModalCreateMotor() {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState('');
   const [type, setType] = useState('manual');
   const [status, setStatus] = useState('available');
   const [price, setPrice] = useState('');
+  const [quantity, setQuantity] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const motor = { name, type, status, price };
+    const motor = { name, type, status, price, quantity };
     console.log(motor);
 
     fetch('http://localhost:5000/api/v1/rental/', {
@@ -74,7 +75,17 @@ export default function Modal() {
                       <option value="available">Available</option>
                       <option value="not-available">Not available</option>
                     </select>
-                    <label className="block text-black text-sm font-bold mb-1">
+                    <label className="block text-black text-sm font-bold mb-1 mt-2">
+                      Quantity
+                    </label>
+                    <input
+                      className="shadow appearance-none border rounded-xl w-full py-2 px-1 text-black"
+                      type="text"
+                      required
+                      value={quantity}
+                      onChange={(e) => setQuantity(e.target.value)}
+                    />
+                    <label className="block text-black text-sm font-bold mb-1 mt-2">
                       Price
                     </label>
                     <input
@@ -84,27 +95,20 @@ export default function Modal() {
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
                     />
-                    <div className="flex items-center justify-end p-6 rounded-b">
+                    <div className="flex items-center justify-end mt-[20px] gap-3  rounded-b">
                       <button
-                        className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                        className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none "
                         type="button"
                         onClick={() => setShowModal(false)}
                       >
                         Close
                       </button>
                       <button
-                        className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                        className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none w-[120px]"
                         type="button"
                         onClick={handleSubmit}
                       >
                         Submit
-                      </button>
-                      <button
-                        className="text-white bg-[#FC3B11] active:bg-[#a1361e] font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                        onClick={() => setShowModal(false)}
-                      >
-                        Delete
                       </button>
                     </div>
                   </form>
