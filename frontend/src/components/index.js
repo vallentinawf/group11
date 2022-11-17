@@ -11,6 +11,7 @@ import Card from './Card';
 import BookingData from './BookingData';
 import ModalUDBook from './ModalUDBook';
 import ModalCreateBook from './ModalCreateBook';
+import SidebarUser from './SidebarUser';
 
 export {
   FormRow,
@@ -26,4 +27,5 @@ export {
   BookingData,
   ModalUDBook,
   ModalCreateBook,
+  SidebarUser,
 };

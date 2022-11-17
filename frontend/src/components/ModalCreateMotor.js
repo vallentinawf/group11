@@ -24,7 +24,7 @@ export default function ModalCreateMotor() {
     <>
       <button
         className="bg-orange/95 text-black active:bg-orange/98 h-[35px] w-[80px]
-      font-medium px-2 py-1 rounded-xl shadow hover:shadow-lg outline-none focus:outline-none text-[12px]"
+      font-medium px-2 py-1 rounded-xl shadow-lg drop-shadow-lg hover:shadow-lg outline-none focus:outline-none text-[12px]"
         type="button"
         onClick={() => setShowModal(true)}
       >

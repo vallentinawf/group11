@@ -8,6 +8,7 @@ import {
   AboutUs,
   DashAdmMotorBike,
   DashAdmBooking,
+  DashUser,
 } from './pages';
 import { Footer, Navbar } from './components';
 import { useState } from 'react';
@@ -28,6 +29,7 @@ function App() {
           element={<DashAdmMotorBike />}
         />
         <Route path="/dashboard-admin/booking" element={<DashAdmBooking />} />
+        <Route path="/dashboard-user/booking" element={<DashUser />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/list-motor" element={<ListMotor />} />
         <Route path="*" element={<Error />} />

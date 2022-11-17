@@ -37,7 +37,7 @@ export default function ModalUDMotor(id) {
           <>
             <button
               className="bg-[#eeecec] text-black active:bg-orange/98 h-[30px]]
-      font-medium px-2 py-1 rounded-md shadow hover:shadow-lg outline-none focus:outline-none"
+      font-medium px-2 py-1 rounded-md shadow-md hover:shadow-lg outline-none focus:outline-none"
               type="button"
               onClick={() => {
                 setShowModal(true);
@@ -49,7 +49,7 @@ export default function ModalUDMotor(id) {
                 setQuantity(fmotor.quantity);
               }}
             >
-              <FaEdit />
+              <FaEdit className="text-[17px]" />
             </button>
             {showModal ? (
               <>

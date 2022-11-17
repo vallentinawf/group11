@@ -6,6 +6,7 @@ import Register from './Register';
 import AboutUs from './AboutUs';
 import DashAdmBooking from './DashAdmBooking';
 import DashAdmMotorBike from './DashAdmMotorBike';
+import DashUser from './DashUser';
 
 export {
   Error,
@@ -16,4 +17,5 @@ export {
   AboutUs,
   DashAdmBooking,
   DashAdmMotorBike,
+  DashUser,
 };
