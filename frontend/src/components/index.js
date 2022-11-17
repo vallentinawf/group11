@@ -12,6 +12,7 @@ import BookingData from './BookingData';
 import ModalUDBook from './ModalUDBook';
 import ModalCreateBook from './ModalCreateBook';
 import SidebarUser from './SidebarUser';
+import BookingDataUser from './BookingDataUser';
 
 export {
   FormRow,
@@ -28,4 +29,5 @@ export {
   ModalUDBook,
   ModalCreateBook,
   SidebarUser,
+  BookingDataUser,
 };

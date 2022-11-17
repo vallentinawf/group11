@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaQuestionCircle } from 'react-icons/fa';
+import axios from 'axios';
 
 export default function ModalCreateMotor(props) {
   const [showModal, setShowModal] = useState(false);
@@ -7,19 +8,20 @@ export default function ModalCreateMotor(props) {
   const [type, setType] = useState(props.type);
   const [status, setStatus] = useState();
   const [price, setPrice] = useState(props.price);
-  const [quantity, setQuantity] = useState('');
+  const [quantity, setQuantity] = useState(props.quantity);
   const [userId, setUserId] = useState();
-  const [rentalId, setRentalId] = useState();
+  const [rentalId, setRentalId] = useState(props.rentalId);
 
-  const handleBooking = (e) => {
-    e.preventDefault();
-    const book = { rentalId, userId };
+  console.log(rentalId);
 
-    fetch('http://localhost:5000/api/v1/booking/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(book),
-    });
+  const handleBooking = async (e) => {
+    const book = { rentalId };
+    try {
+      const url = 'http://localhost:5000/api/v1/booking/book';
+      const response = await axios.post(url, book, { withCredentials: true });
+    } catch (err) {
+      alert(err.response.data.error.toString());
+    }
   };
 
   return (
@@ -56,7 +58,10 @@ export default function ModalCreateMotor(props) {
                     >
                       Cancel
                     </button>
-                    <button className="bg-orange w-[100px] rounded-md h-[35px]">
+                    <button
+                      className="bg-orange w-[100px] rounded-md h-[35px]"
+                      onClick={handleBooking}
+                    >
                       Sure!
                     </button>
                   </div>

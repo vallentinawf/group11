@@ -7,7 +7,7 @@ export default function DashAdmBooking(props) {
     error,
     isPending,
     data: books,
-  } = useFetch('http://akbar.bekisar.net/api/v1/booking');
+  } = useFetch('http://localhost:5000/api/v1/booking');
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%]">

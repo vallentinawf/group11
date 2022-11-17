@@ -17,11 +17,6 @@ export default function ModalUDMotor(id) {
 
   const handleUpdate = async () => {
     const motor = { name, type, status, quantity, price };
-    // fetch('http://localhost:5000/api/v1/rental/' + _id, {
-    //   method: 'PATCH',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(motor),
-    // });
     try {
       const url = 'http://localhost:5000/api/v1/rental/' + _id;
       const response = await axios.patch(url, motor, { withCredentials: true });
@@ -31,9 +26,6 @@ export default function ModalUDMotor(id) {
   };
 
   const handleDelete = async () => {
-    // fetch('http://localhost:5000/api/v1/rental/' + _id, {
-    //   method: 'DELETE',
-    // });
     try {
       const url = 'http://localhost:5000/api/v1/rental/' + _id;
       const response = await axios.delete(url, { withCredentials: true });
