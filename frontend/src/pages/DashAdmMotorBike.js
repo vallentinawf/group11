@@ -1,4 +1,4 @@
-import {} from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import { React, useState } from 'react';
 import { ModalCreateMotor, MotorData, Sidebar, useFetch } from '../components';
 
@@ -14,14 +14,15 @@ export default function DashAdmMotorBike(props) {
       <Sidebar />
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
-          <h2 className="text-[30px]">Data Table Motor Bike</h2>
+          <h2 className=" text-[20px] md:text-[30px]">Data Table Motor Bike</h2>
           <div className="flex gap-5 items-center">
             <input
-              className="drop-shadow-xl rounded-xl py-2 px-3 h-[40px] w-[400px] text-gray-700 leading-tight  focus:outline-none focus:shadow-outline"
+              className="drop-shadow-xl rounded-xl py-2 px-3 h-[40px] w-[0px] text-gray-700 leading-tight  focus:outline-none focus:shadow-outline hidden md:block md:w-[250px] xl:w-[400px]"
               id="searchItems"
               type="text"
               placeholder="search items"
             ></input>
+            <FaSearch className="md:hidden" />
             <ModalCreateMotor />
           </div>
         </div>
@@ -41,17 +42,18 @@ export default function DashAdmMotorBike(props) {
           </div>
         </div> */}
 
-        <div className="grid grid-cols-3 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center mt-[30px]">
-          <p>Name</p>
-          <p>Bike id</p>
-          <div className="flex justify-between ">
-            <p>Quantity</p>
-            <p>Rate</p>
-            <p className="h-[35px] w-[80px]"></p>
-          </div>
-        </div>
-        <div className=" rounded-md shadow-drop-md bg-[#F8F8F8] h-[75vh] overflow-auto">
-          <div className="">
+        <div className=" rounded-md shadow-drop-md bg-[#F8F8F8] h-[80vh] mt-[30px] overflow-auto">
+          <div className="min-w-[1000px] ">
+            <div className="grid grid-cols-4 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-drop-md h-[30px] items-center ">
+              <p>Name</p>
+              <p>Bike id</p>
+              <p>Status</p>
+              <div className="flex justify-between ">
+                <p>Quantity</p>
+                <p>Rate</p>
+                <p className="h-[35px] w-[80px]"></p>
+              </div>
+            </div>
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}
             {motors && <MotorData motors={motors} />}
