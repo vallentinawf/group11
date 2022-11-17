@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 export default function ModalCreateMotor() {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState();
-  const [type, setType] = useState();
-  const [status, setStatus] = useState();
+  const [type, setType] = useState('');
+  const [status, setStatus] = useState('');
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState();
 
@@ -13,7 +13,7 @@ export default function ModalCreateMotor() {
     const motor = { name, type, status, price, quantity };
     console.log(motor);
 
-    fetch('http://localhost:5000/api/v1/rental/', {
+    fetch('http://localhost:5000/api/v1/rental', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(motor),

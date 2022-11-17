@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FormRow, Alert} from '../components';
+import { FormRow, Alert } from '../components';
 import loginImg from '../assets/loginImg.jpg';
 import Logo from '../assets/logo.png';
 import axios from 'axios';
@@ -15,7 +15,8 @@ const initialState = {
 const Login = () => {
   const [values, setValues] = useState(initialState);
   const navigate = useNavigate();
-  const { displayAlert, showAlert, startLoading, endLoadingSuccess, loading} = useAppContext();
+  const { displayAlert, showAlert, startLoading, endLoadingSuccess, loading } =
+    useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -31,8 +32,8 @@ const Login = () => {
       displayAlert();
       return;
     }
-    
-    const url = 'http://localhost:5000/api/v1/auth/login';
+
+    const url = 'http://akbar.bekisar.net/api/v1/auth/login';
 
     try {
       await axios.post(
