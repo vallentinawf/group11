@@ -12,20 +12,23 @@ export default function DashUser(props) {
 
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:5000/api/v1/user/profile', {
-        withCredentials: true,
-      })
-      .then((res) => {
-        // console.log(res.data);
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  useEffect(
+    (url) => {
+      axios
+        .get('http://localhost:5000/api/v1/user/profile', {
+          withCredentials: true,
+        })
+        .then((res) => {
+          // console.log(res.data);
+          setData(res.data);
+        })
+        .catch((err) => console.log(err));
+    },
+    [data]
+  );
 
   return (
-    <div className="h-[100vh] flex px-[2%] py-[2%]">
+    <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
       {data && <SidebarUser data={data} />}
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
