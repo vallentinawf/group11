@@ -4,8 +4,6 @@ import React, { useEffect, useState } from 'react';
 
 export default function BookingData(data) {
   const bookId = data.data.data.booking;
-  const user = data.data.data.user;
-  console.log(user);
 
   return (
     <div className="">
