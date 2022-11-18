@@ -16,8 +16,8 @@ export default function AboutUs(props) {
             About Us
           </h2>
           <p className="text-justify font-medium text-[14px] md:text-[15px] xl:text-[16px]">
-            Remo adalah blablabl ablablaaaa sasdadwas sccfegn ireign iernginr
-            gerng enignw ioemomos wigneinw ienginwig (bahasa inggris)
+            Remo is a bike-renting service made for your travelling needs!
+            No need to be confused over what to travel with, just find a bike of your choice with a reasonable price, and enjoy the rest.
           </p>
         </div>
         <div className="">
@@ -25,8 +25,7 @@ export default function AboutUs(props) {
             Tentang Kami
           </h2>
           <p className="text-justify font-medium text-[14px] md:text-[15px] xl:text-[16px]">
-            Remo adalah blablabl ablablaaaa sasdadwas sccfegn ireign iernginr
-            gerng enignw ioemomos wigneinw ienginwig (bahasa indonesia)
+            Remo adalah layanan peminjaman motor buat kamu yang bingung mencari kendaraan untuk berkeliling kota! Cari motor pilihan kamu dengan Harga yang ramah di kantong.
           </p>
         </div>
       </div>
