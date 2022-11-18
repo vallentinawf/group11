@@ -12,6 +12,7 @@ import BookingData from './BookingData';
 import ModalUDBook from './ModalUDBook';
 import ModalCreateBook from './ModalCreateBook';
 import SidebarUser from './SidebarUser';
+import ModalCreateMotorSuccess from './ModalCreateMotorSuccess';
 import BookingDataUser from './BookingDataUser';
 import Hero from './Landing/Hero';
 import Offer from './Landing/Offer';
@@ -31,6 +32,8 @@ export {
   ModalUDBook,
   ModalCreateBook,
   SidebarUser,
+
+  ModalCreateMotorSuccess,
   BookingDataUser,
   Hero,
   Offer,
