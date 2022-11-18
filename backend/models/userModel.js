@@ -41,10 +41,6 @@ const UserSchema = new mongoose.Schema({
   borrowedMotorId: {
     type: [mongoose.Types.ObjectId],
     required: false
-  },
-  motorHistory: {
-    type: [mongoose.Types.ObjectId],
-    required: false
   }
 });
 

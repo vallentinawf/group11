@@ -90,6 +90,36 @@ exports.getBooking = async (req, res, next) => {
   }
 };
 
+exports.getTotalPrice = async (req, res, next) => {
+  try {
+    const booking = await Booking.findById(req.params.id);
+
+    if (!booking) {
+      return next(
+        new MakeError(`Cannot find booking with id= ${req.params.id}`, 404)
+      );
+    }
+
+    const rental = await Rental.findOne({ _id: booking.rentalId });
+    const user = await User.findOne({ _id: booking.userId });
+
+    const milTime = booking.ReturnedAt.getTime() - booking.bookingAt.getTime();
+    const totalDays = Math.ceil(milTime / (24 * 60 * 60 * 1000));
+    const convertDays = new Date(milTime);
+    const totalPrice = totalDays * rental.price;
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        totalPrice,
+        convertDays
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.returnBooking = async (req, res, next) => {
   try {
     //Update Booking
@@ -123,6 +153,19 @@ exports.returnBooking = async (req, res, next) => {
 
     //Update Rental
     const rental = await Rental.findOne({ _id: booking.rentalId });
+
+    const milTime = booking.ReturnedAt.getTime() - booking.bookingAt.getTime();
+    const totalDays = Math.ceil(milTime / (24 * 60 * 60 * 1000));
+    const totalPrices = totalDays * rental.price;
+
+    const booking2 = await Booking.findOneAndUpdate(
+      {
+        _id: req.body.bookingId
+      },
+      {
+        totalPrice: totalPrices
+      }
+    );
 
     rental.borrowerId.splice(rental.borrowerId.indexOf(booking.userId), 1);
 
