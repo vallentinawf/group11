@@ -28,26 +28,6 @@ const reducer = (state, action) => {
       alertType: '',
     };
   }
-  if (action.type === LOGIN_USER_START){
-    return{
-      ...state,
-      loading: true
-    };
-  }
-  if (action.type === LOGIN_USER_SUCCESS){
-    return{
-      ...state,
-      loading: false,
-      success: true
-    };
-  }
-  if (action.type === LOGIN_USER_ERROR){
-    return{
-      ...state,
-      loading: false,
-      error: "ERROR"
-    };
-  }
   throw new Error(`no such action: ${action.type}`);
 };
 
