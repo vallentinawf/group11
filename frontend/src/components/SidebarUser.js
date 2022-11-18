@@ -10,7 +10,10 @@ import { FiSettings } from 'react-icons/fi';
 import { React, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-export default function SidebarUser(props) {
+export default function SidebarUser(data) {
+  const user = data.data.data.user;
+  console.log(user);
+
   const menuItems = [
     {
       path: 'booking',
@@ -27,7 +30,9 @@ export default function SidebarUser(props) {
               <FaUserCircle size={30} />
               <div className="mr-[10px]">
                 <p>Wellcome back!</p>
-                <p>User</p>
+                <p>
+                  {user.username} as {user.role}
+                </p>
               </div>
               <FiSettings size={25} />
             </div>
