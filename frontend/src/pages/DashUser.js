@@ -1,17 +1,32 @@
 import {} from 'react-icons/fa';
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useFetch, BookingDataUser, SidebarUser } from '../components';
+import axios from 'axios';
 
 export default function DashUser(props) {
-  const {
-    error,
-    isPending,
-    data: userProfile,
-  } = useFetch('http://localhost:5000/api/v1/user/profile');
+  // const {
+  //   error,
+  //   isPending,
+  //   data: data,
+  // } = useFetch);
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/api/v1/user/profile', {
+        withCredentials: true,
+      })
+      .then((res) => {
+        // console.log(res.data);
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [data]);
 
   return (
-    <div className="h-[100vh] flex px-[2%] py-[2%]">
-      <SidebarUser />
+    <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
+      {data && <SidebarUser data={data} />}
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[30px]">Data Table Customer</h2>
@@ -27,16 +42,16 @@ export default function DashUser(props) {
 
         <div className=" rounded-md shadow-drop-md bg-[#F8F8F8] h-[80vh] mt-[30px] overflow-auto">
           <div className="min-w-[1000px] ">
-            <div className="grid grid-cols-4 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-md shadow-drop-md h-[30px] items-center ">
-              <p>motor id</p>
-              <p>booked at</p>
+            <div className="grid grid-cols-6 gap-3 px-[15px] justify-between bg-[#eeecec] rounded-md shadow-md shadow-drop-md h-[30px] items-center ">
+              <p className="col-span-2">Book id</p>
+              <p>Motor name</p>
               <p>Price</p>
+              <p>Booked at</p>
               <p>Status</p>
-              <p></p>
             </div>
-            {error && <div>{error}</div>}
-            {isPending && <div>Loading...</div>}
-            {userProfile && <BookingDataUser userProfile={userProfile} />}
+            {/* {error && <div>{error}</div>} */}
+            {/* {isPending && <div>Loading...</div>} */}
+            {data && <BookingDataUser data={data} />}
           </div>
         </div>
       </div>
