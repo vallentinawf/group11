@@ -27,6 +27,8 @@ export default function Card(motors) {
                 name={motor.name}
                 type={motor.type}
                 price={motor.price}
+                quantity={motor.quantity}
+                rentalId={motor._id}
               />
             </button>
           </arcticle>

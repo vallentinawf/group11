@@ -49,7 +49,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray">
+    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray pt-[70px] mb-[70px]">
       <div className="bg-gray flex flex-col justify-center">
         <form
           className="max-w-[500px] bg-gray w-full mx-auto px-10 p-10"
@@ -116,7 +116,7 @@ const Register = () => {
           </div>
           {/* div for Button Login */}
           <div className="px-5">
-            <Link to="/">
+            <Link to="/login">
               <button
                 type="button"
                 className="border w-full my-5 py-2 font-bold text-orange rounded-lg"
@@ -131,6 +131,7 @@ const Register = () => {
       <div className="hidden sm:block">
         <img
           className="w-full h-full object-cover"
+          // className="w-full object-cover"
           src={loginImg}
           alt="suzuki motorcycle"
         />

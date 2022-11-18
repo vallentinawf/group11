@@ -1,19 +1,13 @@
 import {} from 'react-icons/fa';
 import { React, useState } from 'react';
-import {
-  Modal,
-  Sidebar,
-  useFetch,
-  BookingData,
-  SidebarUser,
-} from '../components';
+import { useFetch, BookingDataUser, SidebarUser } from '../components';
 
 export default function DashUser(props) {
   const {
     error,
     isPending,
-    data: books,
-  } = useFetch('http://akbar.bekisar.net/api/v1/booking');
+    data: userProfile,
+  } = useFetch('http://localhost:5000/api/v1/user/profile');
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%]">
@@ -42,7 +36,7 @@ export default function DashUser(props) {
             </div>
             {error && <div>{error}</div>}
             {isPending && <div>Loading...</div>}
-            {books && <BookingData books={books} />}
+            {userProfile && <BookingDataUser userProfile={userProfile} />}
           </div>
         </div>
       </div>

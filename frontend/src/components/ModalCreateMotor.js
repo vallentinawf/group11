@@ -1,23 +1,38 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 export default function ModalCreateMotor() {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState();
-  const [type, setType] = useState('');
-  const [status, setStatus] = useState('');
+  const [type, setType] = useState('matic');
+  const [status, setStatus] = useState('available');
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState();
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const motor = { name, type, status, price, quantity };
+  //   console.log(motor);
+  //   const url = 'http://localhost:5000/api/v1/rental';
+
+  //   fetch('http://localhost:5000/api/v1/rental', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(motor),
+  //   });
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const motor = { name, type, status, price, quantity };
-    console.log(motor);
-
-    fetch('http://localhost:5000/api/v1/rental', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(motor),
-    });
+    try {
+      const url = 'http://localhost:5000/api/v1/rental';
+      const response = await axios.post(url, motor, {
+        withCredentials: true,
+      });
+    } catch (err) {
+      alert(err.response.data.error.toString());
+    }
   };
 
   return (

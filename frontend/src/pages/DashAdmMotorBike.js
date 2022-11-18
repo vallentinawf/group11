@@ -7,7 +7,7 @@ export default function DashAdmMotorBike(props) {
     error,
     isPending,
     data: motors,
-  } = useFetch('http://akbar.bekisar.net/api/v1/rental');
+  } = useFetch('http://localhost:5000/api/v1/rental');
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%]">

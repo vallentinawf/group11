@@ -33,7 +33,7 @@ const Login = () => {
       return;
     }
 
-    const url = 'http://akbar.bekisar.net/api/v1/auth/login';
+    const url = 'http://localhost:5000/api/v1/auth/login';
 
     try {
       await axios.post(
@@ -41,14 +41,14 @@ const Login = () => {
         { email: values.email, password: values.password },
         { withCredentials: true }
       );
-      navigate('/dashboard-admin/customer');
+      navigate('/dashboard-admin/motorbike');
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray">
+    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray pt-[70px]">
       <div className="bg-gray flex flex-col justify-center">
         {/* start - Login Form */}
         <form
@@ -58,7 +58,8 @@ const Login = () => {
           {/* div for Logo */}
           <div className="grid justify-items-center">
             <img
-              className="object-scale-down w-6/12"
+              // className="object-scale-down w-6/12"
+              className="w-[30%]"
               src={Logo}
               alt="Logo"
             ></img>
