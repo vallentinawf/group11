@@ -1,26 +1,29 @@
 import { FaEdit, FaNapster } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export default function Modal(id) {
+export default function ModalUDBook(id) {
   const [showModal, setShowModal] = useState(false);
   const [userId, setUserId] = useState('');
   const [rentalId, setRentalid] = useState('');
   const [Returned, setReturned] = useState('false');
   const [bookingAt, setBookingAt] = useState('');
-  const [_id, setId] = useState('');
+  const [bookingId, setId] = useState('');
 
   const keyid = id.id;
 
   const bookData = id.books.books.data.booking;
   const [books, setbooks] = useState(bookData);
 
-  const handleUpdate = () => {
-    const book = { userId, rentalId, Returned, bookingAt };
-    fetch('http://localhost:5000/api/v1/booking/' + _id, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(book),
-    });
+  const handleReturn = async () => {
+    const book = { bookingId };
+
+    try {
+      const url = 'http://localhost:5000/api/v1/booking/return';
+      const response = await axios.patch(url, book, { withCredentials: true });
+    } catch (err) {
+      alert(err.response.data.error.toString());
+    }
   };
 
   return (
@@ -63,7 +66,7 @@ export default function Modal(id) {
                             disabled
                             type="text"
                             required
-                            value={_id}
+                            value={bookingId}
                             onChange={(e) => setId(e.target.value)}
                           />
                           <label className="block  text-sm font-bold mb-1 mt-2 ">
@@ -110,7 +113,7 @@ export default function Modal(id) {
                             <button
                               className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none "
                               type="button"
-                              onClick={handleUpdate}
+                              onClick={handleReturn}
                             >
                               Update
                             </button>

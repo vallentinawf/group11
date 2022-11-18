@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FormRow, Alert} from '../components';
+import { FormRow, Alert } from '../components';
 import loginImg from '../assets/loginImg.jpg';
 import Logo from '../assets/logo.png';
 import axios from 'axios';
@@ -15,7 +15,8 @@ const initialState = {
 const Login = () => {
   const [values, setValues] = useState(initialState);
   const navigate = useNavigate();
-  const { displayAlert, showAlert, startLoading, endLoadingSuccess, loading} = useAppContext();
+  const { displayAlert, showAlert, startLoading, endLoadingSuccess, loading } =
+    useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -31,7 +32,7 @@ const Login = () => {
       displayAlert();
       return;
     }
-    
+
     const url = 'http://localhost:5000/api/v1/auth/login';
 
     try {
@@ -40,14 +41,14 @@ const Login = () => {
         { email: values.email, password: values.password },
         { withCredentials: true }
       );
-      navigate('/dashboard-admin/customer');
+      navigate('/dashboard-admin/motorbike');
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray">
+    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray pt-[70px]">
       <div className="bg-gray flex flex-col justify-center">
         {/* start - Login Form */}
         <form
@@ -57,7 +58,8 @@ const Login = () => {
           {/* div for Logo */}
           <div className="grid justify-items-center">
             <img
-              className="object-scale-down w-6/12"
+              // className="object-scale-down w-6/12"
+              className="w-[30%]"
               src={Logo}
               alt="Logo"
             ></img>

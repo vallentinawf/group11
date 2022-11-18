@@ -29,21 +29,19 @@ exports.auth = async (req, res, next) => {
       return next(new MakeError('User does not exist for this token'), 401);
     }
 
+    // Proceed to next middleware/route
+    req.user = currentUser;
+    next();
     //TODO (optional) : Check if password is changed after token is generated
   } catch (err) {
     return next(err);
   }
-
-  // Proceed to next middleware/route
-  req.user = currentUser;
-  next();
 };
 
 //Authorization middleware
 exports.restricAccess = (...roles) => {
   return (req, res, next) => {
     //Check if user.role is in roles that is specified
-    console.log(req.user.role);
     if (!roles.includes(req.user.role)) {
       return next(new MakeError('Unauthorized access!', 403));
     }

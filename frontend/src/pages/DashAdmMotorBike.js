@@ -7,7 +7,7 @@ export default function DashAdmMotorBike(props) {
     error,
     isPending,
     data: motors,
-  } = useFetch('http://localhost:5000/api/v1/rental/');
+  } = useFetch('http://localhost:5000/api/v1/rental');
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%]">
@@ -15,7 +15,7 @@ export default function DashAdmMotorBike(props) {
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className=" text-[20px] md:text-[30px] shadow-md drop-shadow-md">
-            Motorbike data table
+            Motorbike Data
           </h2>
           <div className="flex gap-5 items-center">
             <input

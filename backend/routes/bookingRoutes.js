@@ -11,14 +11,13 @@ router.get('/:id');
 router.route('/:id').patch(bookingController.returnBooking);
 
 router.route('/book').post(
-  // authMiddleware.auth,
-  // authMiddleware.restricAccess('admin'),
+  authMiddleware.auth, //Untuk login -> user ataupun admin
+  authMiddleware.restricAccess('admin'), // Akses hanya untuk admin
   bookingController.createBooking
 );
 
-router.route('/return').patch(
-  // authMiddleware.auth,
-  bookingController.returnBooking
-);
+router
+  .route('/return')
+  .patch(authMiddleware.auth, bookingController.returnBooking);
 
 module.exports = router;

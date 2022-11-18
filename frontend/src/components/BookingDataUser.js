@@ -2,8 +2,8 @@ import { FaEdit } from 'react-icons/fa';
 import { ModalUDBook, ModalUpDate } from '.';
 import React, { useEffect, useState } from 'react';
 
-export default function BookingData(books) {
-  const bookId = books.books.data.booking;
+export default function BookingData(userProfile) {
+  const bookId = userProfile;
   console.log(bookId);
   return (
     <div className="">
@@ -13,12 +13,12 @@ export default function BookingData(books) {
           key={bookId._id}
         >
           <p className="overflow-x-auto">{book.rentalId}</p>
-          <p className="overflow-x-auto">{book.userId}</p>
-          <p className="overflow-hidden">{book.bookingAt}</p>
+          <p className="overflow-x-auto">{book.bookingAt}</p>
+          <p className="overflow-hidden">{book.price}</p>
           <div className="flex justify-between">
             <p className="overflow-x-auto">{book.Returned.toString()}</p>
             <button>
-              <ModalUDBook id={book._id} books={books} />
+              <ModalUDBook id={book._id} userProfile={userProfile} />
             </button>
           </div>
         </div>

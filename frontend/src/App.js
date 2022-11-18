@@ -7,12 +7,10 @@ import {
   Register,
   AboutUs,
   DashAdmMotorBike,
-
   DashAdmCustomer,
   Landing,
   DashAdmBooking,
   DashUser,
-
 } from './pages';
 import { Footer, Navbar } from './components';
 import { useState } from 'react';
@@ -24,8 +22,7 @@ function App() {
     <BrowserRouter>
       {showNav && <Navbar />}
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/landing" element={<Landing />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about-us" element={<AboutUs />} />

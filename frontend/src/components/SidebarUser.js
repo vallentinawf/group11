@@ -17,11 +17,6 @@ export default function SidebarUser(props) {
       name: 'My booking',
       icon: <FaMotorcycle className="text-[25px] text-[#35373A]" />,
     },
-    {
-      path: 'history',
-      name: 'History',
-      icon: <FaHistory className="text-[20px] text-[#35373A]" />,
-    },
   ];
   return (
     <div className="h-[90vh]">
