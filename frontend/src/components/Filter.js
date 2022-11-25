@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import {BsSearch} from "react-icons/bs"
 
 export default function Filter () {
+    const [searchkey, setsearchkey] = useState('');
+
     return(
         <>
             <input
                 className="shadow-xl drop-shadow-xl rounded-xl py-2 px-3 h-[40px] w-[0px] text-gray-700 leading-tight  focus:outline-none focus:shadow-outline hidden md:block md:w-[250px] xl:w-[400px]"
                 id="searchItems"
                 type="text"
-                placeholder="search items">
+                placeholder="search items"
+                value={searchkey}
+                onChange={(e)=>{setsearchkey(e.target.value)}}>
             </input>
             <button 
                 className="bg-orange/95 text-black active:bg-orange/98 h-[35px] w-[35px]
@@ -17,5 +21,5 @@ export default function Filter () {
                 <BsSearch size={20}/>
             </button>
         </>
-    )
+    );
 }
