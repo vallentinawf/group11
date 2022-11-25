@@ -1,6 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 import { React, useState } from 'react';
-import { ModalCreateMotor, MotorData, Sidebar, useFetch } from '../components';
+import { Filter, ModalCreateMotor, MotorData, Sidebar, useFetch } from '../components';
+import Button from '../components/Button';
 
 export default function DashAdmMotorBike(props) {
   const {
@@ -18,12 +19,7 @@ export default function DashAdmMotorBike(props) {
             Motorbike Data
           </h2>
           <div className="flex gap-5 items-center">
-            <input
-              className="shadow-xl drop-shadow-xl rounded-xl py-2 px-3 h-[40px] w-[0px] text-gray-700 leading-tight  focus:outline-none focus:shadow-outline hidden md:block md:w-[250px] xl:w-[400px]"
-              id="searchItems"
-              type="text"
-              placeholder="search items"
-            ></input>
+            <Filter />
             <FaSearch className="md:hidden" />
             <ModalCreateMotor />
           </div>

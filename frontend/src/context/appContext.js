@@ -38,21 +38,8 @@ const AppProvider = ({ children }) => {
       dispatch({ type: CLEAR_ALERT });
     }, 3000);
   };
-
-  const startLoading = () => {
-    dispatch({type : LOGIN_USER_START});
-  };
-
-  const endLoadingSuccess = () => {
-    dispatch({type : LOGIN_USER_SUCCESS})
-  };
-
-  const registerUser = async (currentUser) => {
-    console.log(currentUser);
-  };
-
   return (
-    <AppContext.Provider value={{ ...state, displayAlert, registerUser, startLoading, endLoadingSuccess }}>
+    <AppContext.Provider value={{ ...state, displayAlert }}>
       {children}
     </AppContext.Provider>
   );
