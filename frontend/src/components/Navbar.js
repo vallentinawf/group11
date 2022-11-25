@@ -28,6 +28,12 @@ export default function Navbar() {
             About Us
           </Link>
           <Link
+            to="/list-motor"
+            className="border-none bg-transparent font-primary  text-black"
+          >
+            List Motor
+          </Link>
+          <Link
             to="/dashboard-admin/motorbike"
             className="border-none bg-transparent font-primary  text-black"
           >
