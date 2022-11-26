@@ -1,6 +1,6 @@
 import {} from 'react-icons/fa';
 import { React, useState, useEffect } from 'react';
-import { Modal, Sidebar, useFetch, BookingData } from '../components';
+import { Modal, Sidebar, useFetch, BookingData, Loader } from '../components';
 import axios from 'axios';
 
 export default function DashAdmBooking(props) {
@@ -53,7 +53,7 @@ export default function DashAdmBooking(props) {
               <p></p>
             </div>
             {error && <div>{error}</div>}
-            {isPending && <div>Loading...</div>}
+            {isPending && <Loader/>}
             {books && <BookingData books={books} />}
           </div>
         </div>

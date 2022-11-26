@@ -1,6 +1,6 @@
 import { FaSearch } from 'react-icons/fa';
 import { React, useState } from 'react';
-import { Filter, ModalCreateMotor, MotorData, Sidebar, useFetch } from '../components';
+import { Filter, Loader, ModalCreateMotor, ModalCreateMotorSuccess, MotorData, Sidebar, useFetch } from '../components';
 import Button from '../components/Button';
 
 export default function DashAdmMotorBike(props) {
@@ -53,7 +53,7 @@ export default function DashAdmMotorBike(props) {
               </div>
             </div>
             {error && <div>{error}</div>}
-            {isPending && <div>Loading...</div>}
+            {isPending && <Loader/>}
             {motors && <MotorData motors={motors} />}
           </div>
         </div>

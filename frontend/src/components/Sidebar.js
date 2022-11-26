@@ -32,7 +32,7 @@ export default function Sidebar(data) {
             <div className="hidden md:flex items-center gap-3">
               <FaUserCircle size={30} />
               <div className="mr-[10px]">
-                <p>Wellcome back!</p>
+                <p>Welcome back!</p>
                 <p>User</p>
                 {/* <p>
                   {user.username} as {user.role}

@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import ModalSuccess from './ModalSuccess';
 
 export default function ModalCreateMotor() {
   const [showModal, setShowModal] = useState(false);
+  const [submission, setSubmission] = useState(false);
   const [name, setName] = useState();
   const [type, setType] = useState('matic');
   const [status, setStatus] = useState('available');
@@ -108,10 +110,14 @@ export default function ModalCreateMotor() {
                       <button
                         className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none w-[120px]"
                         type="button"
-                        onClick={handleSubmit}
+                        onClick={(e) => {
+                          handleSubmit(e);
+                          setSubmission(true);
+                        }}
                       >
                         Submit
                       </button>
+                      {submission ? (<ModalSuccess/>) : null}
                     </div>
                   </form>
                 </div>
