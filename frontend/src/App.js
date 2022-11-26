@@ -13,7 +13,7 @@ import {
   DashUser,
 } from './pages';
 
-import { Footer, Navbar, ModalCreateMotorSuccess } from './components';
+import { Footer, Navbar, ModalSuccess } from './components';
 import { useState } from 'react';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
       {showNav && <Navbar />}
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/modal" element={<ModalCreateMotorSuccess />} />
+        <Route path="/modal" element={<ModalSuccess />} />
         {/* <Route path="/landing" element={<Landing />} /> */}
 
         <Route path="/" element={<Landing />} />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Modal, MotorData, Sidebar, Card, useFetch } from '../components';
+import { Modal, MotorData, Sidebar, Card, useFetch, Loader } from '../components';
 
 export default function ListMotor() {
   const {
@@ -16,7 +16,7 @@ export default function ListMotor() {
         </h2>
       </div>
       {error && <div>{error}</div>}
-      {isPending && <div>Loading...</div>}
+      {isPending && <div><Loader/>Loading...</div>}
       {motors && <Card motors={motors} />}
     </div>
   );

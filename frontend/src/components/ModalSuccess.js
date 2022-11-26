@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ModalCreateMotorSuccess()
+export default function ModalSuccess()
 {
     return(
         <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none b-[#423e3e]/50 ">
@@ -12,7 +12,7 @@ export default function ModalCreateMotorSuccess()
                         </div>
                         <div className="text-start font-md font-primary">
                             <h3 className="text-bold text-lg font-bold text-orange">Success!</h3>
-                            <p className="text-sm">Data has been added.</p>
+                            <p className="text-sm">Changes have been saved.</p>
                         </div>
                     </div>
                 </div>

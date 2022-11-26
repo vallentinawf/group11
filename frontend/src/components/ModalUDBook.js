@@ -1,9 +1,11 @@
 import { FaEdit, FaNapster } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ModalSuccess from './ModalSuccess';
 
 export default function ModalUDBook(id) {
   const [showModal, setShowModal] = useState(false);
+  const [submission, setSubmission] = useState(false);
   const [userId, setUserId] = useState('');
   const [rentalId, setRentalid] = useState('');
   const [Returned, setReturned] = useState('false');
@@ -42,6 +44,7 @@ export default function ModalUDBook(id) {
                 setRentalid(fbook.rentalId);
                 setUserId(fbook.userId);
                 setReturned(fbook.Returned);
+                setSubmission(false);
               }}
             >
               <FaEdit />
@@ -113,10 +116,14 @@ export default function ModalUDBook(id) {
                             <button
                               className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none "
                               type="button"
-                              onClick={handleReturn}
+                              onClick={() => {
+                                handleReturn();
+                                setSubmission(true);
+                              }}
                             >
                               Update
                             </button>
+                            {submission ? (<ModalSuccess/>) : null}
                           </div>
                         </form>
                       </div>

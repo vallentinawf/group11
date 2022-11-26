@@ -1,9 +1,11 @@
 import { FaEdit } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ModalSuccess from './ModalSuccess';
 
 export default function ModalUDMotor(id) {
   const [showModal, setShowModal] = useState(false);
+  const [submission, setSubmission] = useState(false);
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [status, setStatus] = useState('');
@@ -52,6 +54,7 @@ export default function ModalUDMotor(id) {
                 setStatus(fmotor.status);
                 setPrice(fmotor.price);
                 setQuantity(fmotor.quantity);
+                setSubmission(false);
               }}
             >
               <FaEdit className="text-[17px]" />
@@ -144,6 +147,7 @@ export default function ModalUDMotor(id) {
                               type="button"
                               onClick={() => {
                                 handleUpdate();
+                                setSubmission(true);
                                 setShowModal(true);
                               }}
                             >
@@ -154,10 +158,12 @@ export default function ModalUDMotor(id) {
                               type="button"
                               onClick={() => {
                                 handleDelete();
+                                setSubmission(true);
                               }}
                             >
                               Delete
                             </button>
+                            {submission ? (<ModalSuccess/>) : null}
                           </div>
                         </form>
                       </div>
