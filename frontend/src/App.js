@@ -18,7 +18,7 @@ import { Footer, Navbar, ModalSuccess, EditProfileForm} from './components';
 import { useState } from 'react';
 
 function App() {
-  const [showNav, setShowNav] = useState(true);
+  const [showNav, setShowNav] = useState(false);
 
   return (
     <BrowserRouter>
@@ -29,7 +29,7 @@ function App() {
         <Route path="/edit-profile" element={<EditProfileForm />} />
         <Route path="/modal" element={<ModalSuccess />} />
         <Route path="/landing" element={<Landing />} />
-        
+
         <Route path="/" element={<Landing />} />
 
         <Route path="/login" element={<Login />} />
