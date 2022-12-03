@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { CiMail, CiLock, CiUser } from "react-icons/ci";
 import Logo from '../assets/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { FormRow, Alert } from '../components';
@@ -63,7 +64,7 @@ const Register = () => {
             ></img>
           </div>
           <p className="text-center font-bold p-2 text-black/75">
-            Register into your account
+            Register Into Your Account
           </p>
           {showAlert && <Alert />}
           {/* div for Email Address Input */}
@@ -74,6 +75,7 @@ const Register = () => {
             value={values.email}
             placeholder="akbarsigit@gmail.com"
             handleChange={handleChange}
+            icon = {<CiMail/>}
           />
           {/* div for Username Input */}
           <FormRow
@@ -83,6 +85,7 @@ const Register = () => {
             value={values.username}
             placeholder="akbar sigit"
             handleChange={handleChange}
+            icon = {<CiUser/>}
           />
           {/* div for Password Input */}
           <FormRow
@@ -92,6 +95,7 @@ const Register = () => {
             value={values.password}
             placeholder="••••••••"
             handleChange={handleChange}
+            icon={<CiLock/>}
           />
           <div className="text-center">
             <button className="text-blue hover:text-darkblue underline">

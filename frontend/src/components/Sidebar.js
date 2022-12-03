@@ -9,7 +9,9 @@ import { FiSettings } from 'react-icons/fi';
 import { React, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-export default function Sidebar(props) {
+export default function Sidebar(data) {
+  // const user = data.data.data.user;
+
   const menuItems = [
     {
       path: 'motorbike',
@@ -30,8 +32,11 @@ export default function Sidebar(props) {
             <div className="hidden md:flex items-center gap-3">
               <FaUserCircle size={30} />
               <div className="mr-[10px]">
-                <p>Wellcome back!</p>
+                <p>Welcome back!</p>
                 <p>User</p>
+                {/* <p>
+                  {user.username} as {user.role}
+                </p> */}
               </div>
               <FiSettings size={25} />
             </div>

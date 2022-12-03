@@ -10,7 +10,7 @@ export default function AboutUs(props) {
           className="w-[250px] md:min-w-[320px] md:w-[600px] xl:w-[700px]"
         />
       </div>
-      <div className="flex gap-[30px] flex-col pr-[50px] max-w-[700px]  ">
+      <div className="flex gap-[30px] flex-col pr-[200px] max-w-[700px] ">
         <div className="">
           <h2 className=" font-bold text-orange text-[27px] md:text-[35px] xl:text-[45px]">
             About Us

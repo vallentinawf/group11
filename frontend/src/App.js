@@ -13,22 +13,23 @@ import {
   DashUser,
 } from './pages';
 
+import { Footer, Navbar, ModalSuccess, EditProfileForm} from './components';
 
-import { Footer, Navbar, EditProfileForm } from './components';
 import { useState } from 'react';
 
 function App() {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
 
   return (
     <BrowserRouter>
       {showNav && <Navbar />}
       <Routes>
 
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/edit-profile" element={<EditProfileForm />} />
+        <Route path="/modal" element={<ModalSuccess />} />
         <Route path="/landing" element={<Landing />} />
-
+        
         <Route path="/" element={<Landing />} />
 
         <Route path="/login" element={<Login />} />

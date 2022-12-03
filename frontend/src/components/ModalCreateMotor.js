@@ -1,26 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import ModalSuccess from './ModalSuccess';
 
 export default function ModalCreateMotor() {
   const [showModal, setShowModal] = useState(false);
+  const [submission, setSubmission] = useState(false);
   const [name, setName] = useState();
   const [type, setType] = useState('matic');
   const [status, setStatus] = useState('available');
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState();
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const motor = { name, type, status, price, quantity };
-  //   console.log(motor);
-  //   const url = 'http://localhost:5000/api/v1/rental';
-
-  //   fetch('http://localhost:5000/api/v1/rental', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(motor),
-  //   });
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -121,10 +110,14 @@ export default function ModalCreateMotor() {
                       <button
                         className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none w-[120px]"
                         type="button"
-                        onClick={handleSubmit}
+                        onClick={(e) => {
+                          handleSubmit(e);
+                          setSubmission(true);
+                        }}
                       >
                         Submit
                       </button>
+                      {submission ? (<ModalSuccess/>) : null}
                     </div>
                   </form>
                 </div>

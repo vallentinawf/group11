@@ -1,6 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 import { React, useState } from 'react';
-import { ModalCreateMotor, MotorData, Sidebar, useFetch } from '../components';
+import { Filter, Loader, ModalCreateMotor, ModalCreateMotorSuccess, MotorData, Sidebar, useFetch } from '../components';
+import Button from '../components/Button';
 
 export default function DashAdmMotorBike(props) {
   const {
@@ -10,7 +11,7 @@ export default function DashAdmMotorBike(props) {
   } = useFetch('http://localhost:5000/api/v1/rental');
 
   return (
-    <div className="h-[100vh] flex px-[2%] py-[2%]">
+    <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
       <Sidebar />
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
@@ -18,12 +19,7 @@ export default function DashAdmMotorBike(props) {
             Motorbike Data
           </h2>
           <div className="flex gap-5 items-center">
-            <input
-              className="shadow-xl drop-shadow-xl rounded-xl py-2 px-3 h-[40px] w-[0px] text-gray-700 leading-tight  focus:outline-none focus:shadow-outline hidden md:block md:w-[250px] xl:w-[400px]"
-              id="searchItems"
-              type="text"
-              placeholder="search items"
-            ></input>
+            <Filter />
             <FaSearch className="md:hidden" />
             <ModalCreateMotor />
           </div>
@@ -57,7 +53,7 @@ export default function DashAdmMotorBike(props) {
               </div>
             </div>
             {error && <div>{error}</div>}
-            {isPending && <div>Loading...</div>}
+            {isPending && <Loader/>}
             {motors && <MotorData motors={motors} />}
           </div>
         </div>
