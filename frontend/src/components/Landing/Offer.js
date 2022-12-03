@@ -67,7 +67,7 @@ export default function Offer() {
 
       {/* div for two motorcycle images */}
       <div className="w-full flex justify-center pt-12 py-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center">
           {/* div for motorcycle one */}
           <div className="rounded-lg relative flex items-center">
             <div className="absolute w-[400px] bg-gray/0 rounded-lg text-orange text-center pt-6">
