@@ -64,7 +64,7 @@ const Register = () => {
             ></img>
           </div>
           <p className="text-center font-bold p-2 text-black/75">
-            Register into your account
+            Register Into Your Account
           </p>
           {showAlert && <Alert />}
           {/* div for Email Address Input */}
