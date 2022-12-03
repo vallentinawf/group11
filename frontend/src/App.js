@@ -13,7 +13,8 @@ import {
   DashUser,
 } from './pages';
 
-import { Footer, Navbar, ModalSuccess } from './components';
+import { Footer, Navbar, ModalSuccess, EditProfileForm} from './components';
+
 import { useState } from 'react';
 
 function App() {
@@ -23,10 +24,12 @@ function App() {
     <BrowserRouter>
       {showNav && <Navbar />}
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/modal" element={<ModalSuccess />} />
-        {/* <Route path="/landing" element={<Landing />} /> */}
 
+        <Route path="/" element={<Landing />} />
+        <Route path="/edit-profile" element={<EditProfileForm />} />
+        <Route path="/modal" element={<ModalSuccess />} />
+        <Route path="/landing" element={<Landing />} />
+        
         <Route path="/" element={<Landing />} />
 
         <Route path="/login" element={<Login />} />

@@ -17,7 +17,10 @@ import ModalSuccess from './ModalSuccess';
 import BookingDataUser from './BookingDataUser';
 import Hero from './Landing/Hero';
 import Offer from './Landing/Offer';
+
+import EditProfileForm from './EditProfileForm';
 import Filter from './Filter';
+
 
 export {
   FormRow,
@@ -41,4 +44,5 @@ export {
   Hero,
   Filter,
   Offer,
+  EditProfileForm
 };
