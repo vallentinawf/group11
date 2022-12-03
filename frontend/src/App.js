@@ -14,7 +14,7 @@ import {
 } from './pages';
 
 
-import { Footer, Navbar, ModalCreateMotorSuccess } from './components';
+import { Footer, Navbar, EditProfileForm } from './components';
 import { useState } from 'react';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
       <Routes>
 
         <Route path="/" element={<Login />} />
-        <Route path="/modal" element={<ModalCreateMotorSuccess />} />
+        <Route path="/edit-profile" element={<EditProfileForm />} />
         <Route path="/landing" element={<Landing />} />
 
         <Route path="/" element={<Landing />} />

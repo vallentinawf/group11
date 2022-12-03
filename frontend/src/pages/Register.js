@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Logo from '../assets/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { FormRow, Alert } from '../components';
-import loginImg from '../assets/loginImg.jpg';
+import registerImg from '../assets/registerImg.jpg';
 import { useAppContext } from '../context/appContext';
 import axios from 'axios';
 
@@ -132,8 +132,8 @@ const Register = () => {
         <img
           className="w-full h-full object-cover"
           // className="w-full object-cover"
-          src={loginImg}
-          alt="suzuki motorcycle"
+          src={registerImg}
+          alt="riding a motorcycle"
         />
       </div>
     </div>

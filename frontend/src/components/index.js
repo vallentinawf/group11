@@ -16,6 +16,7 @@ import ModalCreateMotorSuccess from './ModalCreateMotorSuccess';
 import BookingDataUser from './BookingDataUser';
 import Hero from './Landing/Hero';
 import Offer from './Landing/Offer';
+import EditProfileForm from './EditProfileForm';
 
 export {
   FormRow,
@@ -37,4 +38,5 @@ export {
   BookingDataUser,
   Hero,
   Offer,
+  EditProfileForm
 };
