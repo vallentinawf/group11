@@ -5,6 +5,7 @@ import loginImg from '../assets/loginImg.jpg';
 import Logo from '../assets/logo.png';
 import axios from 'axios';
 import { useAppContext } from '../context/appContext';
+import { CiMail, CiLock,} from "react-icons/ci";
 //import Loader from '../components/Loader';
 
 const initialState = {
@@ -58,14 +59,14 @@ const Login = () => {
           {/* div for Logo */}
           <div className="grid justify-items-center">
             <img
-              // className="object-scale-down w-6/12"
-              className="w-[30%]"
+              className="object-scale-down w-6/12"
+              //className="w-[30%]"
               src={Logo}
               alt="Logo"
             ></img>
           </div>
           <p className="text-center font-bold p-2 text-black/75">
-            Login into your account
+            Login Into Your Account
           </p>
           {showAlert && <Alert />}
           {/* {loading && <Loader />} */}
@@ -76,6 +77,7 @@ const Login = () => {
             labelText="Email"
             value={values.email}
             placeholder="akbarsigit@gmail.com"
+            icon = {<CiMail/>}
             handleChange={handleChange}
           />
           {/* div for Password Input */}
@@ -85,6 +87,7 @@ const Login = () => {
             labelText="Password"
             value={values.password}
             placeholder="••••••••"
+            icon = {<CiLock/>}
             handleChange={handleChange}
           />
           {/* div for Forgot Password */}
