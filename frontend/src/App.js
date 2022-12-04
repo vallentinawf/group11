@@ -7,7 +7,6 @@ import {
   Register,
   AboutUs,
   DashAdmMotorBike,
-  DashAdmCustomer,
   Landing,
   DashAdmBooking,
   DashUser,
@@ -18,7 +17,7 @@ import { Footer, Navbar, SuccessModal, EditProfileForm } from './components';
 import { useState } from 'react';
 
 function App() {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
 
   return (
     <BrowserRouter>
@@ -42,7 +41,7 @@ function App() {
         <Route path="/list-motor" element={<ListMotor />} />
         <Route path="*" element={<Error />} />
       </Routes>
-      {showNav && <Footer />}
+      {showNav}
     </BrowserRouter>
   );
 }

@@ -6,7 +6,7 @@ export default function DashAdmBooking(props) {
   const {
     error,
     isPending,
-    data: books,
+    data: bookings,
   } = useFetch('http://localhost:5000/api/v1/booking');
 
   const [data, setData] = useState(null);
@@ -41,7 +41,7 @@ export default function DashAdmBooking(props) {
             </div>
             {error && <div>{error}</div>}
             {isPending && <Loader />}
-            {books && <BookingTable books={books} />}
+            {bookings && <BookingTable bookings={bookings} />}
           </div>
         </div>
       </div>

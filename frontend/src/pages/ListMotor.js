@@ -14,7 +14,6 @@ export default function ListMotor() {
       <h2 className="text-orange text-[33px] mb-[40px] font-bold">
         Pricing Table
       </h2>
-
       <div className="">
         {error && <div>{error}</div>}
         {isPending && (

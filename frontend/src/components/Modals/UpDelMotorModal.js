@@ -1,7 +1,7 @@
 import { FaEdit } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ModalSuccess from './SuccessModal';
+import SuccessModal from './SuccessModal';
 
 export default function UpDelMotorModel(id) {
   const [showModal, setShowModal] = useState(false);
@@ -174,7 +174,7 @@ export default function UpDelMotorModel(id) {
                             >
                               Delete
                             </button>
-                            {submission ? <ModalSuccess /> : null}
+                            {submission ? <SuccessModal /> : null}
                           </div>
                         </form>
                       </div>

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 export default function BookingTable(books) {
   const bookId = books.books.data.booking;
-  console.log(bookId);
+
   return (
     <div className="">
       {bookId.map((book) => (

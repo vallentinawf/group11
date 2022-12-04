@@ -1,26 +1,34 @@
 import {} from 'react-icons/fa';
 import { React, useEffect, useState } from 'react';
-import { useFetch, BookingUserTable, SidebarUser } from '../components';
-import axios from 'axios';
+import { BookingUserTable, SidebarUser } from '../components';
+import useFetch from '../Utils/Hooks/useFetch';
 
 export default function DashUser(props) {
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:5000/api/v1/user/profile', {
-        withCredentials: true,
-      })
-      .then((res) => {
-        // console.log(res.data);
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, [data]);
+  const {
+    error,
+    isPending,
+    data: userProfile,
+  } = useFetch('http://localhost:5000/api/v1/user/profile');
+
+  // useEffect(() => {
+  //   axios
+  //     .get('', {
+  //       withCredentials: true,
+  //     })
+  //     .then((res) => {
+  //       // console.log(res.data);
+  //       setData(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [data]);
+
+  console.log(userProfile);
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
-      {data && <SidebarUser data={data} />}
+      {userProfile && <SidebarUser data={userProfile} />}
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[30px]">Data Table Customer</h2>
@@ -45,7 +53,7 @@ export default function DashUser(props) {
             </div>
             {/* {error && <div>{error}</div>} */}
             {/* {isPending && <div>Loading...</div>} */}
-            {data && <BookingUserTable data={data} />}
+            {userProfile && <BookingUserTable data={userProfile} />}
           </div>
         </div>
       </div>
