@@ -46,7 +46,7 @@ export default function Sidebar(data) {
           </div>
           <div className="mt-[10px]">
             {menuItems.map((item, index) => (
-              <NavLink to={`/dashboard-admin/${item.path}`} key={index}>
+              <NavLink to={`/dashboard/admin/${item.path}`} key={index}>
                 <div className="flex flex-col items-center py-[10px]">
                   <button className="w-[50px] bg-[#F1F2F6] shadow-lg drop-shadow-lg rounded-xl h-[40px] md:w-[200px] hover:drop-shadow-xl hover:bg-white active:bg-white">
                     <div className="flex gap-4 items-center pl-[10px]">

@@ -2,8 +2,8 @@ import { FaEdit } from 'react-icons/fa';
 import { ModalUDBook, ModalUpDate } from '../index';
 import React, { useEffect, useState } from 'react';
 
-export default function BookingData(data) {
-  const bookId = data.data.data.booking;
+export default function BookingTable(userProfile) {
+  const bookId = userProfile.data.data.booking;
 
   return (
     <div className="">

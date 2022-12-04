@@ -12,13 +12,11 @@ router.post('/register', authController.register);
 router.delete('/:id', authMiddleware.auth, userController.deleteUser);
 
 // Current User Profile
-router
-  .route('/profile')
-  .get(
-    authMiddleware.auth,
-    authMiddleware.restricAccess('admin'),
-    userController.profileInfo
-  );
+router.route('/profile').get(
+  authMiddleware.auth,
+  // authMiddleware.restricAccess('admin'),
+  userController.profileInfo
+);
 
 // LOGIN + ADMIN ROLE REQUIRED ACCESS
 router.use(authMiddleware.auth);

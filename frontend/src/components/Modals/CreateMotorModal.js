@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import ModalSuccess from './SuccessModal';
+import SuccessModal from './SuccessModal';
 
 export default function CreateMotorModal() {
   const [showModal, setShowModal] = useState(false);
@@ -127,7 +127,7 @@ export default function CreateMotorModal() {
                       >
                         Submit
                       </button>
-                      {submission ? <ModalSuccess /> : null}
+                      {submission ? <SuccessModal /> : null}
                     </div>
                   </form>
                 </div>
