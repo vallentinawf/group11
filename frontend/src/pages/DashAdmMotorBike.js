@@ -1,7 +1,13 @@
 import { FaSearch } from 'react-icons/fa';
 import { React, useState } from 'react';
-import { Filter, Loader, ModalCreateMotor, ModalCreateMotorSuccess, MotorData, Sidebar, useFetch } from '../components';
-import Button from '../components/Button';
+import {
+  Filter,
+  Loader,
+  CreateMotorModal,
+  MotorTable,
+  Sidebar,
+} from '../components/index';
+import useFetch from '../Utils/Hooks/useFetch';
 
 export default function DashAdmMotorBike(props) {
   const {
@@ -21,24 +27,9 @@ export default function DashAdmMotorBike(props) {
           <div className="flex gap-5 items-center">
             <Filter />
             <FaSearch className="md:hidden" />
-            <ModalCreateMotor />
+            <CreateMotorModal />
           </div>
         </div>
-
-        {/* <div className="flex justify-center gap-20 mt-[30px] text-black">
-          <div className="bg-orange drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 ">
-            <h3> Available Bikes</h3>
-            <p className="text-[24px] text-bold">5</p>
-          </div>
-          <div className="bg-orange drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 ">
-            <h3> Rented Bikes</h3>
-            <p className="text-[24px] text-bold">5</p>
-          </div>
-          <div className="bg-orange drop-shadow-md rounded-xl w-[150px] h-[100px] flex justify-center items-center flex-col gap-1 ">
-            <h3> Average Rate</h3>
-            <p className="text-[23px] text-bold">Rp. 65,000</p>
-          </div>
-        </div> */}
 
         <div className=" rounded-md shadow-md shadow-drop-md bg-[#F8F8F8] h-[80vh] mt-[30px] overflow-auto">
           <div className="min-w-[1000px] ">
@@ -53,8 +44,8 @@ export default function DashAdmMotorBike(props) {
               </div>
             </div>
             {error && <div>{error}</div>}
-            {isPending && <Loader/>}
-            {motors && <MotorData motors={motors} />}
+            {isPending && <Loader />}
+            {motors && <MotorTable motors={motors} />}
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaQuestionCircle } from 'react-icons/fa';
 import axios from 'axios';
 
-export default function ModalCreateMotor(props) {
+export default function CreateMotorModal(props) {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState(props.name);
   const [type, setType] = useState(props.type);

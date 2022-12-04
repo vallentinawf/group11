@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Logo from '../assets/logoTransparent.png';
+import Logo from '../../assets/logoTransparent.png';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
@@ -34,13 +34,13 @@ export default function Navbar() {
             List Motor
           </Link>
           <Link
-            to="/dashboard-admin/motorbike"
+            to="/dashboard/admin/motorbike"
             className="border-none bg-transparent font-primary  text-black"
           >
             Dashboard Admin
           </Link>
           <Link
-            to="/dashboard-user/booking"
+            to="/dashboard/user/booking"
             className="border-none bg-transparent font-primary  text-black"
           >
             Dashboard User

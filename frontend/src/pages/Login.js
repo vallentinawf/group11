@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FormRow, Alert } from '../components';
 import loginImg from '../assets/loginImg.jpg';
 import Logo from '../assets/logo.png';
 import axios from 'axios';
+import { UserContext } from '../context/userContext';
 import { useAppContext } from '../context/appContext';
-import { CiMail, CiLock,} from "react-icons/ci";
+import { CiMail, CiLock } from 'react-icons/ci';
 //import Loader from '../components/Loader';
 
 const initialState = {
@@ -16,6 +17,8 @@ const initialState = {
 const Login = () => {
   const [values, setValues] = useState(initialState);
   const navigate = useNavigate();
+
+  const { setUser } = useContext(UserContext);
   const { displayAlert, showAlert, startLoading, endLoadingSuccess, loading } =
     useAppContext();
 
@@ -37,12 +40,23 @@ const Login = () => {
     const url = 'http://localhost:5000/api/v1/auth/login';
 
     try {
-      await axios.post(
+      const response = await axios.post(
         url,
         { email: values.email, password: values.password },
         { withCredentials: true }
       );
-      navigate('/dashboard-admin/motorbike');
+
+      const user = response.data.user;
+
+      setUser({
+        id: user._id,
+        email: user.email,
+        username: user.name,
+        role: user.role,
+        borrowedBookIds: user.borrowedMotorId,
+      });
+
+      navigate(user.role === 'admin' ? '/dashboard/admin/motorbike' : '/');
     } catch (e) {
       console.log(e);
     }
@@ -77,7 +91,7 @@ const Login = () => {
             labelText="Email"
             value={values.email}
             placeholder="akbarsigit@gmail.com"
-            icon = {<CiMail/>}
+            icon={<CiMail />}
             handleChange={handleChange}
           />
           {/* div for Password Input */}
@@ -87,7 +101,7 @@ const Login = () => {
             labelText="Password"
             value={values.password}
             placeholder="••••••••"
-            icon = {<CiLock/>}
+            icon={<CiLock />}
             handleChange={handleChange}
           />
           {/* div for Forgot Password */}

@@ -1,9 +1,9 @@
 import { FaEdit, FaNapster } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ModalSuccess from './ModalSuccess';
+import SuccessModal from './SuccessModal';
 
-export default function ModalUDBook(id) {
+export default function UpDelBookingModal(id) {
   const [showModal, setShowModal] = useState(false);
   const [submission, setSubmission] = useState(false);
   const [userId, setUserId] = useState('');
@@ -123,7 +123,7 @@ export default function ModalUDBook(id) {
                             >
                               Update
                             </button>
-                            {submission ? (<ModalSuccess/>) : null}
+                            {submission ? <SuccessModal /> : null}
                           </div>
                         </form>
                       </div>

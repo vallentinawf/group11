@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import ModalSuccess from './ModalSuccess';
+import SuccessModal from './SuccessModal';
 
-export default function ModalCreateMotor() {
+export default function CreateMotorModal() {
   const [showModal, setShowModal] = useState(false);
   const [submission, setSubmission] = useState(false);
   const [name, setName] = useState();
@@ -10,10 +10,11 @@ export default function ModalCreateMotor() {
   const [status, setStatus] = useState('available');
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState();
+  const [imageCover, setImageCover] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const motor = { name, type, status, price, quantity };
+    const motor = { name, type, imageCover, status, price, quantity };
     try {
       const url = 'http://localhost:5000/api/v1/rental';
       const response = await axios.post(url, motor, {
@@ -56,6 +57,15 @@ export default function ModalCreateMotor() {
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                    />
+                    <label className="block text-black text-sm font-bold mb-1 mt-2">
+                      Image url
+                    </label>
+                    <input
+                      className="shadow appearance-none border rounded-xl w-full py-2 px-1 text-black"
+                      type="text"
+                      value={imageCover}
+                      onChange={(e) => setImageCover(e.target.value)}
                     />
                     <label className="block text-black text-sm font-bold mb-1 mt-2">
                       Type
@@ -117,7 +127,7 @@ export default function ModalCreateMotor() {
                       >
                         Submit
                       </button>
-                      {submission ? (<ModalSuccess/>) : null}
+                      {submission ? <SuccessModal /> : null}
                     </div>
                   </form>
                 </div>
