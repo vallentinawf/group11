@@ -17,8 +17,8 @@ export default function Card(motors) {
           >
             <div className="">
               <img
-                src={motor.imageCover}
-                alt="Motor pict"
+                src={'https://i.ibb.co/jhQFzNP/silhouette-png.png'}
+                alt="Bike img"
                 className="w-[180px]"
               />
               <p className="text-black  text-[14px] font-bold ml-[-20px]">
