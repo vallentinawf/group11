@@ -15,10 +15,11 @@ const rentalSchema = new mongoose.Schema({
   //     trim: true,
   //     required: [true, 'Harus ada diskripsi singkat']
   //   },
-  //   imageCover: {
-  //     type: String,
-  //     required: [true, 'Harus ada Foto']
-  //   },
+  imageCover: {
+    type: String,
+    required: [true, 'Harus ada Foto'],
+    default: 'https://i.ibb.co/jhQFzNP/silhouette-png.png'
+  },
   status: {
     type: String,
     enum: ['available', 'not-available'],

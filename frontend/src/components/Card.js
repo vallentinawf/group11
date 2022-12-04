@@ -16,7 +16,11 @@ export default function Card(motors) {
             className="flex flex-col items-center bg-white px-[30px] justify-between content-between pb-[20px] max-w-[330px] h-[300px] w-[300px] rounded-[10px] p-[10px] gap-3"
           >
             <div className="">
-              <img src={vario} alt="vario" className="w-[180px]" />
+              <img
+                src={motor.imageCover}
+                alt="Motor pict"
+                className="w-[180px]"
+              />
               <p className="text-black  text-[14px] font-bold ml-[-20px]">
                 Rp. {motor.price}/day
               </p>
@@ -24,6 +28,7 @@ export default function Card(motors) {
             </div>
             <button>
               <ModalCreateBook
+                imgUrl={motor.imageCover}
                 name={motor.name}
                 type={motor.type}
                 price={motor.price}

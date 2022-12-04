@@ -12,13 +12,14 @@ export default function ModalUDMotor(id) {
   const [quantity, setQuantity] = useState('');
   const [price, setPrice] = useState('');
   const [_id, setId] = useState('');
+  const [imageCover, setImageCover] = useState('');
 
   const keyid = id.id;
   const motorData = id.motors.motors.data.rental;
   const [motors, setMotors] = useState(motorData);
 
   const handleUpdate = async () => {
-    const motor = { name, type, status, quantity, price };
+    const motor = { name, type, status, quantity, price, imageCover };
     try {
       const url = 'http://localhost:5000/api/v1/rental/' + _id;
       const response = await axios.patch(url, motor, { withCredentials: true });
@@ -54,6 +55,7 @@ export default function ModalUDMotor(id) {
                 setStatus(fmotor.status);
                 setPrice(fmotor.price);
                 setQuantity(fmotor.quantity);
+                setImageCover(fmotor.imageCover);
                 setSubmission(false);
               }}
             >
@@ -91,6 +93,15 @@ export default function ModalUDMotor(id) {
                             required
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                          />
+                          <label className="block  text-sm font-bold mb-1 mt-2">
+                            Image url
+                          </label>
+                          <input
+                            className="shadow  border rounded-xl w-full py-2 px-1 "
+                            type="text"
+                            value={imageCover}
+                            onChange={(e) => setImageCover(e.target.value)}
                           />
                           <label className="block  text-sm font-bold mb-1 mt-2">
                             Type
@@ -163,7 +174,7 @@ export default function ModalUDMotor(id) {
                             >
                               Delete
                             </button>
-                            {submission ? (<ModalSuccess/>) : null}
+                            {submission ? <ModalSuccess /> : null}
                           </div>
                         </form>
                       </div>
