@@ -1,6 +1,7 @@
 import * as React from 'react';
-import girlAvatar from '../assets/girlAvatar.png';
-import boyAvatar from '../assets/boyAvatar.png';
+import Avatar from './Avatar';
+// import girlAvatar from '../assets/girlAvatar.png';
+// import boyAvatar from '../assets/boyAvatar.png';
 
 export default function EditProfileForm() {
     return(
@@ -49,14 +50,8 @@ export default function EditProfileForm() {
                 </div>
             </form>
 
-            <div className='flex flex-col justify-center items-center w-[50%]'>
-                <div className=''>
-                    <img src={boyAvatar} alt='boy avatar' className='w-[360px] h-[360px] rounded-full'></img>
-                </div>
-                <div>
-                    <button className='p-6 border-orange w-full my-5 py-2 font-bold text-white rounded-lg shadow-md shadow-orange/60 hover:shadow-orange/40 bg-orange '>Change Avatar</button>
-                </div>
-            </div>
+            {/*Div for Avatar*/}
+            <Avatar></Avatar>
         </div>
     )
 }
