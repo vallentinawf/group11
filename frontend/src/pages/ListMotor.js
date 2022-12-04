@@ -8,8 +8,8 @@ import { getMotors } from '../context/actions/motorActions';
 
 export default function ListMotor() {
   const dispatch = useDispatch()
-  const getallproductsstate = useSelector(state =>state.getMotorsReducer)
-  const {motors , loading , error} = getallproductsstate
+  const getMotorsState = useSelector(state =>state.getMotorsReducer)
+  const {motors , loading , error} = getMotorsState
 
   useEffect(() => {
     dispatch(getMotors())      
@@ -28,7 +28,7 @@ export default function ListMotor() {
       </h2>
       <div className="">
         {error && <div>{error}</div>}
-        {isPending && (
+        {loading && (
           <div>
             <Loader />
             Loading...
@@ -36,9 +36,6 @@ export default function ListMotor() {
         )}
         {motors && <Card motors={motors} />}
       </div>
-      {error && <div>{error}</div>}
-      {loading && <div><Loader/>Loading...</div>}
-      {motors && <Card motors={motors} />}
     </div>
   );
 }
