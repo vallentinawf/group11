@@ -1,4 +1,4 @@
-import {getMotorsReducer} from "./reducers/motorReducer"
+import {getMotorsReducer, updateMotorsReducer} from "./reducers/motorReducer"
 import {combineReducers} from "redux"
 import {createStore, applyMiddleware} from "redux"
 import {composeWithDevTools} from "redux-devtools-extension"
@@ -6,7 +6,8 @@ import thunk from "redux-thunk"
 
 const finalReducer = combineReducers({
     // userReducer : userReducer,
-    getMotorsReducer : getMotorsReducer
+    getMotorsReducer : getMotorsReducer,
+    //updateMotorsReducer : updateMotorsReducer
 })
 
 const composeEnhancers = composeWithDevTools({

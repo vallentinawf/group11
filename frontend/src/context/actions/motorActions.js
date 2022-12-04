@@ -16,3 +16,16 @@ export const getMotors = () => (dispatch) =>{
     })
 
 }
+
+// export const updateMotors =(id , updatedMotors)=> dispatch=>{
+
+//     dispatch({type:'UPDATE_PRODUCT_REQUEST'})
+  
+//     axios.post('http://localhost:5000/api/v1/rental/', {id , updatedMotors}).then(res=>{
+//       console.log(res);
+//       dispatch({type:'UPDATE_MOTORS_SUCCESS'})
+//     }).catch(err=>{
+//       dispatch({type:'UPDATE_MOTORS_FAILED'})
+//     })
+  
+// }
