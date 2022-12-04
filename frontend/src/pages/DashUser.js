@@ -1,15 +1,9 @@
 import {} from 'react-icons/fa';
 import { React, useEffect, useState } from 'react';
-import { useFetch, BookingDataUser, SidebarUser } from '../components';
+import { useFetch, BookingUserTable, SidebarUser } from '../components';
 import axios from 'axios';
 
 export default function DashUser(props) {
-  // const {
-  //   error,
-  //   isPending,
-  //   data: data,
-  // } = useFetch);
-
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -51,7 +45,7 @@ export default function DashUser(props) {
             </div>
             {/* {error && <div>{error}</div>} */}
             {/* {isPending && <div>Loading...</div>} */}
-            {data && <BookingDataUser data={data} />}
+            {data && <BookingUserTable data={data} />}
           </div>
         </div>
       </div>

@@ -1,12 +1,6 @@
 import * as React from 'react';
-import {
-  Modal,
-  MotorData,
-  Sidebar,
-  Card,
-  useFetch,
-  Loader,
-} from '../components';
+import { Card, Loader } from '../components/index';
+import useFetch from '../Utils/Hooks/useFetch';
 
 export default function ListMotor() {
   const {
