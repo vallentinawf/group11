@@ -19,6 +19,7 @@ import Hero from './Landing/Hero';
 import Offer from './Landing/Offer';
 
 import EditProfileForm from './EditProfileForm';
+import Avatar from './Avatar';
 import Filter from './Filter';
 
 
@@ -44,5 +45,6 @@ export {
   Hero,
   Filter,
   Offer,
-  EditProfileForm
+  EditProfileForm,
+  Avatar,
 };
