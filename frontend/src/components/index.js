@@ -1,50 +1,51 @@
+import Navbar from './Navbars/Navbar';
+import Footer from './Footers/Footer';
+import Sidebar from './Sidebars/Sidebar';
+import SidebarUser from './Sidebars/SidebarUser';
+
+import CreateMotorModal from './Modals/CreateMotorModal';
+import UpDelMotorModal from './Modals/UpDelMotorModal';
+import CreateBookingModal from './Modals/CreateBookingModal';
+import UpDelBookingModal from './Modals/UpDelBookingModal';
+import SuccessModal from './Modals/SuccessModal';
+
+import MotorTable from './Tables/MotorTable';
+import BookingTable from './Tables/BookingTable';
+import BookingUserTable from './Tables/BookingUserTable';
+
+import Card from './Cards/Card';
+import Filter from './Filter/Filter';
 import Alert from './Alert';
-import FormRow from './FormRow';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import ModalCreateMotor from './ModalCreateMotor';
-import Sidebar from './Sidebar';
-import Loader from './Loader'
-import useFetch from './useFetch';
-import MotorData from './MotorData';
-import ModalUDMotor from './ModalUDMotor';
-import Card from './Card';
-import BookingData from './BookingData';
-import ModalUDBook from './ModalUDBook';
-import ModalCreateBook from './ModalCreateBook';
-import SidebarUser from './SidebarUser';
-import ModalSuccess from './ModalSuccess';
-import BookingDataUser from './BookingDataUser';
+import FormRow from './Inputs/FormRow';
+import Loader from './Loader';
+import Button from './Buttons/Button';
+
 import Hero from './Landing/Hero';
 import Offer from './Landing/Offer';
-
 import EditProfileForm from './EditProfileForm';
 import Avatar from './Avatar';
-import Filter from './Filter';
-
 
 export {
   FormRow,
   Alert,
   Footer,
   Navbar,
-  ModalCreateMotor,
+  CreateMotorModal,
   Sidebar,
-  useFetch,
-  MotorData,
-  ModalUDMotor,
+  MotorTable,
+  UpDelMotorModal,
   Card,
-  BookingData,
-  ModalUDBook,
-  ModalCreateBook,
+  BookingTable,
+  UpDelBookingModal,
+  CreateBookingModal,
   SidebarUser,
   Loader,
-
-  ModalSuccess,
-  BookingDataUser,
+  SuccessModal,
+  BookingUserTable,
   Hero,
   Filter,
   Offer,
   EditProfileForm,
   Avatar,
+  Button,
 };

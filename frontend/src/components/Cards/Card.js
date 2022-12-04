@@ -1,7 +1,5 @@
 import * as React from 'react';
-import Logo from '../assets/logoTransparent.png';
-import vario from '../assets/vario.png';
-import { ModalCreateBook } from './';
+import { CreateBookingModal } from '../index';
 
 export default function Card(motors) {
   const motorId = motors.motors.data.rental;
@@ -17,7 +15,7 @@ export default function Card(motors) {
           >
             <div className="">
               <img
-                src={'https://i.ibb.co/jhQFzNP/silhouette-png.png'}
+                src={motor.imageCover}
                 alt="Bike img"
                 className="w-[180px]"
               />
@@ -27,7 +25,7 @@ export default function Card(motors) {
               <p className="font-semibold ml-[-20px]">{motor.name}</p>
             </div>
             <button>
-              <ModalCreateBook
+              <CreateBookingModal
                 imgUrl={motor.imageCover}
                 name={motor.name}
                 type={motor.type}

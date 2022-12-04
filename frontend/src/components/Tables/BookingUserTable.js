@@ -1,5 +1,5 @@
 import { FaEdit } from 'react-icons/fa';
-import { ModalUDBook, ModalUpDate } from '.';
+import { ModalUDBook, ModalUpDate } from '../index';
 import React, { useEffect, useState } from 'react';
 
 export default function BookingData(data) {

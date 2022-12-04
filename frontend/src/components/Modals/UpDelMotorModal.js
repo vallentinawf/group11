@@ -1,9 +1,9 @@
 import { FaEdit } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ModalSuccess from './ModalSuccess';
+import ModalSuccess from './SuccessModal';
 
-export default function ModalUDMotor(id) {
+export default function UpDelMotorModel(id) {
   const [showModal, setShowModal] = useState(false);
   const [submission, setSubmission] = useState(false);
   const [name, setName] = useState('');

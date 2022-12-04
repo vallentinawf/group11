@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import ModalSuccess from './ModalSuccess';
+import ModalSuccess from './SuccessModal';
 
-export default function ModalCreateMotor() {
+export default function CreateMotorModal() {
   const [showModal, setShowModal] = useState(false);
   const [submission, setSubmission] = useState(false);
   const [name, setName] = useState();
