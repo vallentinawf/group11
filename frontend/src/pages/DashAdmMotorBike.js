@@ -1,5 +1,5 @@
 import { FaSearch } from 'react-icons/fa';
-import { React, useState } from 'react';
+import { React } from 'react';
 import {
   Filter,
   Loader,
@@ -7,14 +7,21 @@ import {
   MotorTable,
   Sidebar,
 } from '../components/index';
+
 import useFetch from '../Utils/Hooks/useFetch';
+import { useEffect, useState } from 'react';
+import {useDispatch, useSelector} from 'react-redux'
+import { getMotors } from '../context/actions/motorActions';
 
 export default function DashAdmMotorBike(props) {
-  const {
-    error,
-    isPending,
-    data: motors,
-  } = useFetch('http://localhost:5000/api/v1/rental');
+
+  const dispatch = useDispatch()
+  const getMotorsState = useSelector(state =>state.getMotorsReducer)
+  const {motors , loading , error} = getMotorsState
+
+  useEffect(() => {
+    dispatch(getMotors())      
+  }, [])
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
@@ -44,7 +51,7 @@ export default function DashAdmMotorBike(props) {
               </div>
             </div>
             {error && <div>{error}</div>}
-            {isPending && <Loader />}
+            {loading && <Loader />}
             {motors && <MotorTable motors={motors} />}
           </div>
         </div>
@@ -52,3 +59,9 @@ export default function DashAdmMotorBike(props) {
     </div>
   );
 }
+
+  // const {
+  //   error,
+  //   isPending,
+  //   data: motors,
+  // } = useFetch('http://localhost:5000/api/v1/rental');

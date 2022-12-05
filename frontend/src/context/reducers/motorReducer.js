@@ -63,26 +63,26 @@ export const updateMotorsReducer = (state={} , action)=>{
   }  
 }
 
-//   export const addMotorsReducer = (state={} , action)=>{
+  export const addMotorsReducer = (state={} , action)=>{
 
-//     switch(action.type)
-//     {
-//       case 'ADD_MOTORS_REQUEST' : return {
-//           ...state ,
-//           loading : true
-//       }
-//       case 'ADD_MOTORS_SUCCESS' : return {
-//           ...state ,
-//           loading : false , 
-//           success : true
-//       }
-//       case 'ADD_MOTORS_FAILED' : return {
-//           ...state ,
-//           loading : false,
-//           error : action.payload
-//       }
+    switch(action.type)
+    {
+      case 'ADD_MOTORS_REQUEST' : return {
+          ...state ,
+          loading : true
+      }
+      case 'ADD_MOTORS_SUCCESS' : return {
+          ...state ,
+          loading : false , 
+          success : true
+      }
+      case 'ADD_MOTORS_FAILED' : return {
+          ...state ,
+          loading : false,
+          error : action.payload
+      }
   
-//       default : return state
-//     }
+      default : return state
+    }
   
-//   }
+}
