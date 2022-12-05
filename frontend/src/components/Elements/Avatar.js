@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import girlAvatar from '../assets/girlAvatar.png';
-import boyAvatar from '../assets/boyAvatar.png';
-import ModalSuccess from './Modals/SuccessModal';
+import girlAvatar from '../../assets/girlAvatar.png';
+import boyAvatar from '../../assets/boyAvatar.png';
+import ModalSuccess from '../Modals/SuccessModal';
 
 export default function Avatar() {
   const [changed, setChanged] = useState(false);

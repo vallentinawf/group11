@@ -1,24 +1,28 @@
-import {addMotorsReducer, deleteMotorsReducer, getMotorsReducer, updateMotorsReducer} from "./reducers/motorReducer"
-import {combineReducers} from "redux"
-import {createStore, applyMiddleware} from "redux"
-import {composeWithDevTools} from "redux-devtools-extension"
-import thunk from "redux-thunk"
+import {
+  addMotorsReducer,
+  deleteMotorsReducer,
+  getMotorsReducer,
+  updateMotorsReducer,
+} from './reducers/motorReducer';
+// import { getCurrentUserReducer } from './reducers/userReducer';
+import { combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 const finalReducer = combineReducers({
-    // userReducer : userReducer,
-    getMotorsReducer : getMotorsReducer,
-    addMotorsReducer : addMotorsReducer,
-    updateMotorsReducer : updateMotorsReducer,
-    deleteMotorsReducer : deleteMotorsReducer,
-})
+  //   getCurrentUserReducer: getCurrentUserReducer,
+  getMotorsReducer: getMotorsReducer,
+  addMotorsReducer: addMotorsReducer,
+  updateMotorsReducer: updateMotorsReducer,
+  deleteMotorsReducer: deleteMotorsReducer,
+});
 
-const composeEnhancers = composeWithDevTools({
-
-})
+const composeEnhancers = composeWithDevTools({});
 
 const store = createStore(
-    finalReducer, 
-    composeEnhancers(applyMiddleware(thunk)
-))
+  finalReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
 
-export default store
+export default store;

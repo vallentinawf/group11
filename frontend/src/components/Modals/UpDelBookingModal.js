@@ -22,7 +22,14 @@ export default function UpDelBookingModal(id) {
 
     try {
       const url = 'http://localhost:5000/api/v1/booking/return';
-      const response = await axios.patch(url, book, { withCredentials: true });
+      const response = await axios.patch(
+        url,
+        { bookingId },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log({ bookingId });
     } catch (err) {
       alert(err.response.data.error.toString());
     }

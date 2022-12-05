@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import SuccessModal from './SuccessModal';
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addMotors } from '../../context/actions/motorActions';
-import Loader from '../Loader';
+import Loader from '../Elements/Loader';
 
 export default function CreateMotorModal() {
   const [showModal, setShowModal] = useState(false);
@@ -15,15 +15,15 @@ export default function CreateMotorModal() {
   const [quantity, setQuantity] = useState();
   const [imageCover, setImageCover] = useState();
 
-  const dispatch = useDispatch()
-  const AddMotorsState = useSelector((state) =>state.addMotorsReducer)
+  const dispatch = useDispatch();
+  const AddMotorsState = useSelector((state) => state.addMotorsReducer);
 
-  const {loading, error, success} = AddMotorsState
+  const { loading, error, success } = AddMotorsState;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const motor = { name, type, imageCover, status, price, quantity };
-    dispatch(addMotors(motor))
+    dispatch(addMotors(motor));
   };
 
   return (
@@ -133,8 +133,8 @@ export default function CreateMotorModal() {
               </div>
             </div>
           </div>
-          {error ? <div>error</div>: null}
-          {loading ? <Loader/> : null}
+          {error ? <div>error</div> : null}
+          {loading ? <Loader /> : null}
           {success ? <SuccessModal /> : null}
         </>
       ) : null}
