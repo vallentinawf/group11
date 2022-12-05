@@ -17,15 +17,33 @@ export const getMotors = () => (dispatch) =>{
 
 }
 
-// export const updateMotors =(id , updatedMotors)=> dispatch=>{
+export const updateMotors =(id, motor)=> dispatch=>{
 
-//     dispatch({type:'UPDATE_PRODUCT_REQUEST'})
+    dispatch({type:'UPDATE_MOTORS_REQUEST'})
   
-//     axios.post('http://localhost:5000/api/v1/rental/', {id , updatedMotors}).then(res=>{
-//       console.log(res);
-//       dispatch({type:'UPDATE_MOTORS_SUCCESS'})
-//     }).catch(err=>{
-//       dispatch({type:'UPDATE_MOTORS_FAILED'})
-//     })
+    axios
+        .patch('http://localhost:5000/api/v1/rental/' + id, motor, { withCredentials: true } )
+        .then(res=>{
+            console.log(res);
+            dispatch({type:'UPDATE_MOTORS_SUCCESS'})
+    })
+        .catch(err=>{
+            dispatch({type:'UPDATE_MOTORS_FAILED'})
+    })
   
-// }
+}
+
+export const deleteMotors = (id) => dispatch => {
+    dispatch({type: 'DELETE_MOTORS_REQUEST'})
+
+    axios
+        .delete('http://localhost:5000/api/v1/rental/' + id, {withCredentials: true})
+        .then(res=>{
+            console.log(res);
+            dispatch({type: 'DELETE_MOTORS_SUCCESS'})
+    })
+        .catch(err=>{
+            dispatch({type: 'DELETE_MOTORS_FAILED'})
+    })
+
+}
