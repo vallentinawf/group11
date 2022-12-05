@@ -1,11 +1,13 @@
 import { FaEdit } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux'
 import SuccessModal from './SuccessModal';
+import { updateMotors, deleteMotors } from '../../context/actions/motorActions';
+import Loader from '../Loader';
 
 export default function UpDelMotorModel(id) {
   const [showModal, setShowModal] = useState(false);
-  const [submission, setSubmission] = useState(false);
+  //const [submission, setSubmission] = useState(false);
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [status, setStatus] = useState('');
@@ -18,24 +20,23 @@ export default function UpDelMotorModel(id) {
   const motorData = id.motors.motors.data.rental;
   const [motors, setMotors] = useState(motorData);
 
-  const handleUpdate = async () => {
-    const motor = { name, type, status, quantity, price, imageCover };
-    try {
-      const url = 'http://localhost:5000/api/v1/rental/' + _id;
-      const response = await axios.patch(url, motor, { withCredentials: true });
-    } catch (err) {
-      alert(err.response.data.error.toString());
-    }
-  };
+  const updateMotorState = useSelector((state) =>state.updateMotorsReducer)
+  const {success , updateerror , updateloading} = updateMotorState
 
-  const handleDelete = async () => {
-    try {
-      const url = 'http://localhost:5000/api/v1/rental/' + _id;
-      const response = await axios.delete(url, { withCredentials: true });
-    } catch (err) {
-      alert(err.response.data.error.toString());
-    }
-  };
+  const deleteMotorState = useSelector((state) => state.deleteMotorsReducer)
+  const {delsuccess, loading, error} = deleteMotorState
+  const dispatch = useDispatch()
+
+  function editMotors(e) {
+    e.preventDefault();
+    const motor = { name, type, status, quantity, price, imageCover };
+    dispatch(updateMotors(_id, motor));
+  }
+
+  function _deleteMotors(e){
+    e.preventDefault();
+    dispatch(deleteMotors(_id));
+  }
 
   return (
     <>
@@ -56,7 +57,6 @@ export default function UpDelMotorModel(id) {
                 setPrice(fmotor.price);
                 setQuantity(fmotor.quantity);
                 setImageCover(fmotor.imageCover);
-                setSubmission(false);
               }}
             >
               <FaEdit className="text-[17px]" />
@@ -156,25 +156,28 @@ export default function UpDelMotorModel(id) {
                             <button
                               className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none w-[100px]"
                               type="button"
-                              onClick={() => {
-                                handleUpdate();
-                                setSubmission(true);
+                              onClick={(e) => {
+                                editMotors(e);
                                 setShowModal(true);
                               }}
                             >
                               Update
                             </button>
+                            {loading && <Loader></Loader>}
                             <button
                               className="text-white bg-[#FC3B11] active:bg-[#a1361e] font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none w-[100px]"
                               type="button"
-                              onClick={() => {
-                                handleDelete();
-                                setSubmission(true);
+                              onClick={(e) => {
+                                _deleteMotors(e);
                               }}
                             >
                               Delete
                             </button>
-                            {submission ? <SuccessModal /> : null}
+                            {updateloading && <Loader></Loader>}
+                            {delsuccess ? <SuccessModal /> : null}
+                            {error && <div>{error}</div>}
+                            {updateerror && <div>{error}</div>}
+                            {success ? <SuccessModal /> : null}
                           </div>
                         </form>
                       </div>
@@ -188,3 +191,22 @@ export default function UpDelMotorModel(id) {
     </>
   );
 }
+
+  // const handleUpdate = async () => {
+  //   const motor = { name, type, status, quantity, price, imageCover };
+  //   try {
+  //     const url = 'http://localhost:5000/api/v1/rental/' + _id;
+  //     const response = await axios.patch(url, motor, { withCredentials: true });
+  //   } catch (err) {
+  //     alert(err.response.data.error.toString());
+  //   }
+  // };
+
+  // const handleDelete = async () => {
+  //   try {
+  //     const url = 'http://localhost:5000/api/v1/rental/' + _id;
+  //     const response = await axios.delete(url, { withCredentials: true });
+  //   } catch (err) {
+  //     alert(err.response.data.error.toString());
+  //   }
+  // };
