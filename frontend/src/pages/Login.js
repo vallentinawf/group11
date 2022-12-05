@@ -7,7 +7,6 @@ import axios from 'axios';
 import { UserContext } from '../context/userContext';
 import { useAppContext } from '../context/appContext';
 import { CiMail, CiLock } from 'react-icons/ci';
-//import Loader from '../components/Loader';
 
 const initialState = {
   email: '',
@@ -19,16 +18,13 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { setUser } = useContext(UserContext);
-  const { displayAlert, showAlert, startLoading, endLoadingSuccess, loading } =
-    useAppContext();
+  const { displayAlert, showAlert } = useAppContext();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e) => {
-    //startLoading();
-
     e.preventDefault();
 
     const { email, password } = values;
@@ -48,13 +44,12 @@ const Login = () => {
 
       const user = response.data.user;
 
-      setUser({
-        id: user._id,
-        email: user.email,
-        username: user.name,
-        role: user.role,
-        borrowedBookIds: user.borrowedMotorId,
-      });
+      localStorage.setItem('userId', user._id);
+      localStorage.setItem('email', user.email);
+      localStorage.setItem('username', user.username);
+      localStorage.setItem('role', user.role);
+      // localStorage.setItem('token', response.data.token);
+      localStorage.setItem('borrowedMotorId', user.borrowedMotorId);
 
       navigate(user.role === 'admin' ? '/dashboard/admin/motorbike' : '/');
     } catch (e) {
