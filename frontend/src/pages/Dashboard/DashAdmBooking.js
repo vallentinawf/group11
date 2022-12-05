@@ -2,9 +2,11 @@ import { React, useState, useEffect } from 'react';
 import { Sidebar, BookingTable, Loader } from '../../components/index';
 import useFetch from '../../Utils/Hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
+import useUser from '../../context/UserContext';
 
 export default function DashAdmBooking(props) {
   const navigate = useNavigate();
+  const { role } = useUser();
 
   const {
     error,
@@ -12,9 +14,9 @@ export default function DashAdmBooking(props) {
     data: books,
   } = useFetch('http://localhost:5000/api/v1/booking');
 
-  // useEffect(() => {
-  //   navigate(userData.data.user.role.role === 'admin' ? null : '/');
-  // }, []);
+  useEffect(() => {
+    navigate(role === 'admin' ? null : '/');
+  }, []);
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
