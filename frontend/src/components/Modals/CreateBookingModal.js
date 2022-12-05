@@ -12,8 +12,6 @@ export default function CreateMotorModal(props) {
   const [userId, setUserId] = useState();
   const [rentalId, setRentalId] = useState(props.rentalId);
 
-  console.log(rentalId);
-
   const handleBooking = async (e) => {
     const book = { rentalId };
     try {

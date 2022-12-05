@@ -6,22 +6,29 @@ import {
   CreateMotorModal,
   MotorTable,
   Sidebar,
-} from '../components/index';
+} from '../../components/';
 
-import useFetch from '../Utils/Hooks/useFetch';
+// import useFetch from '../Utils/Hooks/useFetch';
 import { useEffect, useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux'
-import { getMotors } from '../context/actions/motorActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMotors } from '../../context/actions/motorActions';
+import { useNavigate } from 'react-router-dom';
 
 export default function DashAdmMotorBike(props) {
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch()
-  const getMotorsState = useSelector(state =>state.getMotorsReducer)
-  const {motors , loading , error} = getMotorsState
+  const dispatch = useDispatch();
+  const getMotorsState = useSelector((state) => state.getMotorsReducer);
+  const { motors, loading, error } = getMotorsState;
+
+  // const { data: userData } = useFetch(
+  //   'http://localhost:5000/api/v1/user/profile'
+  // );
 
   useEffect(() => {
-    dispatch(getMotors())      
-  }, [])
+    // navigate(userData.data.user.role.role === 'admin' ? null : '/');
+    dispatch(getMotors());
+  }, []);
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
@@ -60,8 +67,8 @@ export default function DashAdmMotorBike(props) {
   );
 }
 
-  // const {
-  //   error,
-  //   isPending,
-  //   data: motors,
-  // } = useFetch('http://localhost:5000/api/v1/rental');
+// const {
+//   error,
+//   isPending,
+//   data: motors,
+// } = useFetch('http://localhost:5000/api/v1/rental');

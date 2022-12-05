@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { CiMail, CiLock, CiUser } from "react-icons/ci";
-import Logo from '../assets/logo.png';
+import { CiMail, CiLock, CiUser } from 'react-icons/ci';
+import Logo from '../../assets/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { FormRow, Alert } from '../components';
-import registerImg from '../assets/registerImg.jpg';
-import { useAppContext } from '../context/appContext';
+import { FormRow, Alert } from '../../components';
+import registerImg from '../../assets/registerImg.jpg';
+import { useAppContext } from '../../context/appContext';
 import axios from 'axios';
 
 const initialState = {
@@ -75,7 +75,7 @@ const Register = () => {
             value={values.email}
             placeholder="akbarsigit@gmail.com"
             handleChange={handleChange}
-            icon = {<CiMail/>}
+            icon={<CiMail />}
           />
           {/* div for Username Input */}
           <FormRow
@@ -85,7 +85,7 @@ const Register = () => {
             value={values.username}
             placeholder="akbar sigit"
             handleChange={handleChange}
-            icon = {<CiUser/>}
+            icon={<CiUser />}
           />
           {/* div for Password Input */}
           <FormRow
@@ -95,7 +95,7 @@ const Register = () => {
             value={values.password}
             placeholder="••••••••"
             handleChange={handleChange}
-            icon={<CiLock/>}
+            icon={<CiLock />}
           />
           <div className="text-center">
             <button className="text-blue hover:text-darkblue underline">

@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FormRow, Alert } from '../components';
-import loginImg from '../assets/loginImg.jpg';
-import Logo from '../assets/logo.png';
+import { FormRow, Alert } from '../../components';
+import loginImg from '../../assets/loginImg.jpg';
+import Logo from '../../assets/logo.png';
 import axios from 'axios';
-import { UserContext } from '../context/userContext';
-import { useAppContext } from '../context/appContext';
+import { useAppContext } from '../../context/appContext';
 import { CiMail, CiLock } from 'react-icons/ci';
 
 const initialState = {
@@ -14,11 +13,9 @@ const initialState = {
 };
 
 const Login = () => {
-  const [values, setValues] = useState(initialState);
   const navigate = useNavigate();
-
-  const { setUser } = useContext(UserContext);
   const { displayAlert, showAlert } = useAppContext();
+  const [values, setValues] = useState(initialState);
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -26,35 +23,32 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     const { email, password } = values;
     if (!email || !password) {
       displayAlert();
       return;
     }
 
-    const url = 'http://localhost:5000/api/v1/auth/login';
-
+    const urlLogin = 'http://localhost:5000/api/v1/auth/login';
     try {
-      const response = await axios.post(
-        url,
+      const resLogin = await axios.post(
+        urlLogin,
         { email: values.email, password: values.password },
         { withCredentials: true }
       );
-
-      const user = response.data.user;
-
-      localStorage.setItem('userId', user._id);
-      localStorage.setItem('email', user.email);
-      localStorage.setItem('username', user.username);
-      localStorage.setItem('role', user.role);
-      // localStorage.setItem('token', response.data.token);
-      localStorage.setItem('borrowedMotorId', user.borrowedMotorId);
-
-      navigate(user.role === 'admin' ? '/dashboard/admin/motorbike' : '/');
     } catch (e) {
       console.log(e);
     }
+
+    let user;
+    const urlUser = 'http://localhost:5000/api/v1/user/profile';
+    try {
+      const resUser = await axios.get(urlUser, { withCredentials: true });
+      user = resUser.data.data.user;
+    } catch (e) {
+      console.log(e);
+    }
+    navigate(user.role === 'admin' ? '/dashboard/admin/motorbike' : '/');
   };
 
   return (

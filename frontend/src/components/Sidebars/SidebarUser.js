@@ -12,7 +12,6 @@ import { NavLink, Link } from 'react-router-dom';
 
 export default function SidebarUser(data) {
   const user = data.data.data.user;
-  console.log(user);
 
   const menuItems = [
     {

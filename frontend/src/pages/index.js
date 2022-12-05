@@ -1,16 +1,13 @@
 import Error from './Error';
 import ListMotor from './ListMotor';
-import Login from './Login';
+import Login from './Auth/Login';
 import Profile from './Profile';
-import Register from './Register';
+import Register from './Auth/Register';
 import AboutUs from './AboutUs';
-import DashAdmBooking from './DashAdmBooking';
-import DashAdmMotorBike from './DashAdmMotorBike';
-
+import DashAdmBooking from './Dashboard/DashAdmBooking';
+import DashAdmMotorBike from './Dashboard/DashAdmMotorBike';
 import Landing from './Landing';
-
-import DashUser from './DashUser';
-
+import DashUser from './Dashboard/DashUser';
 
 export {
   Error,
@@ -21,9 +18,6 @@ export {
   AboutUs,
   DashAdmBooking,
   DashAdmMotorBike,
-
   Landing,
-
   DashUser,
-
 };

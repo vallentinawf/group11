@@ -1,11 +1,9 @@
 import {} from 'react-icons/fa';
 import { React, useEffect, useState } from 'react';
-import { BookingUserTable, SidebarUser } from '../components';
-import useFetch from '../Utils/Hooks/useFetch';
+import { BookingUserTable, SidebarUser } from '../../components';
+import useFetch from '../../Utils/Hooks/useFetch';
 
 export default function DashUser(props) {
-  // const [data, setData] = useState(null);
-
   const {
     error,
     isPending,

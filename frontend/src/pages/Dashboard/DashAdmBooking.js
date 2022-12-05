@@ -1,19 +1,28 @@
 import { React, useState, useEffect } from 'react';
-import { Sidebar, BookingTable, Loader } from '../components/index';
-import useFetch from '../Utils/Hooks/useFetch';
+import { Sidebar, BookingTable, Loader } from '../../components/index';
+import useFetch from '../../Utils/Hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
 
 export default function DashAdmBooking(props) {
+  const navigate = useNavigate();
+
+  // const { data: userData } = useFetch(
+  //   'http://localhost:5000/api/v1/user/profile'
+  // );
+
   const {
     error,
     isPending,
-    data: bookings,
+    data: books,
   } = useFetch('http://localhost:5000/api/v1/booking');
 
-  const [data, setData] = useState(null);
+  // useEffect(() => {
+  //   navigate(userData.data.user.role.role === 'admin' ? null : '/');
+  // }, []);
 
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
-      <Sidebar data={data} />
+      <Sidebar data={books} />
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[20px] md:text-[30px] shadow-md drop-shadow-md">
@@ -41,7 +50,7 @@ export default function DashAdmBooking(props) {
             </div>
             {error && <div>{error}</div>}
             {isPending && <Loader />}
-            {bookings && <BookingTable bookings={bookings} />}
+            {books && <BookingTable books={books} />}
           </div>
         </div>
       </div>

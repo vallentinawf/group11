@@ -12,7 +12,12 @@ import {
   DashUser,
 } from './pages';
 
-import { Footer, Navbar, SuccessModal, EditProfileForm } from './components';
+import {
+  Footer,
+  Navbar,
+  SuccessModal,
+  EditProfileForm,
+} from './components/index';
 
 import { useState } from 'react';
 

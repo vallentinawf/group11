@@ -1,9 +1,9 @@
 import { FaEdit } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import SuccessModal from './SuccessModal';
 import { updateMotors, deleteMotors } from '../../context/actions/motorActions';
-import Loader from '../Loader';
+import Loader from '../Elements/Loader';
 
 export default function UpDelMotorModel(id) {
   const [showModal, setShowModal] = useState(false);
@@ -19,12 +19,12 @@ export default function UpDelMotorModel(id) {
   const motorData = id.motors.motors.data.rental;
   const [motors, setMotors] = useState(motorData);
 
-  const updateMotorState = useSelector((state) =>state.updateMotorsReducer)
-  const {success , updateerror , updateloading} = updateMotorState
+  const updateMotorState = useSelector((state) => state.updateMotorsReducer);
+  const { success, updateerror, updateloading } = updateMotorState;
 
-  const deleteMotorState = useSelector((state) => state.deleteMotorsReducer)
-  const {delsuccess, loading, error} = deleteMotorState
-  const dispatch = useDispatch()
+  const deleteMotorState = useSelector((state) => state.deleteMotorsReducer);
+  const { delsuccess, loading, error } = deleteMotorState;
+  const dispatch = useDispatch();
 
   function editMotors(e) {
     e.preventDefault();
@@ -32,7 +32,7 @@ export default function UpDelMotorModel(id) {
     dispatch(updateMotors(_id, motor));
   }
 
-  function _deleteMotors(e){
+  function _deleteMotors(e) {
     e.preventDefault();
     dispatch(deleteMotors(_id));
   }
@@ -191,21 +191,21 @@ export default function UpDelMotorModel(id) {
   );
 }
 
-  // const handleUpdate = async () => {
-  //   const motor = { name, type, status, quantity, price, imageCover };
-  //   try {
-  //     const url = 'http://localhost:5000/api/v1/rental/' + _id;
-  //     const response = await axios.patch(url, motor, { withCredentials: true });
-  //   } catch (err) {
-  //     alert(err.response.data.error.toString());
-  //   }
-  // };
+// const handleUpdate = async () => {
+//   const motor = { name, type, status, quantity, price, imageCover };
+//   try {
+//     const url = 'http://localhost:5000/api/v1/rental/' + _id;
+//     const response = await axios.patch(url, motor, { withCredentials: true });
+//   } catch (err) {
+//     alert(err.response.data.error.toString());
+//   }
+// };
 
-  // const handleDelete = async () => {
-  //   try {
-  //     const url = 'http://localhost:5000/api/v1/rental/' + _id;
-  //     const response = await axios.delete(url, { withCredentials: true });
-  //   } catch (err) {
-  //     alert(err.response.data.error.toString());
-  //   }
-  // };
+// const handleDelete = async () => {
+//   try {
+//     const url = 'http://localhost:5000/api/v1/rental/' + _id;
+//     const response = await axios.delete(url, { withCredentials: true });
+//   } catch (err) {
+//     alert(err.response.data.error.toString());
+//   }
+// };
