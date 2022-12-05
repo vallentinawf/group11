@@ -1,32 +1,11 @@
 import {} from 'react-icons/fa';
 import { React, useEffect, useState } from 'react';
 import { BookingUserTable, SidebarUser } from '../../components';
-import useFetch from '../../Utils/Hooks/useFetch';
 
-export default function DashUser(props) {
-  const {
-    error,
-    isPending,
-    data: userProfile,
-  } = useFetch('http://localhost:5000/api/v1/user/profile');
-
-  // useEffect(() => {
-  //   axios
-  //     .get('', {
-  //       withCredentials: true,
-  //     })
-  //     .then((res) => {
-  //       // console.log(res.data);
-  //       setData(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [data]);
-
-  console.log(userProfile);
-
+export default function DashUser() {
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
-      {userProfile && <SidebarUser data={userProfile} />}
+      <SidebarUser />
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[30px]">Data Table Customer</h2>
@@ -51,7 +30,8 @@ export default function DashUser(props) {
             </div>
             {/* {error && <div>{error}</div>} */}
             {/* {isPending && <div>Loading...</div>} */}
-            {userProfile && <BookingUserTable data={userProfile} />}
+            {/* {userData && <BookingUserTable data={userData} />} */}
+            <BookingUserTable />
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ export default function Navbar() {
 
   useEffect(() => {
     getCurrentUser();
+    console.log(role);
   }, [role]);
 
   return (

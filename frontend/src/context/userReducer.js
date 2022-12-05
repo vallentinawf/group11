@@ -13,6 +13,7 @@ export const initialState = {
   username: '',
   role: '',
   bookingHistory: {},
+  userData: {},
 };
 
 const userReducer = (state, action) => {
@@ -22,6 +23,7 @@ const userReducer = (state, action) => {
     case LOGIN:
       console.log(LOGIN, payload);
       return { ...state };
+
     case LOGOUT:
       return {
         userId: '',
@@ -29,13 +31,17 @@ const userReducer = (state, action) => {
         username: '',
         role: '',
         bookingHistory: {},
+        userData: {},
       };
+
     case REGISTER:
       console.log(REGISTER, payload);
       return { ...state };
+
     case DELETE_USER:
       console.log(DELETE_USER, payload);
       return { ...state };
+
     case GET_CURRENT_USER:
       const userData = payload.user;
       const userBooking = payload.booking;
@@ -45,10 +51,13 @@ const userReducer = (state, action) => {
         email: userData.email,
         role: userData.role,
         bookingHistory: userBooking,
+        userData: payload,
       };
+
     case GET_ALL_USER:
       console.log(GET_ALL_USER, payload);
       return { ...state };
+
     default:
       throw new Error(`no such action: ${action.type}`);
   }

@@ -48,6 +48,7 @@ export const UserProvider = ({ children }) => {
     username: state.username,
     role: state.role,
     bookingHistory: state.bookingHistory,
+    userData: state.userData,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
