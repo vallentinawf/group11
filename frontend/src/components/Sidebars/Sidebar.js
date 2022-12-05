@@ -10,8 +10,6 @@ import { React, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 export default function Sidebar(data) {
-  // const user = data.data.data.user;
-
   const menuItems = [
     {
       path: 'motorbike',

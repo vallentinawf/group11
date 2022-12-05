@@ -1,8 +1,21 @@
-import * as React from 'react';
+import { useContext } from 'react';
 import Logo from '../../assets/logoTransparent.png';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/userContext';
+import axios from 'axios';
+
+const handleLogOut = async () => {
+  try {
+    const url = 'http://localhost:5000/api/v1/auth/logout';
+    const response = await axios.post(url, { withCredentials: true });
+  } catch (err) {
+    alert(err.response.data.error.toString());
+  }
+};
 
 export default function Navbar() {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="w-screen h-[70px] bg-white fixed shadow-lg drop-shadow-lg z-10">
       <div className="px-5 flex justify-between items-center w-full h-full">
@@ -13,7 +26,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* div for buttons */}
         <div className="flex gap-5 pr-5">
           <Link
             to="/"
@@ -33,24 +45,41 @@ export default function Navbar() {
           >
             List Motor
           </Link>
-          <Link
-            to="/dashboard/admin/motorbike"
-            className="border-none bg-transparent font-primary  text-black"
-          >
-            Dashboard Admin
-          </Link>
-          <Link
-            to="/dashboard/user/booking"
-            className="border-none bg-transparent font-primary  text-black"
-          >
-            Dashboard User
-          </Link>
-          <Link
-            to="/login"
-            className="border-none bg-transparent font-primary  text-black"
-          >
-            Log In
-          </Link>
+          {user.role === 'admin' && (
+            <Link
+              to="/dashboard/admin/motorbike"
+              className="border-none bg-transparent font-primary  text-black"
+            >
+              Dashboard Admin
+            </Link>
+          )}
+          {user.role === 'user' && (
+            <Link
+              to="/dashboard/user/booking"
+              className="border-none bg-transparent font-primary  text-black"
+            >
+              Dashboard User
+            </Link>
+          )}
+          {user.role.toString() === 'none' ? (
+            <Link
+              to="/login"
+              className="border-none bg-transparent font-primary  text-black"
+            >
+              Log in
+            </Link>
+          ) : (
+            <Link
+              to="/"
+              onClick={() => {
+                handleLogOut();
+                localStorage.setItem('role', 'none');
+              }}
+              className="border-none bg-transparent font-primary  text-black"
+            >
+              Sign out
+            </Link>
+          )}
         </div>
       </div>
     </div>
