@@ -8,8 +8,11 @@ import {
 import { FiSettings } from 'react-icons/fi';
 import { React, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import useUser from '../../context/UserContext';
 
 export default function Sidebar(data) {
+  const { username, role, userData } = useUser();
+
   const menuItems = [
     {
       path: 'motorbike',
@@ -31,10 +34,9 @@ export default function Sidebar(data) {
               <FaUserCircle size={30} />
               <div className="mr-[10px]">
                 <p>Welcome back!</p>
-                <p>User</p>
-                {/* <p>
-                  {user.username} as {user.role}
-                </p> */}
+                <p>
+                  {username && username} as {role && role}
+                </p>
               </div>
               <FiSettings size={25} />
             </div>

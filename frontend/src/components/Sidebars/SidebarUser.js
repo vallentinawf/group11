@@ -9,9 +9,10 @@ import {
 import { FiSettings } from 'react-icons/fi';
 import { React, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import useUser from '../../context/UserContext';
 
-export default function SidebarUser(data) {
-  const user = data.data.data.user;
+export default function SidebarUser() {
+  const { username, role } = useUser();
 
   const menuItems = [
     {
@@ -30,7 +31,7 @@ export default function SidebarUser(data) {
               <div className="mr-[10px]">
                 <p>Wellcome back!</p>
                 <p>
-                  {user.username} as {user.role}
+                  {username && username} as {role && role}
                 </p>
               </div>
               <FiSettings size={25} />

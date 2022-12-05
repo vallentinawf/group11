@@ -46,6 +46,7 @@ export default function UpDelMotorModel(id) {
             <button
               className="bg-[#eeecec] text-black active:bg-orange/98 h-[30px]]
       font-medium px-2 py-1 rounded-md shadow-md hover:shadow-lg outline-none focus:outline-none"
+              key={fmotor._id}
               type="button"
               onClick={() => {
                 setShowModal(true);

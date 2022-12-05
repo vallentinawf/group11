@@ -6,10 +6,6 @@ import { useNavigate } from 'react-router-dom';
 export default function DashAdmBooking(props) {
   const navigate = useNavigate();
 
-  // const { data: userData } = useFetch(
-  //   'http://localhost:5000/api/v1/user/profile'
-  // );
-
   const {
     error,
     isPending,
