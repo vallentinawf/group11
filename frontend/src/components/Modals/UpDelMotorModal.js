@@ -7,7 +7,6 @@ import Loader from '../Loader';
 
 export default function UpDelMotorModel(id) {
   const [showModal, setShowModal] = useState(false);
-  //const [submission, setSubmission] = useState(false);
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [status, setStatus] = useState('');

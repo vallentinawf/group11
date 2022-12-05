@@ -1,10 +1,13 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SuccessModal from './SuccessModal';
+import {useDispatch, useSelector} from 'react-redux'
+
+import { addMotors } from '../../context/actions/motorActions';
+import Loader from '../Loader';
 
 export default function CreateMotorModal() {
   const [showModal, setShowModal] = useState(false);
-  const [submission, setSubmission] = useState(false);
   const [name, setName] = useState();
   const [type, setType] = useState('matic');
   const [status, setStatus] = useState('available');
@@ -12,17 +15,15 @@ export default function CreateMotorModal() {
   const [quantity, setQuantity] = useState();
   const [imageCover, setImageCover] = useState();
 
+  const dispatch = useDispatch()
+  const AddMotorsState = useSelector((state) =>state.addMotorsReducer)
+
+  const {loading, error, success} = AddMotorsState
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const motor = { name, type, imageCover, status, price, quantity };
-    try {
-      const url = 'http://localhost:5000/api/v1/rental';
-      const response = await axios.post(url, motor, {
-        withCredentials: true,
-      });
-    } catch (err) {
-      alert(err.response.data.error.toString());
-    }
+    dispatch(addMotors(motor))
   };
 
   return (
@@ -122,18 +123,19 @@ export default function CreateMotorModal() {
                         type="button"
                         onClick={(e) => {
                           handleSubmit(e);
-                          setSubmission(true);
                         }}
                       >
                         Submit
                       </button>
-                      {submission ? <SuccessModal /> : null}
                     </div>
                   </form>
                 </div>
               </div>
             </div>
           </div>
+          {error ? <div>error</div>: null}
+          {loading ? <Loader/> : null}
+          {success ? <SuccessModal /> : null}
         </>
       ) : null}
     </>

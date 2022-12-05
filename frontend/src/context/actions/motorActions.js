@@ -17,6 +17,22 @@ export const getMotors = () => (dispatch) =>{
 
 }
 
+export const addMotors = (motor) => (dispatch) => {
+    dispatch({type: 'ADD_MOTORS_REQUEST'})
+
+    axios
+        .post('http://localhost:5000/api/v1/rental', motor, {
+                withCredentials: true,
+              })
+        .then(res=>{
+            console.log(res);
+            dispatch({type: 'ADD_MOTORS_SUCCESS', payload: res.data})
+    })
+        .catch(err=>{
+            dispatch({type: 'ADD_MOTORS_FAILED', payload: err})
+        })
+}
+
 export const updateMotors =(id, motor)=> dispatch=>{
 
     dispatch({type:'UPDATE_MOTORS_REQUEST'})
@@ -28,7 +44,7 @@ export const updateMotors =(id, motor)=> dispatch=>{
             dispatch({type:'UPDATE_MOTORS_SUCCESS'})
     })
         .catch(err=>{
-            dispatch({type:'UPDATE_MOTORS_FAILED'})
+            dispatch({type:'UPDATE_MOTORS_FAILED', payload: err})
     })
   
 }
@@ -43,7 +59,7 @@ export const deleteMotors = (id) => dispatch => {
             dispatch({type: 'DELETE_MOTORS_SUCCESS'})
     })
         .catch(err=>{
-            dispatch({type: 'DELETE_MOTORS_FAILED'})
+            dispatch({type: 'DELETE_MOTORS_FAILED', payload: err})
     })
 
 }
