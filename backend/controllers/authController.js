@@ -175,7 +175,8 @@ exports.forgotPassword = async (req, res, next) => {
 // @access  Public
 exports.logout = async (req, res, next) => {
   try {
-    res.clearCookie('auth_token');
+    res.clearCookie('auth_token', { sameSite: 'none', secure: true });
+
     res.status(200).json({ status: 'success' });
   } catch (err) {
     next(err);
