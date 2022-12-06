@@ -13,18 +13,13 @@ import useUser from '../../context/userContext';
 import NavButton from '../Buttons/NavButtons';
 
 export default function Sidebar(data) {
-  const { username, role, logout } = useUser();
+  const { username, role, logout, getCurrentUser } = useUser();
 
   const handleLogOut = async () => {
     await logout();
   };
-  const menuItems = [
-    // {
-    //   path: '',
-    //   name: 'Home',
-    //   icon: <FaMotorcycle className="text-[25px] text-[#35373A]" />,
-    // },
 
+  const menuItems = [
     {
       path: 'booking',
       name: 'My booking',
@@ -103,7 +98,14 @@ export default function Sidebar(data) {
         </div>
 
         <div className="">
-          <Link to={`/`}>
+          <NavButton
+            path={'/login'}
+            text={'Logout'}
+            handleClick={handleLogOut}
+            bg={'bg-orange'}
+            rounded={'rounded-xl'}
+          />
+          {/* <Link to={`/`}>
             <div className="flex flex-col items-center py-[10px] ">
               <button
                 className="w-[50px] bg-orange/95 shadow-lg drop-shadow-lg rounded-xl h-[40px] hover:drop-shadow-xl md:w-[200px] hover:bg-orange active:bg-orange"
@@ -117,7 +119,7 @@ export default function Sidebar(data) {
                 </div>
               </button>
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ export default function DashAdmBooking(props) {
   }, []);
 
   return (
-    <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
+    <div className="h-[100vh] flex px-[2%] py-[2%] mb-[70px]">
       <Sidebar data={books} />
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
