@@ -9,7 +9,7 @@ export default function DashUser(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(role === '' ? '/login' : '/dashboard/user/booking');
+    navigate(role === '' ? '/' : '/dashboard/user/booking');
   }, []);
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] mb-[70px]">

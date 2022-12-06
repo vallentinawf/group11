@@ -24,7 +24,7 @@ export default function DashAdmMotorBike(props) {
   const { motors, loading, error } = getMotorsState;
 
   useEffect(() => {
-    navigate(role === 'admin' ? '/dashboard/admin/motorbike' : '/login');
+    navigate(role === 'admin' ? '/dashboard/admin/motorbike' : '/');
     dispatch(getMotors());
   }, []);
 

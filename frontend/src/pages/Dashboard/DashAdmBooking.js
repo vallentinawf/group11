@@ -15,7 +15,7 @@ export default function DashAdmBooking(props) {
   } = useFetch('http://localhost:5000/api/v1/booking');
 
   useEffect(() => {
-    navigate(role === 'admin' ? '/dashboard/admin/booking' : '/login');
+    navigate(role === 'admin' ? '/dashboard/admin/booking' : '/');
     console.log(role);
   }, []);
 
