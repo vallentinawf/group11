@@ -13,7 +13,7 @@ const initialState = {
   password: '',
 };
 
-const Login = () => {
+const Login = (props) => {
   const navigate = useNavigate();
   const { displayAlert, showAlert } = useAppContext();
   const { getCurrentUser, role } = useUser();
@@ -46,14 +46,6 @@ const Login = () => {
       console.log(e);
     }
 
-    // let user;
-    // const urlUser = 'http://localhost:5000/api/v1/user/profile';
-    // try {
-    //   const resUser = await axios.get(urlUser, { withCredentials: true });
-    //   user = resUser.data.data.user;
-    // } catch (e) {
-    //   console.log(e);
-    // }
     getCurrentUser();
     navigate(role === 'admin' ? '/dashboard/admin/motorbike' : '/');
   };
@@ -67,14 +59,16 @@ const Login = () => {
           onSubmit={onSubmit}
         >
           {/* div for Logo */}
-          <div className="grid justify-items-center">
-            <img
-              className="object-scale-down w-6/12"
-              //className="w-[30%]"
-              src={Logo}
-              alt="Logo"
-            ></img>
-          </div>
+          <Link to="/">
+            <div className="grid justify-items-center">
+              <img
+                className="object-scale-down w-6/12"
+                src={Logo}
+                alt="Logo"
+              ></img>
+            </div>
+          </Link>
+
           <p className="text-center font-bold p-2 text-black/75">
             Login Into Your Account
           </p>

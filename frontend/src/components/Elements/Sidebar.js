@@ -13,8 +13,11 @@ import useUser from '../../context/userContext';
 import NavButton from '../Buttons/NavButtons';
 
 export default function Sidebar(data) {
-  const { username, role, userData } = useUser();
+  const { username, role, logout } = useUser();
 
+  const handleLogOut = async () => {
+    await logout();
+  };
   const menuItems = [
     // {
     //   path: '',
@@ -52,10 +55,10 @@ export default function Sidebar(data) {
               <div className="">
                 <p>Welcome back!</p>
                 <p>
-                  {username} as {role}
+                  {role}: {username}
                 </p>
               </div>
-              <FaUserCircle size={30} />
+              <NavButton text={<FaUserCircle size={30} />} path={'/profile'} />
             </div>
             <div className="md:hidden ">
               <FaBars size={20} />
@@ -102,7 +105,12 @@ export default function Sidebar(data) {
         <div className="">
           <Link to={`/`}>
             <div className="flex flex-col items-center py-[10px] ">
-              <button className="w-[50px] bg-orange/95 shadow-lg drop-shadow-lg rounded-xl h-[40px] hover:drop-shadow-xl md:w-[200px] hover:bg-orange active:bg-orange">
+              <button
+                className="w-[50px] bg-orange/95 shadow-lg drop-shadow-lg rounded-xl h-[40px] hover:drop-shadow-xl md:w-[200px] hover:bg-orange active:bg-orange"
+                onClick={(e) => {
+                  handleLogOut();
+                }}
+              >
                 <div className="flex gap-4 items-center justify-center md:ml-[-15px] font-medium text-[#35373A]">
                   <FaPowerOff />
                   <p className="text-[#35373A] hidden md:block">Sign out</p>

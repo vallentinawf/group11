@@ -4,7 +4,7 @@ import { BookingUserTable, Sidebar } from '../../components';
 import { useNavigate } from 'react-router-dom';
 import useUser from '../../context/userContext';
 
-export default function DashUser() {
+export default function DashUser(props) {
   const { role } = useUser();
   const navigate = useNavigate();
 

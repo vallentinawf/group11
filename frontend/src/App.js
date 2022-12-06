@@ -10,6 +10,8 @@ import {
   Landing,
   DashAdmBooking,
   DashUser,
+  WithNav,
+  WithoutNav,
 } from './pages';
 
 import {
@@ -22,31 +24,34 @@ import {
 import { useState } from 'react';
 
 function App() {
-  const [showNav, setShowNav] = useState(true);
+  // const [showNav, setShowNav] = useState(true);
 
   return (
     <BrowserRouter>
-      {showNav && <Navbar />}
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/edit-profile" element={<EditProfileForm />} />
-        <Route path="/modal" element={<SuccessModal />} />
-        <Route path="/landing" element={<Landing />} />
+        <Route element={<WithoutNav />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard/admin/motorbike"
+            element={<DashAdmMotorBike />}
+          />
+          <Route path="/dashboard/admin/booking" element={<DashAdmBooking />} />
+          <Route path="/dashboard/user/booking" element={<DashUser />} />
+          <Route path="*" element={<Error />} />
+        </Route>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route
-          path="/dashboard/admin/motorbike"
-          element={<DashAdmMotorBike />}
-        />
-        <Route path="/dashboard/admin/booking" element={<DashAdmBooking />} />
-        <Route path="/dashboard/user/booking" element={<DashUser />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/list-motor" element={<ListMotor />} />
-        <Route path="*" element={<Error />} />
+        <Route element={<WithNav />}>
+          <Route element={<Navbar />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/edit-profile" element={<EditProfileForm />} />
+          <Route path="/modal" element={<SuccessModal />} />
+          <Route path="/landing" element={<Landing />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/list-motor" element={<ListMotor />} />
+        </Route>
       </Routes>
-      {showNav}
     </BrowserRouter>
   );
 }

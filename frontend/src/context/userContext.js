@@ -30,7 +30,7 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const Logout = async () => {
+  const logout = async () => {
     try {
       const url = 'http://localhost:5000/api/v1/auth/logout';
       await axios.get(url, { withCredentials: true });
@@ -42,7 +42,7 @@ export const UserProvider = ({ children }) => {
 
   const value = {
     getCurrentUser,
-    Logout,
+    logout,
     userId: state.userId,
     email: state.email,
     username: state.username,
