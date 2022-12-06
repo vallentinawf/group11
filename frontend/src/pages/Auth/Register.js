@@ -13,7 +13,7 @@ const initialState = {
   password: '',
 };
 
-const Register = () => {
+const Register = (props) => {
   const [values, setValues] = useState(initialState);
 
   const navigate = useNavigate();

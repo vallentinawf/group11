@@ -5,10 +5,10 @@ import { useEffect, useState } from 'react';
 import NavButton from '../Buttons/NavButtons';
 
 export default function Navbar() {
-  const { getCurrentUser, role, Logout } = useUser();
+  const { getCurrentUser, role, logout } = useUser();
 
   const handleLogOut = async () => {
-    await Logout();
+    await logout();
   };
 
   useEffect(() => {

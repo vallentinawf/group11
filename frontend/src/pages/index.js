@@ -8,6 +8,8 @@ import DashAdmBooking from './Dashboard/DashAdmBooking';
 import DashAdmMotorBike from './Dashboard/DashAdmMotorBike';
 import Landing from './Landing';
 import DashUser from './Dashboard/DashUser';
+import WithNav from './Layout/WithNav';
+import WithoutNav from './Layout/WithoutNav';
 
 export {
   Error,
@@ -20,4 +22,6 @@ export {
   DashAdmMotorBike,
   Landing,
   DashUser,
+  WithNav,
+  WithoutNav,
 };
