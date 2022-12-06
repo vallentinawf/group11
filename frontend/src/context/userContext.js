@@ -26,7 +26,7 @@ export const UserProvider = ({ children }) => {
 
       dispatch({ type: GET_CURRENT_USER, payload: userData });
     } catch (err) {
-      console.log(err.response.data.error.toString());
+      console.log(err);
     }
   };
 
@@ -36,7 +36,7 @@ export const UserProvider = ({ children }) => {
       await axios.get(url, { withCredentials: true });
       dispatch({ type: LOGOUT, payload: '' });
     } catch (err) {
-      console.log(err.response.data.error.toString());
+      console.log(err);
     }
   };
 

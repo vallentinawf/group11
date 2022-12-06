@@ -50,19 +50,21 @@ const Register = (props) => {
     }
   };
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray pt-[70px] mb-[70px]">
+    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray">
       <div className="bg-gray flex flex-col justify-center">
         <form
-          className="max-w-[500px] bg-gray w-full mx-auto px-10 p-10"
+          className="max-w-[500px] bg-gray w-full mx-auto px-10 "
           onSubmit={onSubmit}
         >
-          <div className="grid justify-items-center">
-            <img
-              className="object-scale-down w-6/12"
-              src={Logo}
-              alt="Logo"
-            ></img>
-          </div>
+          <Link to="/">
+            <div className="grid justify-items-center">
+              <img
+                className="object-scale-down w-6/12"
+                src={Logo}
+                alt="Logo"
+              ></img>
+            </div>
+          </Link>
           <p className="text-center font-bold p-2 text-black/75">
             Register Into Your Account
           </p>
