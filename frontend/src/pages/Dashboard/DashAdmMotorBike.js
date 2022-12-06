@@ -24,12 +24,7 @@ export default function DashAdmMotorBike(props) {
   const { motors, loading, error } = getMotorsState;
 
   useEffect(() => {
-    async function authRole() {
-      await navigate(role && role === 'admin' ? '/about-us' : '/');
-      console.log('raa', role);
-    }
-    authRole();
-    console.log('r', role);
+    navigate(role === 'admin' ? '/dashboard/admin/motorbike' : '/login');
     dispatch(getMotors());
   }, []);
 

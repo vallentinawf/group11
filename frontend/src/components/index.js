@@ -1,7 +1,6 @@
 import Navbar from './Elements/Navbar';
 import Footer from './Elements/Footer';
-import Sidebar from './Sidebars/Sidebar';
-import SidebarUser from './Sidebars/SidebarUser';
+import Sidebar from './Elements/Sidebar';
 
 import CreateMotorModal from './Modals/CreateMotorModal';
 import UpDelMotorModal from './Modals/UpDelMotorModal';
@@ -38,7 +37,6 @@ export {
   BookingTable,
   UpDelBookingModal,
   CreateBookingModal,
-  SidebarUser,
   Loader,
   SuccessModal,
   BookingUserTable,
