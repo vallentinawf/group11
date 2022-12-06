@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Sidebar, BookingTable, Loader } from '../../components/index';
 import useFetch from '../../Utils/Hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
-import useUser from '../../context/UserContext';
+import useUser from '../../context/userContext';
 
 export default function DashAdmBooking(props) {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import Logo from '../../assets/logoTransparent.png';
 import { Link } from 'react-router-dom';
-import useUser from '../../context/UserContext';
+import useUser from '../../context/userContext';
 import { useEffect, useState } from 'react';
 import NavButton from '../Buttons/NavButtons';
 

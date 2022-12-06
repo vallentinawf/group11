@@ -13,6 +13,6 @@ router.post('/forgotpassword', authController.forgotPassword);
 //Reset Password
 router.put('/resetpassword/:resettoken', authController.resetPassword);
 //logout
-router.post('/logout', authController.logout);
+router.get('/logout', authController.logout);
 
 module.exports = router;

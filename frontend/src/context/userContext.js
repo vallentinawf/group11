@@ -33,7 +33,7 @@ export const UserProvider = ({ children }) => {
   const Logout = async () => {
     try {
       const url = 'http://localhost:5000/api/v1/auth/logout';
-      const response = await axios.post(url, { withCredentials: true });
+      await axios.get(url, { withCredentials: true });
       dispatch({ type: LOGOUT, payload: '' });
     } catch (err) {
       console.log(err.response.data.error.toString());

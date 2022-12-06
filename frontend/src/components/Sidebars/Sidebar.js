@@ -8,7 +8,7 @@ import {
 import { FiSettings } from 'react-icons/fi';
 import { React, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import useUser from '../../context/UserContext';
+import useUser from '../../context/userContext';
 
 export default function Sidebar(data) {
   const { username, role, userData } = useUser();
