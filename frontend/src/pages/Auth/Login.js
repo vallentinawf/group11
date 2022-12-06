@@ -6,6 +6,7 @@ import Logo from '../../assets/logo.png';
 import axios from 'axios';
 import { useAppContext } from '../../context/appContext';
 import { CiMail, CiLock } from 'react-icons/ci';
+import useUser from '../../context/userContext';
 
 const initialState = {
   email: '',
@@ -15,11 +16,16 @@ const initialState = {
 const Login = () => {
   const navigate = useNavigate();
   const { displayAlert, showAlert } = useAppContext();
+  const { getCurrentUser, role } = useUser();
   const [values, setValues] = useState(initialState);
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    console.log(role);
+  }, [role]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -40,15 +46,16 @@ const Login = () => {
       console.log(e);
     }
 
-    let user;
-    const urlUser = 'http://localhost:5000/api/v1/user/profile';
-    try {
-      const resUser = await axios.get(urlUser, { withCredentials: true });
-      user = resUser.data.data.user;
-    } catch (e) {
-      console.log(e);
-    }
-    navigate(user.role === 'admin' ? '/dashboard/admin/motorbike' : '/');
+    // let user;
+    // const urlUser = 'http://localhost:5000/api/v1/user/profile';
+    // try {
+    //   const resUser = await axios.get(urlUser, { withCredentials: true });
+    //   user = resUser.data.data.user;
+    // } catch (e) {
+    //   console.log(e);
+    // }
+    getCurrentUser();
+    navigate(role === 'admin' ? '/dashboard/admin/motorbike' : '/');
   };
 
   return (

@@ -1,11 +1,20 @@
 import {} from 'react-icons/fa';
 import { React, useEffect, useState } from 'react';
-import { BookingUserTable, SidebarUser } from '../../components';
+import { BookingUserTable, Sidebar } from '../../components';
+import { useNavigate } from 'react-router-dom';
+import useUser from '../../context/userContext';
 
 export default function DashUser() {
+  const { role } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(role === '' ? '/login' : '/dashboard/user/booking');
+  }, []);
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
-      <SidebarUser />
+      {/* <SidebarUser /> */}
+      <Sidebar />
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[30px]">Data Table Customer</h2>

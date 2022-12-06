@@ -45,7 +45,11 @@ export default function Navbar() {
           ) : null}
 
           {(role && role === 'user') || (role && role === 'admin') ? (
-            <NavButton path={'/'} text={'Logout'} handleClick={handleLogOut} />
+            <NavButton
+              path={'/login'}
+              text={'Logout'}
+              handleClick={handleLogOut}
+            />
           ) : (
             <NavButton path={'/login'} text={'Login'} />
           )}
