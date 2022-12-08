@@ -1,32 +1,20 @@
 import {} from 'react-icons/fa';
 import { React, useEffect, useState } from 'react';
-import { useFetch, BookingDataUser, SidebarUser } from '../components';
-import axios from 'axios';
+import { BookingUserTable, Sidebar } from '../../components';
+import { useNavigate } from 'react-router-dom';
+import useUser from '../../context/userContext';
 
 export default function DashUser(props) {
-  // const {
-  //   error,
-  //   isPending,
-  //   data: data,
-  // } = useFetch);
-
-  const [data, setData] = useState(null);
+  const { role } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get('http://localhost:5000/api/v1/user/profile', {
-        withCredentials: true,
-      })
-      .then((res) => {
-        // console.log(res.data);
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, [data]);
-
+    navigate(role === '' ? '/' : '/dashboard/user/booking');
+  }, []);
   return (
-    <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
-      {data && <SidebarUser data={data} />}
+    <div className="h-[100vh] flex px-[2%] py-[2%] mb-[70px]">
+      {/* <SidebarUser /> */}
+      <Sidebar />
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[30px]">Data Table Customer</h2>
@@ -51,7 +39,8 @@ export default function DashUser(props) {
             </div>
             {/* {error && <div>{error}</div>} */}
             {/* {isPending && <div>Loading...</div>} */}
-            {data && <BookingDataUser data={data} />}
+            {/* {userData && <BookingUserTable data={userData} />} */}
+            <BookingUserTable />
           </div>
         </div>
       </div>

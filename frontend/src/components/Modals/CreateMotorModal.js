@@ -1,27 +1,29 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import ModalSuccess from './ModalSuccess';
+import React, { useState, useEffect } from 'react';
+import SuccessModal from './SuccessModal';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function ModalCreateMotor() {
+import { addMotors } from '../../context/actions/motorActions';
+import Loader from '../Elements/Loader';
+
+export default function CreateMotorModal() {
   const [showModal, setShowModal] = useState(false);
-  const [submission, setSubmission] = useState(false);
   const [name, setName] = useState();
   const [type, setType] = useState('matic');
   const [status, setStatus] = useState('available');
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState();
+  const [imageCover, setImageCover] = useState();
+
+  const dispatch = useDispatch();
+  const AddMotorsState = useSelector((state) => state.addMotorsReducer);
+
+  const { loading, error, success } = AddMotorsState;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const motor = { name, type, status, price, quantity };
-    try {
-      const url = 'http://localhost:5000/api/v1/rental';
-      const response = await axios.post(url, motor, {
-        withCredentials: true,
-      });
-    } catch (err) {
-      alert(err.response.data.error.toString());
-    }
+    const motor = { name, type, imageCover, status, price, quantity };
+    dispatch(addMotors(motor));
   };
 
   return (
@@ -56,6 +58,15 @@ export default function ModalCreateMotor() {
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                    />
+                    <label className="block text-black text-sm font-bold mb-1 mt-2">
+                      Image url
+                    </label>
+                    <input
+                      className="shadow appearance-none border rounded-xl w-full py-2 px-1 text-black"
+                      type="text"
+                      value={imageCover}
+                      onChange={(e) => setImageCover(e.target.value)}
                     />
                     <label className="block text-black text-sm font-bold mb-1 mt-2">
                       Type
@@ -112,18 +123,19 @@ export default function ModalCreateMotor() {
                         type="button"
                         onClick={(e) => {
                           handleSubmit(e);
-                          setSubmission(true);
                         }}
                       >
                         Submit
                       </button>
-                      {submission ? (<ModalSuccess/>) : null}
                     </div>
                   </form>
                 </div>
               </div>
             </div>
           </div>
+          {error ? <div>error</div> : null}
+          {loading ? <Loader /> : null}
+          {success ? <SuccessModal /> : null}
         </>
       ) : null}
     </>

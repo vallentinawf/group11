@@ -1,23 +1,35 @@
 import * as React from 'react';
-import { Modal, MotorData, Sidebar, Card, useFetch, Loader } from '../components';
+import { Card, Loader } from '../components/index';
+import useFetch from '../Utils/Hooks/useFetch';
+
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMotors } from '../context/actions/motorActions';
 
 export default function ListMotor() {
-  const {
-    error,
-    isPending,
-    data: motors,
-  } = useFetch('http://localhost:5000/api/v1/rental/');
+  const dispatch = useDispatch();
+  const getMotorsState = useSelector((state) => state.getMotorsReducer);
+  const { motors, loading, error } = getMotorsState;
+
+  useEffect(() => {
+    dispatch(getMotors());
+  }, []);
 
   return (
-    <div className="bg-[#E5E5E5] py-[40px] flex flex-col items-center justify-center pt-[100px] ">
+    <div className="bg-[#E5E5E5] py-[20px] flex flex-col items-center h-min-screen h-full w-full pt-[75px]">
+      <h2 className="text-orange text-[33px] mb-[40px] font-bold">
+        List Motor
+      </h2>
       <div className="">
-        <h2 className="text-orange text-[33px] mb-[40px] font-bold">
-          Pricing Table
-        </h2>
+        {error && <div>{error}</div>}
+        {loading && (
+          <div>
+            <Loader />
+            Loading...
+          </div>
+        )}
+        {motors && <Card motors={motors} />}
       </div>
-      {error && <div>{error}</div>}
-      {isPending && <div><Loader/>Loading...</div>}
-      {motors && <Card motors={motors} />}
     </div>
   );
 }

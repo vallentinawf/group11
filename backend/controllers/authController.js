@@ -81,7 +81,9 @@ exports.login = async (req, res, next) => {
     });
 
     res.status(201).json({
-      status: 'success'
+      status: 'success',
+      user: user,
+      token: token
       // token
     });
   } catch (err) {
@@ -173,7 +175,12 @@ exports.forgotPassword = async (req, res, next) => {
 // @access  Public
 exports.logout = async (req, res, next) => {
   try {
-    res.clearCookie('auth_token');
+    res.cookie('auth_token', '', {
+      httpOnly: true,
+      expires: new Date(0),
+      sameSite: 'none',
+      secure: true
+    });
     res.status(200).json({ status: 'success' });
   } catch (err) {
     next(err);

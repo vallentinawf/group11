@@ -1,9 +1,9 @@
 import { FaEdit, FaNapster } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ModalSuccess from './ModalSuccess';
+import SuccessModal from './SuccessModal';
 
-export default function ModalUDBook(id) {
+export default function UpDelBookingModal(id) {
   const [showModal, setShowModal] = useState(false);
   const [submission, setSubmission] = useState(false);
   const [userId, setUserId] = useState('');
@@ -22,7 +22,14 @@ export default function ModalUDBook(id) {
 
     try {
       const url = 'http://localhost:5000/api/v1/booking/return';
-      const response = await axios.patch(url, book, { withCredentials: true });
+      const response = await axios.patch(
+        url,
+        { bookingId },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log({ bookingId });
     } catch (err) {
       alert(err.response.data.error.toString());
     }
@@ -123,7 +130,7 @@ export default function ModalUDBook(id) {
                             >
                               Update
                             </button>
-                            {submission ? (<ModalSuccess/>) : null}
+                            {submission ? <SuccessModal /> : null}
                           </div>
                         </form>
                       </div>

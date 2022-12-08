@@ -1,32 +1,27 @@
-import {} from 'react-icons/fa';
 import { React, useState, useEffect } from 'react';
-import { Modal, Sidebar, useFetch, BookingData, Loader } from '../components';
-import axios from 'axios';
+import { Sidebar, BookingTable, Loader } from '../../components/index';
+import useFetch from '../../Utils/Hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
+import useUser from '../../context/userContext';
 
 export default function DashAdmBooking(props) {
+  const navigate = useNavigate();
+  const { role } = useUser();
+
   const {
     error,
     isPending,
     data: books,
   } = useFetch('http://localhost:5000/api/v1/booking');
 
-  const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:5000/api/v1/user/profile', {
-  //       withCredentials: true,
-  //     })
-  //     .then((res) => {
-  //       // console.log(res.data);
-  //       setData(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    navigate(role === 'admin' ? '/dashboard/admin/booking' : '/');
+    console.log(role);
+  }, []);
 
   return (
-    <div className="h-[100vh] flex px-[2%] py-[2%] pt-[70px] mb-[70px]">
-      <Sidebar data={data} />
+    <div className="h-[100vh] flex px-[2%] py-[2%] mb-[70px]">
+      <Sidebar data={books} />
       <div className="gird  ml-5 w-[85%] relative">
         <div className="flex justify-between items-center">
           <h2 className="text-[20px] md:text-[30px] shadow-md drop-shadow-md">
@@ -53,8 +48,8 @@ export default function DashAdmBooking(props) {
               <p></p>
             </div>
             {error && <div>{error}</div>}
-            {isPending && <Loader/>}
-            {books && <BookingData books={books} />}
+            {isPending && <Loader />}
+            {books && <BookingTable books={books} />}
           </div>
         </div>
       </div>
