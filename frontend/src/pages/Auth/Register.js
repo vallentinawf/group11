@@ -32,7 +32,7 @@ const Register = (props) => {
       return;
     }
 
-    const url = 'http://localhost:5000/api/v1/user/register';
+    const url = 'https://remo-backend.vercel.app/api/v1/user/register';
 
     try {
       await axios.post(

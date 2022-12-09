@@ -195,7 +195,7 @@ export default function UpDelMotorModel(id) {
 // const handleUpdate = async () => {
 //   const motor = { name, type, status, quantity, price, imageCover };
 //   try {
-//     const url = 'http://localhost:5000/api/v1/rental/' + _id;
+//     const url = 'https://remo-backend.vercel.app/api/v1/rental/' + _id;
 //     const response = await axios.patch(url, motor, { withCredentials: true });
 //   } catch (err) {
 //     alert(err.response.data.error.toString());
@@ -204,7 +204,7 @@ export default function UpDelMotorModel(id) {
 
 // const handleDelete = async () => {
 //   try {
-//     const url = 'http://localhost:5000/api/v1/rental/' + _id;
+//     const url = 'https://remo-backend.vercel.app/api/v1/rental/' + _id;
 //     const response = await axios.delete(url, { withCredentials: true });
 //   } catch (err) {
 //     alert(err.response.data.error.toString());

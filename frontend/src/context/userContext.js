@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
 
   const getCurrentUser = async () => {
     try {
-      const url = 'http://localhost:5000/api/v1/user/profile';
+      const url = 'https://remo-backend.vercel.app/api/v1/user/profile';
       const response = await axios.get(url, { withCredentials: true });
       const userData = response.data.data;
 
@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      const url = 'http://localhost:5000/api/v1/auth/logout';
+      const url = 'https://remo-backend.vercel.app/api/v1/auth/logout';
       await axios.get(url, { withCredentials: true });
       dispatch({ type: LOGOUT, payload: '' });
     } catch (err) {

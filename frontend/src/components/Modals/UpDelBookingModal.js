@@ -21,7 +21,7 @@ export default function UpDelBookingModal(id) {
     const book = { bookingId };
 
     try {
-      const url = 'http://localhost:5000/api/v1/booking/return';
+      const url = 'https://remo-backend.vercel.app/api/v1/booking/return';
       const response = await axios.patch(
         url,
         { bookingId },

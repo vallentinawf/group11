@@ -12,7 +12,7 @@ export default function DashAdmBooking(props) {
     error,
     isPending,
     data: books,
-  } = useFetch('http://localhost:5000/api/v1/booking');
+  } = useFetch('https://remo-backend.vercel.app/api/v1/booking');
 
   useEffect(() => {
     navigate(role === 'admin' ? '/dashboard/admin/booking' : '/');

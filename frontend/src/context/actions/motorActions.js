@@ -4,7 +4,7 @@ export const getMotors = () => (dispatch) => {
   dispatch({ type: 'GET_MOTORS_REQUEST' });
 
   axios
-    .get('http://localhost:5000/api/v1/rental/')
+    .get('https://remo-backend.vercel.app/api/v1/rental/')
     .then((res) => {
       console.log(res);
       dispatch({ type: 'GET_MOTORS_SUCCESS', payload: res.data });
@@ -19,7 +19,7 @@ export const addMotors = (motor) => (dispatch) => {
   dispatch({ type: 'ADD_MOTORS_REQUEST' });
 
   axios
-    .post('http://localhost:5000/api/v1/rental', motor, {
+    .post('https://remo-backend.vercel.app/api/v1/rental', motor, {
       withCredentials: true,
     })
     .then((res) => {
@@ -35,7 +35,7 @@ export const updateMotors = (id, motor) => (dispatch) => {
   dispatch({ type: 'UPDATE_MOTORS_REQUEST' });
 
   axios
-    .patch('http://localhost:5000/api/v1/rental/' + id, motor, {
+    .patch('https://remo-backend.vercel.app/api/v1/rental/' + id, motor, {
       withCredentials: true,
     })
     .then((res) => {
@@ -51,7 +51,7 @@ export const deleteMotors = (id) => (dispatch) => {
   dispatch({ type: 'DELETE_MOTORS_REQUEST' });
 
   axios
-    .delete('http://localhost:5000/api/v1/rental/' + id, {
+    .delete('https://remo-backend.vercel.app/api/v1/rental/' + id, {
       withCredentials: true,
     })
     .then((res) => {

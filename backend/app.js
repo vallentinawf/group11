@@ -11,10 +11,17 @@ const authRouter = require('./routes/authRoute');
 const bookingRouter = require('./routes/bookingRoutes');
 
 const app = express();
-const corsOptions = {
+let corsOptions = {
   credentials: true,
   origin: 'http://localhost:3000'
 };
+
+if (process.env.NODE_ENV === 'production') {
+  corsOptions = {
+    credentials: true,
+    origin: 'https://remo-webapp.vercel.app'
+  };
+}
 
 // Morgan  middleware => logger request
 if (process.env.NODE_ENV === 'development') {

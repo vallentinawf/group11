@@ -69,4 +69,4 @@ export default function DashAdmMotorBike(props) {
 //   error,
 //   isPending,
 //   data: motors,
-// } = useFetch('http://localhost:5000/api/v1/rental');
+// } = useFetch('https://remo-backend.vercel.app/api/v1/rental');

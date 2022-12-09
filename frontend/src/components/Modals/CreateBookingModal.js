@@ -15,7 +15,7 @@ export default function CreateMotorModal(props) {
   const handleBooking = async (e) => {
     const book = { rentalId };
     try {
-      const url = 'http://localhost:5000/api/v1/booking/book';
+      const url = 'https://remo-backend.vercel.app/api/v1/booking/book';
       const response = await axios.post(url, book, { withCredentials: true });
     } catch (err) {
       alert(err.response.data.error.toString());

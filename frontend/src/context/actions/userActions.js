@@ -5,7 +5,7 @@
 //   dispatch({ type: 'GET_CURRENT_USER_REQUEST' });
 
 //   axios
-//     .get('http://localhost:5000/api/v1/user/profile', { withCredentials: true })
+//     .get('https://remo-backend.vercel.app/api/v1/user/profile', { withCredentials: true })
 //     .then((res) => {
 //       console.log(res);
 //       dispatch({ type: 'GET_CURRENT_USER_SUCCESS', payload: res.data });
@@ -20,7 +20,7 @@
 // //   dispatch({ type: 'USER_REGISTER_REQUEST' });
 
 // //   axios
-// //     .post('http://localhost:5000/api/v1/user/register', user)
+// //     .post('https://remo-backend.vercel.app/api/v1/user/register', user)
 // //     .then((res) => {
 // //       dispatch({ type: 'USER_REGISTER_SUCCESS' });
 // //       console.log(res);
@@ -35,7 +35,7 @@
 //   dispatch({ type: 'USER_LOGIN_REQUEST' });
 
 //   axios
-//     .post('http://localhost:5000/api/v1/auth/login', user)
+//     .post('https://remo-backend.vercel.app/api/v1/auth/login', user)
 //     .then((res) => {
 //       dispatch({ type: 'USER_LOGIN_SUCCESS' });
 
