@@ -4,7 +4,7 @@
 <br>
 
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Table of Contents 📝</summary>
   <ol>
     <li><a href="#prerequisites">Prerequisites</a></li>
     <li><a href="#dependencies">Dependencies</a></li>
