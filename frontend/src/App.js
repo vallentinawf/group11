@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
   Login,
-  Profile,
   ListMotor,
   Error,
   Register,
@@ -10,16 +9,16 @@ import {
   Landing,
   DashAdmBooking,
   DashUser,
+  EditProfile,
+  Profile,
   WithNav,
-  WithoutNav,
+  WithoutNav
 } from './pages';
 
 import {
   Footer,
   Navbar,
-  SuccessModal,
-  EditProfileForm,
-  ProfileForm
+  SuccessModal
 } from './components/index';
 
 import { useState } from 'react';
@@ -31,7 +30,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<WithoutNav />}>
-          <Route path="/profile-form" element={<ProfileForm />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
@@ -46,11 +44,11 @@ function App() {
         <Route element={<WithNav />}>
           <Route element={<Navbar />} />
           <Route path="/" element={<Landing />} />
-          <Route path="/edit-profile" element={<EditProfileForm />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/edit/profile" element={<EditProfile />} />
           <Route path="/modal" element={<SuccessModal />} />
           <Route path="/landing" element={<Landing />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/list-motor" element={<ListMotor />} />
         </Route>
       </Routes>
