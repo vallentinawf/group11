@@ -1,10 +1,14 @@
-<h1 align="center">REMO</h1>
+# REMO
+
+###
+Rental Motor : A web application for renting motorbikes
 
 ###
 
-<p align="center">Rental Motor : A web application for renting motorbikes</p>
+### Links
+• [Web App](https://remo-webapp.vercel.app/)
+• [Presentation](https://docs.google.com/presentation/d/1sbC8MNsqek8TV56eBBEv8-_KwTuy9EOPWm0nYkzJT7Q/)
 
-###
 <br>
 
 <details>
@@ -62,6 +66,7 @@
   ```
   - React
   - tailwindcss
+  - Axios
   ```
 
 ## Setting Up Project
@@ -130,3 +135,22 @@
 
   - [Learn More about Commit messages](https://dev.to/i5han3/git-commit-message-convention-that-you-can-follow-1709)
   <br/>
+ 
+## Screenshots
+
+<h4>Dashboard</h4>
+
+![App Screenshot](https://github.com/vallentinawf/group11/blob/main/ScreenshotDashboard.png)
+
+<h4>Home</h4>
+
+![App Screenshot](https://github.com/vallentinawf/group11/blob/main/ScreenshotHome.png)
+
+<h4>List Motor</h4>
+
+![App Screenshot](https://github.com/vallentinawf/group11/blob/main/ScreenshotList.png)
+
+<h4>Login</h4>
+
+![App Screenshot](https://github.com/vallentinawf/group11/blob/main/ScreenshotLogin.png)
+  
