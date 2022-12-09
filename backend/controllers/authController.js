@@ -76,7 +76,8 @@ exports.login = async (req, res, next) => {
         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
       ),
       secure: true,
-      httpOnly: true
+      httpOnly: true,
+      domain: 'https://remo-webapp.vercel.app'
     });
 
     res.status(201).json({
@@ -175,8 +176,9 @@ exports.logout = async (req, res, next) => {
   try {
     res.cookie('auth_token', '', {
       httpOnly: true,
-      expires: new Date(0)
-      // secure: true
+      expires: new Date(0),
+      secure: true,
+      domain: 'https://remo-webapp.vercel.app'
     });
     res.status(200).json({ status: 'success' });
   } catch (err) {
