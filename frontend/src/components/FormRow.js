@@ -1,5 +1,4 @@
 import React from 'react';
-import { CiMail, CiLock } from "react-icons/ci";
 
 const FormRow = ({
   type,

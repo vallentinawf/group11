@@ -49,11 +49,11 @@ const Login = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray pt-[70px]">
-      <div className="bg-gray flex flex-col justify-center">
+    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gray pt-[70px] ">
+      <div className="bg-gray flex flex-col justify-center rounded-tr-2xl rounded-br-2xl">
         {/* start - Login Form */}
         <form
-          className="max-w-[500px] bg-gray w-full mx-auto px-10 p-10"
+          className="max-w-[500px] bg-gray w-full mx-auto px-10 p-10 rounded-tr-2xl rounded-br-2xl"
           onSubmit={onSubmit}
         >
           {/* div for Logo */}
@@ -112,7 +112,7 @@ const Login = () => {
           <div className="px-5">
             <Link to="/register">
               <button className="border w-full my-5 py-2 font-bold text-orange rounded-lg">
-                Signup now
+                Register
               </button>
             </Link>
           </div>
@@ -122,7 +122,7 @@ const Login = () => {
       {/* div for login image beside the form */}
       <div className="hidden sm:block">
         <img
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover "
           src={loginImg}
           alt="suzuki motorcycle"
         />
