@@ -19,6 +19,7 @@ import {
   Navbar,
   SuccessModal,
   EditProfileForm,
+  ProfileForm
 } from './components/index';
 
 import { useState } from 'react';
@@ -30,6 +31,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<WithoutNav />}>
+          <Route path="/profile-form" element={<ProfileForm />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
