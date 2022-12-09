@@ -76,8 +76,7 @@ exports.login = async (req, res, next) => {
         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
       ),
       secure: true,
-      httpOnly: true,
-      sameSite: 'none'
+      httpOnly: true
     });
 
     res.status(201).json({
@@ -178,7 +177,6 @@ exports.logout = async (req, res, next) => {
     res.cookie('auth_token', '', {
       httpOnly: true,
       expires: new Date(0),
-      sameSite: 'none',
       secure: true
     });
     res.status(200).json({ status: 'success' });
