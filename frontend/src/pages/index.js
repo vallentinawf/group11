@@ -10,7 +10,6 @@ import DashUser from './Dashboard/DashUser';
 import WithNav from './Layout/WithNav';
 import WithoutNav from './Layout/WithoutNav';
 import Profile from './Profile';
-import EditProfile from '../pages/EditProfile';
 
 export {
   Error,
@@ -24,6 +23,5 @@ export {
   DashUser,
   WithNav,
   WithoutNav,
-  Profile,
-  EditProfile
+  Profile
 };

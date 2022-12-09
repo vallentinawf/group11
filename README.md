@@ -1,5 +1,13 @@
-<h1> ReMo </h1>
-<p> ReMo API & Client | Kelompok 11 Pengembangan Aplikasi Web</p>
+# REMO
+
+###
+Rental Motor : A web application for renting motorbikes
+
+###
+
+### Links
+• [Web App](https://remo-webapp.vercel.app/)
+• [Presentation](https://docs.google.com/presentation/d/1sbC8MNsqek8TV56eBBEv8-_KwTuy9EOPWm0nYkzJT7Q/)
 
 <br>
 
@@ -25,6 +33,15 @@
 </details>
 <br>
 
+## Authors
+
+- [@mhmd-arif](https://github.com/mhmd-arif)
+- [@akbarsigit](https://github.com/akbarsigit)
+- [@vallentinawf](https://github.com/vallentinawf)
+- [@Banendra17](https://github.com/Banendra17)
+- [@ranggarahman](https://github.com/ranggarahman)
+
+
 ## Prerequisites
 
 - [Download](https://nodejs.org/en/download/) and install **Node.js** version `16.15` or higher.
@@ -49,6 +66,7 @@
   ```
   - React
   - tailwindcss
+  - Axios
   ```
 
 ## Setting Up Project
@@ -117,3 +135,22 @@
 
   - [Learn More about Commit messages](https://dev.to/i5han3/git-commit-message-convention-that-you-can-follow-1709)
   <br/>
+ 
+## Screenshots
+
+<h4>Dashboard</h4>
+
+![App Screenshot](https://github.com/vallentinawf/group11/blob/main/ScreenshotDashboard.png)
+
+<h4>Home</h4>
+
+![App Screenshot](https://github.com/vallentinawf/group11/blob/main/ScreenshotHome.png)
+
+<h4>List Motor</h4>
+
+![App Screenshot](https://github.com/vallentinawf/group11/blob/main/ScreenshotList.png)
+
+<h4>Login</h4>
+
+![App Screenshot](https://github.com/vallentinawf/group11/blob/main/ScreenshotLogin.png)
+  

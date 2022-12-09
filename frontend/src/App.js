@@ -9,7 +9,6 @@ import {
   Landing,
   DashAdmBooking,
   DashUser,
-  EditProfile,
   Profile,
   WithNav,
   WithoutNav
@@ -45,7 +44,6 @@ function App() {
           <Route element={<Navbar />} />
           <Route path="/" element={<Landing />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/edit/profile" element={<EditProfile />} />
           <Route path="/modal" element={<SuccessModal />} />
           <Route path="/landing" element={<Landing />} />
           <Route path="/about-us" element={<AboutUs />} />
