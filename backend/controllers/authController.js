@@ -77,7 +77,7 @@ exports.login = async (req, res, next) => {
       ),
       secure: true,
       httpOnly: true,
-      sameSite: 'none'
+      domain: 'https://remo-webapp.vercel.app'
     });
 
     res.status(201).json({
@@ -176,8 +176,8 @@ exports.logout = async (req, res, next) => {
     res.cookie('auth_token', '', {
       httpOnly: true,
       expires: new Date(0),
-      sameSite: 'none',
-      secure: true
+      secure: true,
+      domain: 'https://remo-webapp.vercel.app'
     });
     res.status(200).json({ status: 'success' });
   } catch (err) {
