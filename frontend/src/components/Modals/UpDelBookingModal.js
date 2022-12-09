@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SuccessModal from './SuccessModal';
 
-export default function UpDelBookingModal(id) {
+export default function UpDelBookingModal(props) {
   const [showModal, setShowModal] = useState(false);
   const [submission, setSubmission] = useState(false);
   const [userId, setUserId] = useState('');
@@ -12,9 +12,9 @@ export default function UpDelBookingModal(id) {
   const [bookingAt, setBookingAt] = useState('');
   const [bookingId, setId] = useState('');
 
-  const keyid = id.id;
+  const keyid = props.id;
 
-  const bookData = id.books.books.data.booking;
+  const bookData = props.books.data.booking;
   const [books, setbooks] = useState(bookData);
 
   const handleReturn = async () => {

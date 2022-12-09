@@ -7,6 +7,7 @@ import useUser from '../../context/userContext';
 export default function DashAdmBooking(props) {
   const navigate = useNavigate();
   const { role } = useUser();
+  const [searchkey, setsearchkey] = useState('')
 
   const {
     error,
@@ -31,8 +32,10 @@ export default function DashAdmBooking(props) {
             <input
               className="shadow-lg drop-shadow-xl rounded-xl py-2 px-3 h-[40px] w-[400px] text-gray-700 leading-tight  focus:outline-none focus:shadow-outline"
               id="searchItems"
-              type="text"
+              type="search"
               placeholder="search items"
+              value={searchkey}
+              onChange={(e)=>{setsearchkey(e.target.value)}}
             ></input>
             {/* <Modal /> */}
           </div>
@@ -49,7 +52,7 @@ export default function DashAdmBooking(props) {
             </div>
             {error && <div>{error}</div>}
             {isPending && <Loader />}
-            {books && <BookingTable books={books} />}
+            {books && <BookingTable books={books} searchkey={searchkey} />}
           </div>
         </div>
       </div>
