@@ -19,7 +19,7 @@ Rental Motor : A web application for renting motorbikes. Created using MERN stac
 
 <br>
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Table of Contents 📝</summary>
   <ol>
     <li><a href="#prerequisites">Prerequisites</a></li>
     <li><a href="#dependencies">Dependencies</a></li>
@@ -40,7 +40,7 @@ Rental Motor : A web application for renting motorbikes. Created using MERN stac
 </details>
 
 
-## Authors
+## Authors 🤗
 - [@mhmd-arif](https://github.com/mhmd-arif)
 - [@akbarsigit](https://github.com/akbarsigit)
 - [@vallentinawf](https://github.com/vallentinawf)
@@ -48,12 +48,12 @@ Rental Motor : A web application for renting motorbikes. Created using MERN stac
 - [@ranggarahman](https://github.com/ranggarahman)
 
 
-## Prerequisites
+## Prerequisites ⚙️
 
 - [Download](https://nodejs.org/en/download/) and install **Node.js** version `16.15` or higher.
 
 
-## Dependencies
+## Dependencies 🖥️
 ### Backend
   ```
   - bcryptj
@@ -68,14 +68,14 @@ Rental Motor : A web application for renting motorbikes. Created using MERN stac
   - nodemailer
   - validator
   ```
-### Frontend
+### Frontend 
   ```
   - React
   - tailwindcss
   - Axios
   ```
 
-## Getting Started
+## Getting Started 💨
 
 Setting up project for local usage.
 
@@ -108,7 +108,7 @@ Setting up project for local usage.
 
 ## Contribution guide
 
-### Branch naming
+### Branch naming 🌲
 
 `<type>/<short_description>`
 
@@ -121,7 +121,7 @@ Setting up project for local usage.
   - [Learn More about branch naming ](https://nvie.com/posts/a-successful-git-branching-model/)
   <br/>
 
-### Commit messages
+### Commit messages ✉️
 `<type>(<scope>): <subject>`
 
 "scope" is optional
@@ -139,7 +139,7 @@ Setting up project for local usage.
   - [Learn More about Commit messages](https://dev.to/i5han3/git-commit-message-convention-that-you-can-follow-1709)
   <br/>
  
-## Screenshots
+## Screenshots 📸
 
 <h4>Dashboard</h4>
 
