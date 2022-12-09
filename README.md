@@ -1,16 +1,23 @@
 # REMO
 
 ###
-Rental Motor : A web application for renting motorbikes
-
+Rental Motor : A web application for renting motorbikes. Created using MERN stack technology and deployed in Vercel. This project is build to satisfy Web Application Programming course Final Assignment.
 ###
+
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
 ### Links
 • [Web App](https://remo-webapp.vercel.app/)
 • [Presentation](https://docs.google.com/presentation/d/1sbC8MNsqek8TV56eBBEv8-_KwTuy9EOPWm0nYkzJT7Q/)
+• [Project Design](https://www.figma.com/file/nePn8DYvwP9pmw85Q0Gzv9/ReMo?node-id=0%3A1)
+
 
 <br>
-
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -31,10 +38,9 @@ Rental Motor : A web application for renting motorbikes
     </li>
   </ol>
 </details>
-<br>
+
 
 ## Authors
-
 - [@mhmd-arif](https://github.com/mhmd-arif)
 - [@akbarsigit](https://github.com/akbarsigit)
 - [@vallentinawf](https://github.com/vallentinawf)
@@ -46,8 +52,8 @@ Rental Motor : A web application for renting motorbikes
 
 - [Download](https://nodejs.org/en/download/) and install **Node.js** version `16.15` or higher.
 
-## Dependencies
 
+## Dependencies
 ### Backend
   ```
   - bcryptj
@@ -69,10 +75,15 @@ Rental Motor : A web application for renting motorbikes
   - Axios
   ```
 
-## Setting Up Project
+## Getting Started
 
-### Install required dependencies
+Setting up project for local usage.
 
+1. Clone the repository
+   ```sh
+   git clone https://github.com/vallentinawf/group11.git
+   ```
+2. Install NPM packages
   - **Frontend**
     - change directory to Frontend directory
       - open terminal
@@ -85,19 +96,11 @@ Rental Motor : A web application for renting motorbikes
       - `cd ./backend`
     - `npm install`
 
-### Run the program
-
-  - **Frontend**
-    - change directory to Frontend directory
-      - open terminal
-      - `cd ./frontend`
-    - `npm start`
-
-  - **Backend**
-    - change directory to Backend directory
-      - open terminal
-      - `cd ./backend`
-    - `npm start`
+3. Run the program
+   ```sh
+   cd ./backend npm start
+   cd ./frontend npm start
+   ```
 
 ## Design UI
 
