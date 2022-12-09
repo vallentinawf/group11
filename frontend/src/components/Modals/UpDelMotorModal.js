@@ -5,7 +5,7 @@ import SuccessModal from './SuccessModal';
 import { updateMotors, deleteMotors } from '../../context/actions/motorActions';
 import Loader from '../Elements/Loader';
 
-export default function UpDelMotorModel(id) {
+export default function UpDelMotorModel(props) {
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState('');
   const [type, setType] = useState('');
@@ -15,8 +15,8 @@ export default function UpDelMotorModel(id) {
   const [_id, setId] = useState('');
   const [imageCover, setImageCover] = useState('');
 
-  const keyid = id.id;
-  const motorData = id.motors.motors.data.rental;
+  const keyid = props.id;
+  const motorData = props.motors.data.rental;
   const [motors, setMotors] = useState(motorData);
 
   const updateMotorState = useSelector((state) => state.updateMotorsReducer);
