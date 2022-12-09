@@ -13,13 +13,13 @@ const bookingRouter = require('./routes/bookingRoutes');
 const app = express();
 let corsOptions = {
   credentials: true,
-  origin: 'https://remo-webapp.vercel.app/'
+  origin: 'https://remo-webapp.vercel.app'
 };
 
 if (process.env.NODE_ENV === 'production') {
   corsOptions = {
     credentials: true,
-    origin: 'https://remo-webapp.vercel.app/'
+    origin: 'https://remo-webapp.vercel.app'
   };
 }
 
