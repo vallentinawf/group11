@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Avatar from './Avatar';
+import Avatar from '../components/Elements/Avatar';
 // import girlAvatar from '../assets/girlAvatar.png';
 // import boyAvatar from '../assets/boyAvatar.png';
 
-export default function EditProfileForm() {
+export default function EditProfile() {
     return(
     <div className='h-screen w-full bg-white flex'>
             <form className='grid grid-cols-1 max-w-[500px] bg-white w-full mx-auto my-auto px-10 p-10  '>

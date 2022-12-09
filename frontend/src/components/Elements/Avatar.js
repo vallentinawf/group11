@@ -17,13 +17,13 @@ export default function Avatar() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-[50%]">
+    <div className="flex flex-col justify-center items-center w-[50%] mt-[500px] md:mt-[0px]">
       <div className="">
         <img
           id="avatarImg"
           src={boyAvatar}
           alt="avatar"
-          className="w-[360px] h-[360px] rounded-full"
+          className="w-[256px] h-[256px] rounded-full"
         ></img>
       </div>
       <div>
