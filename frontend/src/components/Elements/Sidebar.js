@@ -7,7 +7,7 @@ import {
   FaHome,
 } from 'react-icons/fa';
 import { FiSettings } from 'react-icons/fi';
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import useUser from '../../context/userContext';
 import NavButton from '../Buttons/NavButtons';
@@ -18,6 +18,10 @@ export default function Sidebar(data) {
   const handleLogOut = async () => {
     await logout();
   };
+
+  useEffect(() => {
+    getCurrentUser();
+  }, [role]);
 
   const menuItems = [
     {

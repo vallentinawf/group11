@@ -14,18 +14,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMotors } from '../../context/actions/motorActions';
 import { useNavigate } from 'react-router-dom';
 import useUser from '../../context/userContext';
+import jwt from 'jwt-decode';
 
 export default function DashAdmMotorBike(props) {
-  const { role } = useUser();
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const getMotorsState = useSelector((state) => state.getMotorsReducer);
   const { motors, loading, error } = getMotorsState;
-  const [searchkey, setsearchkey] = useState('')
+  const [searchkey, setsearchkey] = useState('');
+
+  const token = localStorage.getItem('token');
+
+  const setRole = () => {
+    const decodedToken = jwt(token);
+    const isAdmin = decodedToken.role === 'admin' ? true : false;
+    navigate(isAdmin ? '/dashboard/admin/motorbike' : '/');
+  };
 
   useEffect(() => {
-    navigate(role === 'admin' ? '/dashboard/admin/motorbike' : '/');
+    setRole();
     dispatch(getMotors());
   }, []);
 
@@ -40,13 +48,15 @@ export default function DashAdmMotorBike(props) {
           <div className="flex gap-5 items-center">
             {/* <Filter /> */}
             <input
-                className="shadow-xl drop-shadow-xl rounded-xl py-2 px-3 h-[40px] w-[0px] text-gray-700 leading-tight  focus:outline-none focus:shadow-outline hidden md:block md:w-[250px] xl:w-[400px]"
-                id="searchItems"
-                type="search"
-                placeholder="search items"
-                value={searchkey}
-                onChange={(e)=>{setsearchkey(e.target.value)}}>
-            </input>
+              className="shadow-xl drop-shadow-xl rounded-xl py-2 px-3 h-[40px] w-[0px] text-gray-700 leading-tight  focus:outline-none focus:shadow-outline hidden md:block md:w-[250px] xl:w-[400px]"
+              id="searchItems"
+              type="search"
+              placeholder="search items"
+              value={searchkey}
+              onChange={(e) => {
+                setsearchkey(e.target.value);
+              }}
+            ></input>
             <FaSearch className="md:hidden" />
             <CreateMotorModal />
           </div>
@@ -66,7 +76,7 @@ export default function DashAdmMotorBike(props) {
             </div>
             {error && <div>{error}</div>}
             {loading && <Loader />}
-            {motors && <MotorTable motors={motors} searchkey={searchkey}/>}
+            {motors && <MotorTable motors={motors} searchkey={searchkey} />}
           </div>
         </div>
       </div>

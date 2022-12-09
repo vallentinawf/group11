@@ -3,18 +3,26 @@ import { Link } from 'react-router-dom';
 import useUser from '../../context/userContext';
 import { useEffect, useState } from 'react';
 import NavButton from '../Buttons/NavButtons';
+import jwt from 'jwt-decode';
 
 export default function Navbar() {
-  const { getCurrentUser, role, logout } = useUser();
+  const { logout, getCurrentUser } = useUser();
+  const token = localStorage.getItem('token');
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const setRole = () => {
+    const decodedToken = jwt(token);
+    setIsAdmin(decodedToken.role === 'admin' ? true : false);
+  };
 
   const handleLogOut = async () => {
     await logout();
   };
 
   useEffect(() => {
+    setRole();
     getCurrentUser();
-    
-  }, [role]);
+  }, [isAdmin]);
 
   return (
     <div className="w-screen h-[70px] bg-white fixed shadow-lg drop-shadow-lg z-10">
@@ -30,21 +38,21 @@ export default function Navbar() {
           <NavButton path={'/about-us'} text={'About Us'} />
           <NavButton path={'/list-motor'} text={'List Motor'} />
 
-          {role && role === 'admin' ? (
+          {isAdmin ? (
             <NavButton
               path={'/dashboard/admin/motorbike'}
               text={'Dashboard Admin'}
             />
           ) : null}
 
-          {role && role === 'user' ? (
+          {isAdmin === false ? (
             <NavButton
               path={'/dashboard/user/booking'}
               text={'Dashboard User'}
             />
           ) : null}
 
-          {(role && role === 'user') || (role && role === 'admin') ? (
+          {token ? (
             <NavButton
               path={'/login'}
               text={'Logout'}

@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useAppContext } from '../../context/appContext';
 import { CiMail, CiLock } from 'react-icons/ci';
 import useUser from '../../context/userContext';
+import jwt from 'jwt-decode';
 
 const initialState = {
   email: '',
@@ -16,16 +17,22 @@ const initialState = {
 const Login = (props) => {
   const navigate = useNavigate();
   const { displayAlert, showAlert } = useAppContext();
-  const { getCurrentUser, role } = useUser();
+  const { login } = useUser();
   const [values, setValues] = useState(initialState);
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    console.log(role);
-  }, [role]);
+  const handleLogin = async () => {
+    await login({ email: values.email, password: values.password });
+    const token = localStorage.getItem('token');
+    const decodedToken = jwt(token);
+    const isAdmin = decodedToken.role === 'admin' ? true : false;
+    navigate(isAdmin ? '/dashboard/admin/motorbike' : '/');
+  };
+
+  useEffect(() => {}, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -35,19 +42,7 @@ const Login = (props) => {
       return;
     }
 
-    const urlLogin = 'https://remo-backend.vercel.app/api/v1/auth/login';
-    try {
-      const resLogin = await axios.post(
-        urlLogin,
-        { email: values.email, password: values.password },
-        { withCredentials: true }
-      );
-    } catch (e) {
-      console.log(e);
-    }
-
-    getCurrentUser();
-    navigate(role === 'admin' ? '/dashboard/admin/motorbike' : '/');
+    handleLogin();
   };
 
   return (

@@ -14,6 +14,7 @@ export const initialState = {
   role: '',
   bookingHistory: {},
   userData: {},
+  isAdmin: false,
 };
 
 const userReducer = (state, action) => {
@@ -21,7 +22,7 @@ const userReducer = (state, action) => {
 
   switch (type) {
     case LOGIN:
-      console.log(LOGIN, payload);
+      console.log(LOGIN);
       return { ...state };
 
     case LOGOUT:
@@ -32,6 +33,7 @@ const userReducer = (state, action) => {
         role: '',
         bookingHistory: {},
         userData: {},
+        isAdmin: false,
       };
 
     case REGISTER:

@@ -82,9 +82,7 @@ exports.login = async (req, res, next) => {
 
     res.status(201).json({
       status: 'success',
-      user: user,
       token: token
-      // token
     });
   } catch (err) {
     next(err);

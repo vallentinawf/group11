@@ -2,14 +2,17 @@ import {} from 'react-icons/fa';
 import { React, useEffect, useState } from 'react';
 import { BookingUserTable, Sidebar } from '../../components';
 import { useNavigate } from 'react-router-dom';
-import useUser from '../../context/userContext';
 
 export default function DashUser(props) {
-  const { role } = useUser();
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+
+  const setRole = () => {
+    navigate(token ? '/dashboard/user/booking' : '/');
+  };
 
   useEffect(() => {
-    navigate(role === '' ? '/' : '/dashboard/user/booking');
+    setRole();
   }, []);
   return (
     <div className="h-[100vh] flex px-[2%] py-[2%] mb-[70px]">

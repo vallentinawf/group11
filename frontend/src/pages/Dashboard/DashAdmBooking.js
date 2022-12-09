@@ -3,10 +3,17 @@ import { Sidebar, BookingTable, Loader } from '../../components/index';
 import useFetch from '../../Utils/Hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
 import useUser from '../../context/userContext';
+import jwt from 'jwt-decode';
 
 export default function DashAdmBooking(props) {
   const navigate = useNavigate();
-  const { role } = useUser();
+  const token = localStorage.getItem('token');
+
+  const setRole = () => {
+    const decodedToken = jwt(token);
+    const isAdmin = decodedToken.role === 'admin' ? true : false;
+    navigate(isAdmin ? '/dashboard/admin/booking' : '/');
+  };
 
   const {
     error,
@@ -15,8 +22,7 @@ export default function DashAdmBooking(props) {
   } = useFetch('https://remo-backend.vercel.app/api/v1/booking');
 
   useEffect(() => {
-    navigate(role === 'admin' ? '/dashboard/admin/booking' : '/');
-    console.log(role);
+    setRole();
   }, []);
 
   return (
