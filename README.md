@@ -1,6 +1,10 @@
-<h1> ReMo </h1>
-<p> ReMo API & Client | Kelompok 11 Pengembangan Aplikasi Web</p>
+<h1 align="center">REMO</h1>
 
+###
+
+<p align="center">Rental Motor : A web application for renting motorbikes</p>
+
+###
 <br>
 
 <details>
@@ -24,6 +28,15 @@
   </ol>
 </details>
 <br>
+
+## Authors
+
+- [@mhmd-arif](https://github.com/mhmd-arif)
+- [@akbarsigit](https://github.com/akbarsigit)
+- [@vallentinawf](https://github.com/vallentinawf)
+- [@Banendra17](https://github.com/Banendra17)
+- [@ranggarahman](https://github.com/ranggarahman)
+
 
 ## Prerequisites
 
