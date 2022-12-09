@@ -83,7 +83,6 @@ exports.login = async (req, res, next) => {
       status: 'success',
       user: user,
       token: token
-      // token
     });
   } catch (err) {
     next(err);
@@ -176,8 +175,8 @@ exports.logout = async (req, res, next) => {
   try {
     res.cookie('auth_token', '', {
       httpOnly: true,
-      expires: new Date(0),
-      secure: true
+      expires: new Date(0)
+      // secure: true
     });
     res.status(200).json({ status: 'success' });
   } catch (err) {
