@@ -23,7 +23,7 @@ export default function Avatar() {
           id="avatarImg"
           src={boyAvatar}
           alt="avatar"
-          className="w-[256px] h-[256px] rounded-full"
+          className="w-[300px] h-[300px] rounded-full"
         ></img>
       </div>
       <div>
