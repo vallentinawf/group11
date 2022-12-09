@@ -23,7 +23,6 @@ import Hero from './Landing/Hero';
 import Offer from './Landing/Offer';
 import EditProfileForm from './Elements/EditProfileForm';
 import Avatar from './Elements/Avatar';
-import ProfileForm from './Elements/ProfileForm';
 
 export {
   FormRow,
@@ -47,5 +46,4 @@ export {
   EditProfileForm,
   Avatar,
   Button,
-  ProfileForm
 };

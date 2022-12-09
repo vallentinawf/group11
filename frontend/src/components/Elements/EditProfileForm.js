@@ -33,7 +33,7 @@ export default function EditProfileForm() {
                 </div>
                 <div className='md:flex md:items-center mb-6'>
                     <div className='flex justify-between w-full p-2'>
-                        <label className='p-2 font-primary'>Address:</label>
+                        <label className='p-2 font-primary'>Alamat:</label>
                         <input type="text" className='border border-gray border-[2px] border-bold w-64 p-2 rounded-lg focus:outline-none focus:border-orange focus:ring-1 focus:ring-orange'></input>
                     </div>
                 </div>
