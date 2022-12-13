@@ -2,6 +2,11 @@
 
 ###
 Rental Motor : A web application for renting motorbikes. Created using MERN stack technology and deployed in Vercel. This project is build to satisfy Web Application Programming course Final Assignment.
+Email and Password to test admin functionality :
+
+email : superadmin@gmail.com
+pass : superadmin
+
 ###
 
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
